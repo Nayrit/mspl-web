@@ -15,9 +15,14 @@ export default function ProofBlocks({ heading, intro, blocks }: ProofBlocksProps
           <p className="text-body-lg text-charcoal-400 font-sans mb-12 max-w-2xl">{intro}</p>
         </ScrollFadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-charcoal-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-px bg-charcoal-100">
           {blocks.map((block, i) => (
-            <ScrollFadeIn key={block.title} direction="up" delay={i * 0.06}>
+            <ScrollFadeIn
+              key={block.title}
+              direction="up"
+              delay={i * 0.06}
+              className={i < 3 ? "lg:col-span-2" : "lg:col-span-3"}
+            >
               <div className="bg-parchment-50 p-8 h-full group hover:bg-parchment-200 transition-colors duration-300">
                 <h3 className="font-display text-lg font-bold text-charcoal mb-4 group-hover:text-primary transition-colors">{block.title}</h3>
                 <ul className="space-y-2">

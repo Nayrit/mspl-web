@@ -50,30 +50,43 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
         <div className="container-editorial">
           <ScrollFadeIn direction="up">
             <SectionEyebrow className="mb-8">Capabilities</SectionEyebrow>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-charcoal-100">
-              {capability.machinery && (
-                <div className="bg-parchment-50 p-8">
-                  <p className="eyebrow text-charcoal-300 mb-3 text-[0.6rem]">State-of-the-art machinery</p>
-                  <p className="font-sans text-sm text-charcoal-400 leading-relaxed">{capability.machinery}</p>
+            {(() => {
+              const capItems = [
+                capability.machinery && {
+                  label: "State-of-the-art machinery",
+                  content: <p className="font-sans text-sm text-charcoal-400 leading-relaxed">{capability.machinery}</p>,
+                },
+                capability.security && {
+                  label: "Security features",
+                  content: <p className="font-sans text-sm text-charcoal-400 leading-relaxed">{capability.security}</p>,
+                },
+                capability.customisation && {
+                  label: "Customisation",
+                  content: <p className="font-sans text-sm text-charcoal-400 leading-relaxed">{capability.customisation}</p>,
+                },
+                {
+                  label: "Daily capacity",
+                  content: <p className="font-display text-2xl font-bold text-primary">{capability.dailyCapacity}</p>,
+                },
+              ].filter(Boolean) as { label: string; content: React.ReactNode }[];
+
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-charcoal-100">
+                  {capItems.map((item, i) => {
+                    const isLastOdd = capItems.length % 2 !== 0 && i === capItems.length - 1;
+                    return (
+                      <div
+                        key={item.label}
+                        className={`bg-parchment-50 p-8 ${isLastOdd ? "md:col-span-2" : ""}`}
+                      >
+                        <p className="eyebrow text-charcoal-300 mb-3 text-[0.6rem]">{item.label}</p>
+                        {item.content}
+                      </div>
+                    );
+                  })}
                 </div>
-              )}
-              {capability.security && (
-                <div className="bg-parchment-50 p-8">
-                  <p className="eyebrow text-charcoal-300 mb-3 text-[0.6rem]">Security features</p>
-                  <p className="font-sans text-sm text-charcoal-400 leading-relaxed">{capability.security}</p>
-                </div>
-              )}
-              {capability.customisation && (
-                <div className="bg-parchment-50 p-8">
-                  <p className="eyebrow text-charcoal-300 mb-3 text-[0.6rem]">Customisation</p>
-                  <p className="font-sans text-sm text-charcoal-400 leading-relaxed">{capability.customisation}</p>
-                </div>
-              )}
-              <div className="bg-parchment-50 p-8">
-                <p className="eyebrow text-charcoal-300 mb-3 text-[0.6rem]">Daily capacity</p>
-                <p className="font-display text-2xl font-bold text-primary">{capability.dailyCapacity}</p>
-              </div>
-            </div>
+              );
+            })()}
           </ScrollFadeIn>
 
           {capability.finishing && (

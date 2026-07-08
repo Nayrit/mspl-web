@@ -3,6 +3,8 @@ import PageHero from "@/components/pages/PageHero";
 import ValueIconGrid from "@/components/pages/ValueIconGrid";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
+import AboutSubNav from "@/components/about/AboutSubNav";
+import ExecutivePillarsInteractive from "@/components/about/ExecutivePillarsInteractive";
 import { missionVisionValues } from "@/lib/content/about";
 import { pageMetadata } from "@/lib/seo";
 
@@ -18,6 +20,7 @@ export default function MissionPage() {
   return (
     <>
       <PageHero eyebrow="What drives us" headline="The standard we hold ourselves to." image="/paper-texture.jpg" />
+      <AboutSubNav />
 
       <section className="section-padding bg-parchment">
         <div className="container-editorial">
@@ -37,6 +40,9 @@ export default function MissionPage() {
           </div>
         </div>
       </section>
+
+      {/* Four Pillars Governing Our Operations (In the middle) */}
+      <ExecutivePillarsInteractive />
 
       <ValueIconGrid values={coreValues} />
     </>
