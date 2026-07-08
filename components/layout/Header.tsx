@@ -141,15 +141,13 @@ export default function Header() {
             <button
               onClick={() => setLang(lang === "EN" ? "BN" : "EN")}
               id="lang-toggle"
-              className="flex items-center gap-1 font-sans text-[0.72rem] font-medium tracking-widest transition-colors duration-300 px-2 py-1 border"
-              style={{ borderColor: solid ? "#c8cacc" : "rgba(250,248,245,0.25)", color: solid ? "#72777d" : "rgba(250,248,245,0.6)" }}
+              className="flex items-center justify-center font-sans text-xs font-bold tracking-wider transition-all duration-300 px-3 py-1.5 rounded border"
+              style={{ borderColor: solid ? "#c8cacc" : "rgba(250,248,245,0.3)", color: solid ? "#25282b" : "rgba(250,248,245,0.85)" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor="#e0271c"; (e.currentTarget as HTMLElement).style.color="#e0271c"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor= solid ? "#c8cacc":"rgba(250,248,245,0.25)"; (e.currentTarget as HTMLElement).style.color= solid?"#72777d":"rgba(250,248,245,0.6)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor= solid ? "#c8cacc":"rgba(250,248,245,0.3)"; (e.currentTarget as HTMLElement).style.color= solid?"#25282b":"rgba(250,248,245,0.85)"; }}
               aria-label="Toggle language"
             >
-              <span style={{ fontWeight: lang === "EN" ? 700 : 400 }}>EN</span>
-              <span style={{ opacity: 0.3, margin: "0 1px" }}>/</span>
-              <span style={{ fontWeight: lang === "BN" ? 700 : 400 }}>বাংলা</span>
+              {lang === "EN" ? "বাংলা" : "EN"}
             </button>
 
             <a
@@ -244,8 +242,8 @@ export default function Header() {
               >
                 {t.nav.getInTouch}
               </Link>
-              <button onClick={() => setLang(lang === "EN" ? "BN" : "EN")} className="font-sans text-sm tracking-widest uppercase" style={{ color: "#9ea2a6" }}>
-                {lang === "EN" ? "বাংলায় দেখুন" : "View in English"}
+              <button onClick={() => setLang(lang === "EN" ? "BN" : "EN")} className="font-sans text-sm font-bold tracking-widest uppercase py-2 border border-charcoal-200 rounded" style={{ color: "#25282b" }}>
+                {lang === "EN" ? "বাংলা" : "EN"}
               </button>
             </div>
           </motion.div>

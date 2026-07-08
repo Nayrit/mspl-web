@@ -47,8 +47,8 @@ export default function ClientLogo({ name, slug, imagePath, className = "", sect
       case "dbbl": return "#ed1c24";
       case "nbr": return "#8b6508";
       case "desco": return "#005bb5";
-      case "aci": return "#004b87";
-      case "square": return "#ed1c24";
+      case "aci": return "#008080";
+      case "square": return "#008080";
       case "brac-university": return "#003366";
       case "marico": return "#008080";
       case "the-city-bank": return "#ed1c24";

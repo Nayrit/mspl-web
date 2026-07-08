@@ -9,7 +9,7 @@ const translations = {
     nav: {
       about: "About", whatWeDo: "What We Do", capabilities: "Capabilities",
       sustainability: "Sustainability", clients: "Clients", contact: "Contact",
-      getInTouch: "Get in touch", requestQuote: "Request a quote", downloadProfile: "Download company profile",
+      getInTouch: "Get in touch", requestQuote: "Request a quote", downloadProfile: "Company Profile",
     },
     hero: {
       eyebrow: "Paper converting, printing & packaging · Since 2002",
@@ -59,7 +59,7 @@ const translations = {
     nav: {
       about: "আমাদের সম্পর্কে", whatWeDo: "আমরা কী করি", capabilities: "সক্ষমতা",
       sustainability: "টেকসইতা", clients: "ক্লায়েন্ট", contact: "যোগাযোগ",
-      getInTouch: "যোগাযোগ করুন", requestQuote: "কোটেশন অনুরোধ", downloadProfile: "কোম্পানি প্রোফাইল ডাউনলোড",
+      getInTouch: "যোগাযোগ করুন", requestQuote: "কোটেশন অনুরোধ", downloadProfile: "কোম্পানি প্রোফাইল",
     },
     hero: {
       eyebrow: "কাগজ রূপান্তর, মুদ্রণ ও প্যাকেজিং · ২০০২ থেকে",
