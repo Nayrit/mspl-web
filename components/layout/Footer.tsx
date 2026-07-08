@@ -1,24 +1,5 @@
 import Link from "next/link";
-
-const whatWeDoLinks = [
-  { label: "Computer & Business Forms", href: "/what-we-do/computer-forms" },
-  { label: "Web Printing", href: "/what-we-do/web-printing" },
-  { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging" },
-  { label: "Thermal & ATM/POS Rolls", href: "/what-we-do/thermal-rolls" },
-  { label: "Rigid Boxes", href: "/what-we-do/rigid-boxes" },
-  { label: "Stickers & Labels", href: "/what-we-do/stickers-labels" },
-];
-
-const companyLinks = [
-  { label: "About", href: "/about" },
-  { label: "Our Story", href: "/about/story" },
-  { label: "Leadership", href: "/about/leadership" },
-  { label: "Mission, Vision & Values", href: "/about/mission" },
-  { label: "Capabilities", href: "/capabilities" },
-  { label: "Sustainability", href: "/sustainability" },
-  { label: "Clients", href: "/clients" },
-  { label: "Careers", href: "/careers" },
-];
+import { footerWhatWeDoLinks, companyLinks } from "@/lib/navigation";
 
 export default function Footer() {
   return (
@@ -72,7 +53,7 @@ export default function Footer() {
               What We Do
             </h3>
             <ul className="space-y-2.5">
-              {whatWeDoLinks.map((link) => (
+              {footerWhatWeDoLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -175,7 +156,7 @@ export default function Footer() {
         <div className="container-editorial py-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex flex-wrap items-center gap-3 text-white/35 font-sans text-xs">
-              <span>© 2026 Master Simex Paper Limited. All rights reserved.</span>
+              <span>© {new Date().getFullYear()} Master Simex Paper Limited. All rights reserved.</span>
               <span className="text-white/20">·</span>
               <span className="text-primary/70">ISO 9001:2015 Certified</span>
               <span className="text-white/20">·</span>

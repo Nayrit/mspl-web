@@ -12,15 +12,19 @@ export default function ClosingCTABand() {
 
   return (
     <section ref={ref} className="relative overflow-hidden" style={{ backgroundColor: "#25282b" }} aria-label="Get in touch">
-      {/* Top red band */}
       <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: "#e0271c" }} />
 
-      {/* Decorative number */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 select-none pointer-events-none hidden xl:block pr-20">
-        <span className="font-display font-bold" style={{ fontSize: "18rem", lineHeight: 1, color: "rgba(250,248,245,0.02)", letterSpacing: "-0.05em" }}>10</span>
+        <motion.span
+          className="font-display font-bold"
+          style={{ fontSize: "18rem", lineHeight: 1, color: "rgba(250,248,245,0.02)", letterSpacing: "-0.05em" }}
+          animate={isInView ? { opacity: [0.02, 0.04, 0.02] } : {}}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          10
+        </motion.span>
       </div>
 
-      {/* Grid texture */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
         <div className="w-full h-full" style={{ backgroundImage: "linear-gradient(rgba(250,248,245,1) 1px,transparent 1px),linear-gradient(90deg,rgba(250,248,245,1) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
       </div>
@@ -39,8 +43,7 @@ export default function ClosingCTABand() {
             className="font-display font-bold mb-8"
             style={{ fontSize:"clamp(2.5rem,5.5vw,5.5rem)",lineHeight:1.05,letterSpacing:"-0.025em",color:"#faf8f5" }}
           >
-            {t.closing.headline1}<br />
-            <span style={{ color: "#e0271c" }}>{t.closing.headline2}</span>
+            {t.closing.headline}
           </motion.h2>
 
           <motion.p initial={{ opacity:0,y:20 }} animate={isInView?{opacity:1,y:0}:{}} transition={{ duration:0.7,delay:0.2 }}
@@ -52,7 +55,7 @@ export default function ClosingCTABand() {
 
           <motion.div initial={{ opacity:0,y:20 }} animate={isInView?{opacity:1,y:0}:{}} transition={{ duration:0.7,delay:0.3 }} className="flex flex-wrap items-center gap-6">
             <Link href="/contact" id="closing-cta"
-              className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 group transition-all duration-300"
+              className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 group transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
               style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
               onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#b51f16")}
               onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#e0271c")}
@@ -77,7 +80,6 @@ export default function ClosingCTABand() {
           </motion.div>
         </div>
 
-        {/* Right contact */}
         <motion.div initial={{ opacity:0 }} animate={isInView?{opacity:1}:{}} transition={{ duration:1,delay:0.5 }}
           className="absolute right-0 bottom-0 hidden xl:block pr-16 pb-16"
         >

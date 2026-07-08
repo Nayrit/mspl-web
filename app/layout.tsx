@@ -3,9 +3,13 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/layout/JsonLd";
 import { LanguageProvider } from "@/components/ui/LanguageContext";
 import CustomCursor from "@/components/ui/CustomCursor";
 import FloatingCTA from "@/components/ui/FloatingCTA";
+import CookieConsent from "@/components/ui/CookieConsent";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { organizationJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -25,7 +29,7 @@ export const metadata: Metadata = {
     default: "Master Simex Paper Limited | Paper Converting, Printing & Packaging in Bangladesh",
     template: "%s | Master Simex Paper Limited",
   },
-  description: "Master Simex Paper Limited is a leading Bangladeshi manufacturer of secure forms, thermal rolls, offset print, packaging, rigid boxes and labels. ISO 9001:2015 certified. Made in-house since 2002.",
+  description: "Master Simex Paper Limited is a part of MS Group and a leading Bangladeshi manufacturer of secure forms, thermal rolls, offset print, packaging, rigid boxes and labels. ISO 9001:2015 certified. Made in-house since 2002.",
   keywords: ["paper converting Bangladesh","printing packaging Dhaka","OMR forms Bangladesh","rigid box manufacturer","thermal paper rolls","security printing Bangladesh","Master Simex","MSPL"],
   authors: [{ name: "Master Simex Paper Limited" }],
   metadataBase: new URL("https://www.mastersimex.com"),
@@ -45,11 +49,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-sans antialiased" style={{ backgroundColor: "#faf8f5", color: "#25282b" }}>
         <LanguageProvider>
+          <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />
           <CustomCursor />
           <Header />
           <main id="main-content">{children}</main>
           <Footer />
           <FloatingCTA />
+          <WhatsAppButton />
+          <CookieConsent />
         </LanguageProvider>
       </body>
     </html>

@@ -137,9 +137,8 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right */}
+          {/* Right utilities */}
           <div className="hidden lg:flex items-center gap-4">
-            {/* Lang toggle */}
             <button
               onClick={() => setLang(lang === "EN" ? "BN" : "EN")}
               id="lang-toggle"
@@ -154,7 +153,21 @@ export default function Header() {
               <span style={{ fontWeight: lang === "BN" ? 700 : 400 }}>বাংলা</span>
             </button>
 
-            {/* CTA */}
+            <a
+              href="/mspl-company-profile.pdf"
+              download
+              id="header-download-profile"
+              className="hidden xl:flex items-center gap-1.5 font-sans text-[0.68rem] font-medium tracking-wide transition-colors duration-300"
+              style={{ color: solid ? "#72777d" : "rgba(250,248,245,0.55)" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#e0271c")}
+              onMouseLeave={e => (e.currentTarget.style.color = solid ? "#72777d" : "rgba(250,248,245,0.55)")}
+            >
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              {t.nav.downloadProfile}
+            </a>
+
             <Link href="/contact" id="header-cta"
               className="font-sans text-[0.72rem] font-bold tracking-wider uppercase px-5 py-2.5 transition-all duration-300"
               style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
@@ -214,6 +227,15 @@ export default function Header() {
               ))}
             </nav>
             <div className="mt-auto px-8 pt-8 flex flex-col gap-4">
+              <Link href="/contact?quote=1"
+                className="w-full text-center font-sans font-semibold text-sm tracking-wider uppercase py-4 transition-colors border border-charcoal-200"
+                style={{ color: "#25282b" }}
+                onMouseEnter={e=>{ e.currentTarget.style.borderColor="#e0271c"; e.currentTarget.style.color="#e0271c"; }}
+                onMouseLeave={e=>{ e.currentTarget.style.borderColor="#e4e5e6"; e.currentTarget.style.color="#25282b"; }}
+                onClick={() => setMobileOpen(false)}
+              >
+                {t.nav.requestQuote}
+              </Link>
               <Link href="/contact"
                 className="w-full text-center font-sans font-semibold text-sm tracking-wider uppercase py-4 transition-colors"
                 style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
