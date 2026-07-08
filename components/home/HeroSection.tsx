@@ -12,7 +12,7 @@ const slides = [
   { src: "/hero-bg-3.jpg", alt: "Master Simex — offset printing press" },
   { src: "/hero-bg-4.jpg", alt: "Master Simex — manufacturing campus" },
 ];
-const SLIDE_MS = 5500;
+const SLIDE_MS = 5000;
 
 export default function HeroSection() {
   const { t } = useLang();

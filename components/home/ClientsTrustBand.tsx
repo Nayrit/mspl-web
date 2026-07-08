@@ -6,18 +6,20 @@ import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
 
 const clientLogos = [
-  { name: "Bangladesh Bank",           slug: "bangladesh-bank" },
-  { name: "Sonali Bank",               slug: "sonali-bank" },
-  { name: "BRAC",                      slug: "brac" },
-  { name: "Grameenphone",              slug: "grameenphone" },
-  { name: "Robi Axiata",               slug: "robi" },
-  { name: "Dutch-Bangla Bank",         slug: "dbbl" },
-  { name: "National Board of Revenue", slug: "nbr" },
-  { name: "City Bank",                 slug: "city-bank" },
-  { name: "ACI Limited",               slug: "aci" },
-  { name: "Square Group",              slug: "square" },
-  { name: "BRAC University",           slug: "brac-university" },
-  { name: "Marico Bangladesh",         slug: "marico" },
+  { name: "Bangladesh Bank",           slug: "bangladesh-bank", imagePath: "/clients/bangladesh-bank.png" },
+  { name: "NCTB Bangladesh",           slug: "nctb",            imagePath: "/clients/nctb.png" },
+  { name: "Sonali Bank PLC",           slug: "sonali-bank",     imagePath: "/clients/sonali-bank.png" },
+  { name: "BRAC",                      slug: "brac",            imagePath: "/clients/brac.png" },
+  { name: "Grameenphone",              slug: "grameenphone",    imagePath: "/clients/Grameenphone.png" },
+  { name: "Robi Axiata",               slug: "robi",            imagePath: "/clients/robi.png" },
+  { name: "Dutch-Bangla Bank",         slug: "dbbl",            imagePath: "/clients/dbbl.png" },
+  { name: "National Board of Revenue", slug: "nbr",             imagePath: "/clients/nbr.png" },
+  { name: "DESCO",                     slug: "desco",           imagePath: "/clients/desco.png" },
+  { name: "The City Bank",             slug: "city-bank",       imagePath: "/clients/city-bank.webp" },
+  { name: "ACI Limited",               slug: "aci",             imagePath: "/clients/aci.png" },
+  { name: "Square Group",              slug: "square",          imagePath: "/clients/square.png" },
+  { name: "BRAC University",           slug: "brac-university", imagePath: "/clients/brac-university.png" },
+  { name: "Marico Bangladesh",         slug: "marico",          imagePath: "/clients/marico.png" },
 ];
 
 const sectors = ["Government", "Finance & Banking", "Education", "Healthcare", "FMCG & Brands"];
@@ -35,7 +37,7 @@ function LogoMarqueeRow({ logos, reverse = false }: { logos: typeof clientLogos;
       >
         {items.map((client, i) => (
           <div key={`${client.slug}-${i}`} className="flex-shrink-0">
-            <ClientLogo name={client.name} slug={client.slug} />
+            <ClientLogo name={client.name} slug={client.slug} imagePath={client.imagePath} />
           </div>
         ))}
       </div>

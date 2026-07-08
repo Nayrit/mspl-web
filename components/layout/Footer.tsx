@@ -18,7 +18,7 @@ export default function Footer() {
               </p>
             </div>
             <p className="font-sans text-[0.7rem] tracking-[0.14em] uppercase text-gold mb-3 font-medium">
-              A part of Emerging Group
+              A part of MS Group
             </p>
             <p className="font-sans text-sm text-white/60 leading-relaxed mb-6">
               Redefining Bangladesh&apos;s paper, printing and packaging
