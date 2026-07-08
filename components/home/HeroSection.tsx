@@ -81,31 +81,31 @@ export default function HeroSection() {
       </motion.div>
 
       <motion.div
-        className="relative z-10 h-full flex flex-col justify-end container-editorial pb-10"
+        className="relative z-10 h-full flex flex-col justify-end container-editorial pt-24 pb-6 sm:pb-10"
         style={{ y: contentY, x: springX, rotateX: contentRotateX }}
       >
         <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-5xl">
-          <motion.div variants={item} className="mb-7">
+          <motion.div variants={item} className="mb-3 sm:mb-7">
             <span className="inline-flex items-center gap-3 font-sans text-[0.65rem] font-medium tracking-[0.2em] uppercase" style={{ color: "#e0271c" }}>
               {t.hero.eyebrow}
             </span>
           </motion.div>
 
-          <motion.h1 variants={item} className="font-display font-bold text-[#faf8f5] mb-4" style={{ fontSize: "clamp(3rem,7vw,7.5rem)", lineHeight: 1.03, letterSpacing: "-0.03em" }}>
+          <motion.h1 variants={item} className="font-display font-bold text-[#faf8f5] mb-2 sm:mb-4" style={{ fontSize: "clamp(2.5rem,7vw,7.5rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
             {t.hero.headline1}
             <br />
             <span style={{ color: "#e0271c" }}>{t.hero.headline2}</span>
           </motion.h1>
 
-          <motion.p variants={item} className="font-display font-medium mb-7" style={{ fontSize: "clamp(1.25rem,2.5vw,2rem)", lineHeight: 1.2, letterSpacing: "-0.02em", color: "rgba(250,248,245,0.35)" }}>
+          <motion.p variants={item} className="font-display font-medium mb-3 sm:mb-7" style={{ fontSize: "clamp(1.15rem,2.5vw,2rem)", lineHeight: 1.2, letterSpacing: "-0.02em", color: "rgba(250,248,245,0.35)" }}>
             <RotatingWords words={t.hero.rotating} className="text-primary" />
           </motion.p>
 
-          <motion.p variants={item} className="text-body-xl font-sans font-light max-w-2xl mb-11" style={{ color: "rgba(250,248,245,0.65)" }}>
+          <motion.p variants={item} className="text-body-xl font-sans font-light max-w-2xl mb-6 sm:mb-11 line-clamp-3 sm:line-clamp-none" style={{ color: "rgba(250,248,245,0.65)" }}>
             {t.hero.sub}
           </motion.p>
 
-          <motion.div variants={item} className="flex flex-wrap items-center gap-4 mb-14">
+          <motion.div variants={item} className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-14">
             <Link href="/what-we-do" id="hero-cta-primary"
               className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 group transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
               style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}

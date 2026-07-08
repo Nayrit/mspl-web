@@ -31,16 +31,16 @@ export default function KeyNumbersBand() {
           </div>
         </ScrollFadeIn>
 
-        <div className="grid grid-cols-2 md:grid-cols-3" style={{ gap:"1px",backgroundColor:"rgba(250,248,245,0.06)" }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap:"1px",backgroundColor:"rgba(250,248,245,0.06)" }}>
           {stats.map((stat, i) => (
             <ScrollFadeIn key={stat.label} direction="up" delay={i * 0.08}>
               <div
-                className="p-8 lg:p-12 group transition-all duration-500 cursor-default hover:-translate-y-1"
+                className="p-6 sm:p-8 lg:p-12 group transition-all duration-500 cursor-default hover:-translate-y-1"
                 style={{ backgroundColor:"#25282b" }}
                 onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#2d2f32")}
                 onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#25282b")}
               >
-                <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left" style={{ fontSize:"clamp(3rem,6vw,5.5rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#e0271c" }}>
+                <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left break-words" style={{ fontSize:"clamp(2.5rem,7vw,5.5rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#e0271c" }}>
                   {stat.isText
                     ? <span>{stat.textValue}</span>
                     : <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={1800} />
