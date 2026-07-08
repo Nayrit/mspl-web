@@ -4,6 +4,7 @@ import { products, productSubPages } from "@/lib/content/products";
 
 const staticRoutes = [
   "",
+  "/about",
   "/about/story",
   "/about/leadership",
   "/about/mission",

@@ -38,7 +38,13 @@ export const metadata: Metadata = {
     title: "Master Simex Paper Limited | Paper Converting, Printing & Packaging",
     description: "Leading Bangladeshi manufacturer of secure forms, thermal rolls, offset print, packaging, rigid boxes and labels. ISO 9001:2015 certified since 2002.",
     siteName: "Master Simex Paper Limited",
-    images: [{ url: "/hero-bg.jpg", width: 1200, height: 630, alt: "Master Simex Paper Limited" }],
+    images: [{ url: "/mspl-logo.png", width: 512, height: 512, alt: "Master Simex Paper Limited" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Master Simex Paper Limited | Paper Converting, Printing & Packaging",
+    description: "Leading Bangladeshi manufacturer of secure forms, thermal rolls, offset print, packaging, rigid boxes and labels. ISO 9001:2015 certified.",
+    images: ["/mspl-logo.png"],
   },
   robots: { index: true, follow: true },
   icons: {
