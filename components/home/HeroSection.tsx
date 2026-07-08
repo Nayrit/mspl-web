@@ -18,7 +18,6 @@ export default function HeroSection() {
   const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const [current, setCurrent] = useState(0);
-  const [paused,  setPaused]  = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const mouseX = useMotionValue(0);
@@ -37,10 +36,9 @@ export default function HeroSection() {
   const prev = useCallback(() => setCurrent(c => (c - 1 + slides.length) % slides.length), []);
 
   useEffect(() => {
-    if (paused) return;
     timerRef.current = setTimeout(next, SLIDE_MS);
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [current, paused, next]);
+  }, [current, next]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = sectionRef.current?.getBoundingClientRect();
@@ -59,8 +57,7 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative w-full h-[100svh] min-h-[640px] overflow-hidden"
       style={{ backgroundColor: "#25282b" }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => { setPaused(false); mouseX.set(0); mouseY.set(0); }}
+      onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
       onMouseMove={handleMouseMove}
       aria-label="Hero"
     >

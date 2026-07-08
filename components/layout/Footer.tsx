@@ -10,12 +10,11 @@ export default function Footer() {
           {/* Col 1: Brand */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <p className="font-display text-xl font-bold tracking-tight text-white">
-                Master Simex
-              </p>
-              <p className="font-sans text-[0.65rem] tracking-[0.18em] uppercase text-white/40 mt-0.5">
-                Paper Limited
-              </p>
+              <img
+                src="/mspl-logo.png"
+                alt="Master Simex Paper Limited"
+                className="h-11 w-auto object-contain brightness-110"
+              />
             </div>
             <p className="font-sans text-[0.7rem] tracking-[0.14em] uppercase text-gold mb-3 font-medium">
               A part of MS Group

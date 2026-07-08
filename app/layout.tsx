@@ -41,12 +41,24 @@ export const metadata: Metadata = {
     images: [{ url: "/hero-bg.jpg", width: 1200, height: 630, alt: "Master Simex Paper Limited" }],
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/mspl-logo.png", type: "image/png" },
+      { url: "/icon.png" },
+    ],
+    shortcut: "/mspl-logo.png",
+    apple: "/mspl-logo.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        <link rel="icon" type="image/png" href="/mspl-logo.png" />
+        <link rel="shortcut icon" href="/mspl-logo.png" />
+        <link rel="apple-touch-icon" href="/mspl-logo.png" />
+      </head>
       <body className="font-sans antialiased" style={{ backgroundColor: "#faf8f5", color: "#25282b" }}>
         <LanguageProvider>
           <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />

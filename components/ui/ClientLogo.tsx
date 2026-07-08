@@ -6,11 +6,12 @@ import { motion } from "framer-motion";
 interface ClientLogoProps {
   name: string;
   slug: string;
+  imagePath?: string;
   className?: string;
   sector?: string;
 }
 
-export default function ClientLogo({ name, slug, className = "", sector }: ClientLogoProps) {
+export default function ClientLogo({ name, slug, imagePath, className = "", sector }: ClientLogoProps) {
   const [imgError, setImgError] = useState(false);
 
   // Derive sector if not provided
@@ -76,7 +77,7 @@ export default function ClientLogo({ name, slug, className = "", sector }: Clien
           <div className="w-14 h-14 rounded-xl bg-charcoal/5 flex items-center justify-center p-1.5 border border-charcoal-100 group-hover:border-charcoal-300 transition-all duration-300 flex-shrink-0 shadow-xs bg-white">
             {!imgError ? (
               <img
-                src={`/clients/${slug}.png`}
+                src={imagePath || `/clients/${slug}.png`}
                 alt={name}
                 className="max-h-11 max-w-11 object-contain transition-transform duration-300 group-hover:scale-105"
                 onError={() => setImgError(true)}

@@ -59,13 +59,12 @@ export default function Header() {
 
         <div className="container-editorial flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex flex-col leading-none" aria-label="Master Simex — Home">
-            <span className="font-display font-bold text-lg lg:text-xl tracking-tight transition-colors duration-300" style={{ color: solid ? "#25282b" : "#faf8f5" }}>
-              Master Simex
-            </span>
-            <span className="font-sans text-[0.6rem] tracking-[0.18em] uppercase transition-colors duration-300" style={{ color: solid ? "#72777d" : "rgba(250,248,245,0.45)" }}>
-              Paper Limited
-            </span>
+          <Link href="/" className="flex-shrink-0 flex items-center" aria-label="Master Simex — Home">
+            <img
+              src="/mspl-logo.png"
+              alt="Master Simex Paper Limited"
+              className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+            />
           </Link>
 
           {/* Desktop nav */}
