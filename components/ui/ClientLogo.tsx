@@ -8,10 +8,9 @@ interface ClientLogoProps {
   slug: string;
   className?: string;
   sector?: string;
-  partnerType?: string;
 }
 
-export default function ClientLogo({ name, slug, className = "", sector, partnerType = "Continuous Supply" }: ClientLogoProps) {
+export default function ClientLogo({ name, slug, className = "", sector }: ClientLogoProps) {
   const [imgError, setImgError] = useState(false);
 
   // Derive sector if not provided
@@ -31,6 +30,7 @@ export default function ClientLogo({ name, slug, className = "", sector, partner
       case "square": return "Conglomerate Leader";
       case "brac-university": return "Higher Education";
       case "marico": return "Beauty & Wellness";
+      case "the-city-bank": return "Largest Private Bank";
       default: return "Enterprise Partner";
     }
   };
@@ -43,13 +43,14 @@ export default function ClientLogo({ name, slug, className = "", sector, partner
       case "brac": return "#ec008c";
       case "grameenphone": return "#0073e6";
       case "robi": return "#ed1c24";
-      case "dbbl": return "#008a4b";
+      case "dbbl": return "#ed1c24";
       case "nbr": return "#8b6508";
       case "desco": return "#005bb5";
       case "aci": return "#004b87";
       case "square": return "#ed1c24";
       case "brac-university": return "#003366";
       case "marico": return "#008080";
+      case "the-city-bank": return "#ed1c24";
       default: return "#e0271c";
     }
   };
@@ -104,7 +105,7 @@ export default function ClientLogo({ name, slug, className = "", sector, partner
         
         {/* Subtle partner tag */}
         <div className="hidden sm:flex flex-col items-end justify-center pl-3 border-l border-charcoal-100 group-hover:border-primary/30 transition-colors flex-shrink-0">
-          <span className="text-[0.55rem] font-sans font-semibold text-charcoal-300 uppercase tracking-widest">{partnerType}</span>
+          <span className="text-[0.55rem] font-sans font-semibold text-charcoal-300 uppercase tracking-widest"></span>
           <span
             className="text-[0.65rem] font-sans font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0"
             style={{ color: brandColor }}

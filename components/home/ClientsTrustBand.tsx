@@ -15,11 +15,11 @@ const clientLogos = [
   { name: "Dutch-Bangla Bank",         slug: "dbbl",            imagePath: "/clients/dbbl.png" },
   { name: "National Board of Revenue", slug: "nbr",             imagePath: "/clients/nbr.png" },
   { name: "DESCO",                     slug: "desco",           imagePath: "/clients/desco.png" },
-  { name: "The City Bank",             slug: "city-bank",       imagePath: "/clients/city-bank.webp" },
   { name: "ACI Limited",               slug: "aci",             imagePath: "/clients/aci.png" },
   { name: "Square Group",              slug: "square",          imagePath: "/clients/square.png" },
   { name: "BRAC University",           slug: "brac-university", imagePath: "/clients/brac-university.png" },
   { name: "Marico Bangladesh",         slug: "marico",          imagePath: "/clients/marico.png" },
+  { name: "The City Bank",             slug: "the-city-bank",   imagePath: "/clients/the-city-bank.png" },
 ];
 
 const sectors = ["Government", "Finance & Banking", "Education", "Healthcare", "FMCG & Brands"];
