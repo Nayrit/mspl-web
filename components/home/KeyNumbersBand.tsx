@@ -33,24 +33,26 @@ export default function KeyNumbersBand() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap:"1px",backgroundColor:"rgba(250,248,245,0.06)" }}>
           {stats.map((stat, i) => (
-            <ScrollFadeIn key={stat.label} direction="up" delay={i * 0.08}>
+            <ScrollFadeIn key={stat.label} direction="up" delay={i * 0.08} className="h-full">
               <div
-                className="p-6 sm:p-8 lg:p-12 group transition-all duration-500 cursor-default hover:-translate-y-1"
+                className="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 group transition-all duration-500 cursor-default hover:-translate-y-1"
                 style={{ backgroundColor:"#25282b" }}
                 onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#2d2f32")}
                 onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#25282b")}
               >
-                <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left break-words" style={{ fontSize:"clamp(2.5rem,7vw,5.5rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#e0271c" }}>
-                  {stat.isText
-                    ? <span>{stat.textValue}</span>
-                    : <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={1800} />
-                  }
+                <div>
+                  <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left whitespace-nowrap" style={{ fontSize:"clamp(2.25rem, 3.8vw, 4.5rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#e0271c" }}>
+                    {stat.isText
+                      ? <span>{stat.textValue}</span>
+                      : <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={1800} />
+                    }
+                  </div>
+                  <p className="font-sans text-sm font-medium mb-1.5" style={{ color:"#faf8f5" }}>{stat.label}</p>
+                  <p className="font-sans text-xs transition-colors duration-300" style={{ color:"rgba(250,248,245,0.35)" }}
+                    onMouseEnter={e=>(e.currentTarget.style.color="rgba(250,248,245,0.6)")}
+                    onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.35)")}
+                  >{stat.detail}</p>
                 </div>
-                <p className="font-sans text-sm font-medium mb-1.5" style={{ color:"#faf8f5" }}>{stat.label}</p>
-                <p className="font-sans text-xs transition-colors duration-300" style={{ color:"rgba(250,248,245,0.35)" }}
-                  onMouseEnter={e=>(e.currentTarget.style.color="rgba(250,248,245,0.6)")}
-                  onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.35)")}
-                >{stat.detail}</p>
                 <div className="mt-6 h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ backgroundColor:"#e0271c" }} />
               </div>
             </ScrollFadeIn>
