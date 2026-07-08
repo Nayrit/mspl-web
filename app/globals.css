@@ -1,26 +1,163 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+@theme {
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-sans:    var(--font-inter), system-ui, sans-serif;
+
+  --color-primary:       #e0271c;
+  --color-primary-light: #e84f45;
+  --color-primary-dark:  #b51f16;
+
+  --color-charcoal:     #25282b;
+  --color-charcoal-50:  #f4f4f5;
+  --color-charcoal-100: #e4e5e6;
+  --color-charcoal-200: #c8cacc;
+  --color-charcoal-300: #9ea2a6;
+  --color-charcoal-400: #72777d;
+  --color-charcoal-500: #52575d;
+  --color-charcoal-600: #3c4044;
+  --color-charcoal-700: #303336;
+  --color-charcoal-800: #2d2f32;
+  --color-charcoal-900: #25282b;
+
+  --color-parchment:     #faf8f5;
+  --color-parchment-50:  #fefefe;
+  --color-parchment-100: #faf8f5;
+  --color-parchment-200: #f2ede7;
+  --color-parchment-300: #e8e0d6;
+
+  --color-navy:       #0d1f3c;
+  --color-navy-light: #1a3660;
+  --color-navy-dark:  #07142a;
+
+  --color-gold:       #c8a96e;
+  --color-gold-light: #d9be91;
+  --color-gold-dark:  #a88a4e;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Base reset ─────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    cursor: none; /* custom cursor on desktop */
+  }
+
+  body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    background-color: #faf8f5;
+    color: #25282b;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Restore default cursor on mobile/touch */
+  @media (pointer: coarse) {
+    html { cursor: auto; }
+  }
+
+  ::selection { background-color: #e0271c; color: #faf8f5; }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-playfair), Georgia, serif;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  img   { display: block; max-width: 100%; }
+  a     { color: inherit; text-decoration: none; }
+  button { cursor: none; font-family: inherit; }
+
+  @media (pointer: coarse) {
+    button { cursor: pointer; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Explicit colour utilities (ensures Tailwind v4 picks them up) ──────── */
+@layer utilities {
+  /* Primary */
+  .bg-primary            { background-color: #e0271c !important; }
+  .bg-primary-light      { background-color: #e84f45 !important; }
+  .bg-primary-dark       { background-color: #b51f16 !important; }
+  .text-primary          { color: #e0271c !important; }
+  .text-primary-light    { color: #e84f45 !important; }
+  .border-primary        { border-color: #e0271c !important; }
+  .ring-primary          { --tw-ring-color: #e0271c; }
+  .from-primary          { --tw-gradient-from: #e0271c; }
+  .to-primary            { --tw-gradient-to: #e0271c; }
+  .via-primary           { --tw-gradient-via: #e0271c; }
+  .fill-primary          { fill: #e0271c; }
+  .stroke-primary        { stroke: #e0271c; }
+
+  .hover\:bg-primary:hover       { background-color: #e0271c !important; }
+  .hover\:bg-primary-dark:hover  { background-color: #b51f16 !important; }
+  .hover\:text-primary:hover     { color: #e0271c !important; }
+  .hover\:border-primary:hover   { border-color: #e0271c !important; }
+  .group:hover .group-hover\:text-primary { color: #e0271c !important; }
+
+  /* Opacity variants */
+  .bg-primary\/5   { background-color: rgba(224,39,28,0.05)  !important; }
+  .bg-primary\/10  { background-color: rgba(224,39,28,0.10)  !important; }
+  .bg-primary\/15  { background-color: rgba(224,39,28,0.15)  !important; }
+  .bg-primary\/20  { background-color: rgba(224,39,28,0.20)  !important; }
+  .bg-primary\/30  { background-color: rgba(224,39,28,0.30)  !important; }
+  .border-primary\/20 { border-color: rgba(224,39,28,0.20) !important; }
+  .border-primary\/30 { border-color: rgba(224,39,28,0.30) !important; }
+  .text-primary\/70   { color: rgba(224,39,28,0.70) !important; }
+  .text-primary\/80   { color: rgba(224,39,28,0.80) !important; }
+
+  /* Typography utilities */
+  .text-display-2xl {
+    font-size: clamp(3rem, 7vw, 7.5rem);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
+  }
+  .text-display-xl {
+    font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+  .text-display-lg {
+    font-size: clamp(1.8rem, 3.5vw, 3.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  .text-display-md {
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+  }
+  .text-body-xl {
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+    line-height: 1.8;
+  }
+  .text-body-lg {
+    font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
+    line-height: 1.75;
+  }
+  .eyebrow {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .container-editorial {
+    width: 100%;
+    max-width: 88rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1.25rem, 5vw, 5rem);
+    padding-right: clamp(1.25rem, 5vw, 5rem);
+  }
+  .section-padding {
+    padding-top: clamp(4.5rem, 10vw, 9rem);
+    padding-bottom: clamp(4.5rem, 10vw, 9rem);
+  }
 }
