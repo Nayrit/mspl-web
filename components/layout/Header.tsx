@@ -96,20 +96,20 @@ export default function Header() {
                   <AnimatePresence>
                     {megaOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -15 }}
-                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed top-16 lg:top-20 left-0 right-0 w-full shadow-2xl z-50 border-t border-charcoal-200/30 overflow-hidden"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                        className="fixed top-16 lg:top-20 left-0 right-0 w-full shadow-2xl z-50 border-t border-charcoal-200/30 overflow-y-auto max-h-[calc(100vh-5rem)]"
                         style={{ backgroundColor: "#faf8f5" }}
                         role="menu"
                       >
                         {/* Accent top line */}
                         <div className="h-[3px] w-full" style={{ backgroundColor: "#e0271c" }} />
 
-                        <div className="container-editorial py-8 lg:py-10">
-                          <div className="flex items-center justify-between mb-6 pb-3 border-b border-charcoal-200/50">
-                            <p className="font-display font-bold text-sm tracking-wider uppercase text-charcoal">
+                        <div className="container-editorial py-6 lg:py-8">
+                          <div className="flex items-center justify-between mb-4 pb-2.5 border-b border-charcoal-200/50">
+                            <p className="font-display font-bold text-xs tracking-wider uppercase text-charcoal">
                               Manufacturing Specialisms
                             </p>
                             <Link
@@ -121,43 +121,75 @@ export default function Header() {
                             </Link>
                           </div>
 
-                          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-                            {item.megaItems?.map(mega => (
+                          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+                            {/* Left Column (col-span-5): Flagship Offset Printing & Packaging in Full-Height Box */}
+                            {item.megaItems?.[0] && (
                               <Link
-                                key={mega.label}
-                                href={mega.href}
+                                href={item.megaItems[0].href}
                                 onClick={() => setMegaOpen(false)}
-                                className="group block"
+                                className="group lg:col-span-5 flex flex-col justify-between border border-charcoal-200/80 bg-white/70 p-4 lg:p-5 shadow-sm hover:shadow-md hover:border-primary transition-all duration-300"
                               >
-                                <div className="relative aspect-[16/9] w-full overflow-hidden bg-charcoal-100 mb-4">
+                                <div className="relative w-full flex-1 min-h-[190px] xl:min-h-[220px] overflow-hidden bg-charcoal-100 mb-4">
                                   <img
-                                    src={mega.img}
-                                    alt={mega.label}
+                                    src={item.megaItems[0].img}
+                                    alt={item.megaItems[0].label}
                                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                                   />
-                                  {("highlighted" in mega && mega.highlighted) && (
-                                    <div className="absolute top-3 left-3 bg-primary text-white font-sans text-[10px] font-bold uppercase tracking-widest px-3 py-1 shadow-md">
-                                      Flagship Specialism
-                                    </div>
-                                  )}
+                                  <div className="absolute top-2.5 left-2.5 bg-primary text-white font-sans text-[10px] font-bold uppercase tracking-widest px-3 py-1 shadow-md">
+                                    Flagship Specialism
+                                  </div>
                                 </div>
 
-                                <div className="flex items-start justify-between gap-3">
-                                  <div>
-                                    <h3 className="font-display font-bold text-base xl:text-lg text-charcoal group-hover:text-primary transition-colors duration-200">
-                                      {mega.label}
-                                    </h3>
-                                    <p className="font-sans text-xs text-charcoal-400 mt-1 line-clamp-1">
-                                      {mega.desc}
-                                    </p>
+                                <div>
+                                  <h3 className="font-display font-bold text-lg xl:text-xl text-charcoal group-hover:text-primary transition-colors duration-200">
+                                    {item.megaItems[0].label}
+                                  </h3>
+                                  <p className="font-sans text-xs xl:text-sm text-charcoal-400 mt-1.5 leading-relaxed line-clamp-2">
+                                    {item.megaItems[0].desc}
+                                  </p>
+                                  <div className="mt-3 inline-flex items-center gap-1.5 font-sans text-xs xl:text-sm font-bold text-primary group-hover:translate-x-1.5 transition-transform duration-200">
+                                    Explore Offset & Packaging →
                                   </div>
-                                  <span className="font-sans text-lg text-charcoal-400 group-hover:text-primary transition-all duration-200 group-hover:translate-x-1">
-                                    →
-                                  </span>
                                 </div>
-                                <div className="mt-3.5 border-b border-charcoal-200 group-hover:border-primary transition-colors duration-200" />
                               </Link>
-                            ))}
+                            )}
+
+                            {/* Right Column (col-span-7): Remaining 5 Specialisms (All styled identically) */}
+                            <div className="lg:col-span-7 grid grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-5">
+                              {item.megaItems?.slice(1).map(mega => (
+                                <Link
+                                  key={mega.label}
+                                  href={mega.href}
+                                  onClick={() => setMegaOpen(false)}
+                                  className="group flex flex-col justify-between"
+                                >
+                                  <div>
+                                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-charcoal-100 mb-2.5">
+                                      <img
+                                        src={mega.img}
+                                        alt={mega.label}
+                                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                                      />
+                                    </div>
+
+                                    <div className="flex items-start justify-between gap-2">
+                                      <div>
+                                        <h4 className="font-display font-bold text-xs xl:text-sm text-charcoal group-hover:text-primary transition-colors duration-200">
+                                          {mega.label}
+                                        </h4>
+                                        <p className="font-sans text-[11px] text-charcoal-400 mt-0.5 line-clamp-1">
+                                          {mega.desc}
+                                        </p>
+                                      </div>
+                                      <span className="font-sans text-sm text-charcoal-400 group-hover:text-primary transition-all duration-200 group-hover:translate-x-1 shrink-0">
+                                        →
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="mt-2.5 border-b border-charcoal-200 group-hover:border-primary transition-colors duration-200" />
+                                </Link>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       </motion.div>
