@@ -53,7 +53,7 @@ export function localBusinessJsonLd() {
     name: siteConfig.name,
     image: `${siteConfig.url}/mspl-logo.png`,
     url: siteConfig.url,
-    telephone: siteConfig.phones.join(", "),
+    telephone: siteConfig.phones[0],
     email: siteConfig.email,
     address: {
       "@type": "PostalAddress",
@@ -62,9 +62,23 @@ export function localBusinessJsonLd() {
       postalCode: siteConfig.address.postalCode,
       addressCountry: "BD",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 23.7315638,
+      longitude: 90.4146837,
+    },
+    department: siteConfig.factories.map((f, idx) => ({
+      "@type": "LocalBusiness",
+      name: `${siteConfig.name} - ${f.name}`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: f.location,
+        addressCountry: "BD",
+      },
+    })),
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
+      dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
       opens: "09:00",
       closes: "18:00",
     },
