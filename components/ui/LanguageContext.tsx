@@ -13,8 +13,8 @@ const translations = {
     },
     hero: {
       eyebrow: "Paper converting, printing & packaging · Since 2002",
-      headline1: "Precision you", headline2: "can hold.",
-      rotating: ["Craft", "Quality", "Control", "Trust", "Precision"],
+      headline1: "Elevating", headline2: "",
+      rotating: ["design.", "ideas.", "shapes.", "inspiration.", "sustainability.", "creativity."],
       sub: "For over two decades, Master Simex has turned paper into secure documents, everyday essentials and packaging that brands are proud to ship — all made in-house.",
       cta1: "Explore what we do", cta2: "Get in touch",
     },
@@ -63,8 +63,8 @@ const translations = {
     },
     hero: {
       eyebrow: "কাগজ রূপান্তর, মুদ্রণ ও প্যাকেজিং · ২০০২ থেকে",
-      headline1: "নিখুঁততা যা আপনি", headline2: "অনুভব করতে পারেন।",
-      rotating: ["কারিগরি", "মান", "নিয়ন্ত্রণ", "বিশ্বাস", "নিখুঁততা"],
+      headline1: "উন্নত করছি", headline2: "",
+      rotating: ["ডিজাইন।", "ধারণা।", "আকার।", "অনুপ্রেরণা।", "টেকসইতা।", "সৃজনশীলতা।"],
       sub: "দুই দশকেরও বেশি সময় ধরে, মাস্টার সিমেক্স কাগজকে নিরাপদ নথি, দৈনন্দিন প্রয়োজনীয় পণ্য এবং ব্র্যান্ডের গর্বের প্যাকেজিংয়ে রূপান্তরিত করে চলেছে।",
       cta1: "আমরা কী করি দেখুন", cta2: "যোগাযোগ করুন",
     },

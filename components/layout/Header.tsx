@@ -135,9 +135,6 @@ export default function Header() {
                                     alt={item.megaItems[0].label}
                                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                                   />
-                                  <div className="absolute top-2.5 left-2.5 bg-primary text-white font-sans text-[10px] font-bold uppercase tracking-widest px-3 py-1 shadow-md">
-                                    Flagship Specialism
-                                  </div>
                                 </div>
 
                                 <div>

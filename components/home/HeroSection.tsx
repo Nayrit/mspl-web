@@ -4,15 +4,16 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
-import RotatingWords from "@/components/ui/RotatingWords";
 
 const slides = [
-  { src: "/hero-bg.jpg",   alt: "Master Simex — industrial paper manufacturing facility" },
-  { src: "/hero-bg-2.jpg", alt: "Master Simex — paper roll warehouse" },
-  { src: "/hero-bg-3.jpg", alt: "Master Simex — offset printing press" },
-  { src: "/hero-bg-4.jpg", alt: "Master Simex — manufacturing campus" },
+  { src: "/hero-bg.jpg",              alt: "Master Simex — elevating design" },
+  { src: "/hero-bg-2.jpg",            alt: "Master Simex — elevating ideas" },
+  { src: "/card-rigid-boxes.jpg",     alt: "Master Simex — elevating shapes" },
+  { src: "/hero-bg-4.jpg",            alt: "Master Simex — elevating inspiration" },
+  { src: "/sustainability-solar.jpg", alt: "Master Simex — elevating sustainability" },
+  { src: "/capabilities-factory.jpg", alt: "Master Simex — elevating creativity" },
 ];
-const SLIDE_MS = 5000;
+const SLIDE_MS = 3800;
 
 export default function HeroSection() {
   const { t } = useLang();
@@ -91,15 +92,23 @@ export default function HeroSection() {
             </span>
           </motion.div>
 
-          <motion.h1 variants={item} className="font-display font-bold text-[#faf8f5] mb-2 sm:mb-4" style={{ fontSize: "clamp(2.25rem,4.5vw + 0.5rem,5.5rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
-            {t.hero.headline1}
-            <br />
-            <span style={{ color: "#e0271c" }}>{t.hero.headline2}</span>
+          <motion.h1 variants={item} className="font-display font-bold text-[#faf8f5] mb-4 sm:mb-6 leading-none" style={{ fontSize: "clamp(2.5rem,5.2vw + 0.5rem,6.2rem)", letterSpacing: "-0.035em" }}>
+            <span className="block mb-1">{t.hero.headline1}</span>
+            <span className="relative inline-block overflow-hidden min-h-[1.15em] text-[#e0271c]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={current}
+                  initial={{ y: "80%", opacity: 0, rotateX: 65 }}
+                  animate={{ y: "0%", opacity: 1, rotateX: 0 }}
+                  exit={{ y: "-80%", opacity: 0, rotateX: -65 }}
+                  transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block origin-bottom"
+                >
+                  {t.hero.rotating[current % t.hero.rotating.length]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </motion.h1>
-
-          <motion.p variants={item} className="font-display font-medium mb-3 sm:mb-5" style={{ fontSize: "clamp(1.1rem,1.8vw,1.75rem)", lineHeight: 1.2, letterSpacing: "-0.02em", color: "rgba(250,248,245,0.35)" }}>
-            <RotatingWords words={t.hero.rotating} className="text-primary" />
-          </motion.p>
 
           <motion.p variants={item} className="text-body-xl font-sans font-light max-w-2xl mb-6 sm:mb-9 line-clamp-3 sm:line-clamp-none" style={{ color: "rgba(250,248,245,0.65)" }}>
             {t.hero.sub}
