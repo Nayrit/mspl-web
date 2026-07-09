@@ -163,11 +163,11 @@
     max-width: 88rem;
     margin-left: auto;
     margin-right: auto;
-    padding-left: clamp(1.25rem, 5vw, 5rem);
-    padding-right: clamp(1.25rem, 5vw, 5rem);
+    padding-left: clamp(1.25rem, 3.5vw, 4.5rem);
+    padding-right: clamp(1.25rem, 3.5vw, 4.5rem);
   }
   .section-padding {
-    padding-top: clamp(4.5rem, 10vw, 9rem);
-    padding-bottom: clamp(4.5rem, 10vw, 9rem);
+    padding-top: clamp(3.5rem, 7vw, 8rem);
+    padding-bottom: clamp(3.5rem, 7vw, 8rem);
   }
 }

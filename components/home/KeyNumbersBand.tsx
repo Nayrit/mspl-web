@@ -35,13 +35,13 @@ export default function KeyNumbersBand() {
           {stats.map((stat, i) => (
             <ScrollFadeIn key={stat.label} direction="up" delay={i * 0.08} className="h-full">
               <div
-                className="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 group transition-all duration-500 cursor-default hover:-translate-y-1"
+                className="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-8 xl:p-12 group transition-all duration-500 cursor-default hover:-translate-y-1"
                 style={{ backgroundColor:"#25282b" }}
                 onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#2d2f32")}
                 onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#25282b")}
               >
                 <div>
-                  <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left whitespace-nowrap" style={{ fontSize:"clamp(2.25rem, 3.8vw, 4.5rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#e0271c" }}>
+                  <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left whitespace-nowrap" style={{ fontSize:"clamp(2rem, 3vw, 4rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#e0271c" }}>
                     {stat.isText
                       ? <span>{stat.textValue}</span>
                       : <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={1800} />

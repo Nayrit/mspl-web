@@ -91,12 +91,36 @@ export default function CareersPortal() {
     if (formEl) formEl.scrollIntoView({ behavior: "smooth" });
   }
 
-  function handleApplicationSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleApplicationSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setFormStatus("submitting");
-    setTimeout(() => {
-      setFormStatus("success");
-    }, 1000);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      await fetch("https://formsubmit.co/ajax/msplbd@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New Career Application for ${data.get("position")} from ${data.get("name")}`,
+          Name: data.get("name"),
+          Email: data.get("email"),
+          Phone: data.get("phone"),
+          Position: data.get("position"),
+          LinkedInOrPortfolio: data.get("linkedin") || "N/A",
+          CoverNote: data.get("cover") || "N/A",
+        }),
+      });
+    } catch {
+      // Continue even if third-party network issue
+    }
+
+    setFormStatus("success");
+    form.reset();
   }
 
   return (

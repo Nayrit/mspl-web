@@ -72,13 +72,13 @@ export default function FloatingCTA() {
 
               {/* Direct Phone Call */}
               <a
-                href="tel:+88022335096"
+                href={`tel:${siteConfig.phones[0].replace(/\s|-/g, "")}`}
                 className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/5 hover:bg-white/10 font-sans text-xs font-semibold text-parchment-100/80 hover:text-white transition-colors"
               >
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                +880 2 2233 50096
+                {siteConfig.phones[0]}
               </a>
             </div>
 
@@ -89,25 +89,25 @@ export default function FloatingCTA() {
 
       <motion.button
         onClick={() => setExpanded(!expanded)}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 rounded-full bg-primary text-parchment-50 shadow-lg shadow-primary/40 flex items-center justify-center relative overflow-hidden group"
-        aria-label="Quick Actions & WhatsApp"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.96 }}
+        className="px-5 py-3.5 rounded-full bg-primary text-parchment-50 shadow-lg shadow-primary/40 flex items-center gap-2.5 relative overflow-hidden group transition-all"
+        aria-label="Contact us"
       >
-        <motion.div
-          animate={{ rotate: expanded ? 45 : 0 }}
-          transition={{ duration: 0.25 }}
-        >
+        <div className="flex items-center gap-2.5 z-10">
           {expanded ? (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+            <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
             </svg>
           )}
-        </motion.div>
+          <span className="font-sans text-sm font-semibold tracking-wide">
+            {expanded ? "Close" : "Contact us"}
+          </span>
+        </div>
         <span className="absolute inset-0 bg-primary-dark scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full origin-center opacity-30" />
       </motion.button>
     </div>

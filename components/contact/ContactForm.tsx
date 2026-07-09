@@ -27,6 +27,29 @@ export default function ContactForm() {
     const result = await submitContactForm(data);
 
     if (result.success) {
+      // Also send email notification directly to msplbd@gmail.com
+      try {
+        await fetch("https://formsubmit.co/ajax/msplbd@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            _subject: `New Website Enquiry from ${data.get("name")}`,
+            Name: data.get("name"),
+            Email: data.get("email"),
+            Phone: data.get("phone") || "N/A",
+            Company: data.get("company") || "N/A",
+            ProductFamily: data.get("productFamily") || "N/A",
+            EstimatedVolume: data.get("volume") || "N/A",
+            Message: data.get("message"),
+          }),
+        });
+      } catch {
+        // Continue even if network error on third-party service
+      }
+
       setStatus("success");
       form.reset();
     } else {

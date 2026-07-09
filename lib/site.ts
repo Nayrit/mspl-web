@@ -3,8 +3,9 @@ export const siteConfig = {
   shortName: "Master Simex",
   url: "https://www.mastersimex.com",
   email: "msplbd@gmail.com",
-  phones: ["+880 2 2233 50096", "+880 2 2233 91036"],
-  whatsapp: "88022335096",
+  phones: ["+880 1833-102454", "+880 2 2233 50096", "+880 2 2233 91036"],
+  whatsapp: "8801833102454",
+  whatsappDisplay: "+880 1833-102454",
   address: {
     street: "Suite 15 A–D, Paramount Heights, 65/2/1 Culvert Road",
     city: "Dhaka",

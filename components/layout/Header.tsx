@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/components/ui/LanguageContext";
@@ -25,6 +26,7 @@ const navLinks = [
 
 export default function Header() {
   const { t, lang, setLang } = useLang();
+  const pathname = usePathname();
   const [scrolled,   setScrolled]   = useState(false);
   const [megaOpen,   setMegaOpen]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,17 +38,23 @@ export default function Header() {
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  const openMega  = () => { if (megaTimer.current) clearTimeout(megaTimer.current); setMegaOpen(true); };
+  const closeMega = () => { megaTimer.current = setTimeout(() => setMegaOpen(false), 200); };
+
+  const forceSolid =
+    pathname === "/contact" ||
+    pathname === "/careers" ||
+    pathname === "/privacy-policy" ||
+    pathname === "/terms";
+  const solid = scrolled || mobileOpen || forceSolid;
+
   useEffect(() => {
     const fn = (e: MouseEvent) => { if (megaRef.current && !megaRef.current.contains(e.target as Node)) setMegaOpen(false); };
     document.addEventListener("mousedown", fn);
     return () => document.removeEventListener("mousedown", fn);
   }, []);
   useEffect(() => { document.body.style.overflow = mobileOpen ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [mobileOpen]);
-
-  const openMega  = () => { if (megaTimer.current) clearTimeout(megaTimer.current); setMegaOpen(true); };
-  const closeMega = () => { megaTimer.current = setTimeout(() => setMegaOpen(false), 200); };
-
-  const solid = scrolled || mobileOpen;
 
   return (
     <>
@@ -68,12 +76,12 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8" ref={megaRef}>
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-8" ref={megaRef}>
             {navLinks.map(item => (
               item.hasMega ? (
                 <div key={item.key} className="relative" onMouseEnter={openMega} onMouseLeave={closeMega}>
                   <button
-                    className="flex items-center gap-1 font-sans text-[0.8rem] font-medium tracking-wide transition-colors duration-300"
+                    className="flex items-center gap-1 font-sans text-[0.75rem] xl:text-[0.8rem] font-medium tracking-wide transition-colors duration-300"
                     style={{ color: solid ? "#25282b" : "rgba(250,248,245,0.85)" }}
                     onMouseEnter={e => (e.currentTarget.style.color = "#e0271c")}
                     onMouseLeave={e => (e.currentTarget.style.color = solid ? "#25282b" : "rgba(250,248,245,0.85)")}
@@ -125,7 +133,7 @@ export default function Header() {
                 </div>
               ) : (
                 <Link key={item.key} href={item.href}
-                  className="font-sans text-[0.8rem] font-medium tracking-wide transition-colors duration-300"
+                  className="font-sans text-[0.75rem] xl:text-[0.8rem] font-medium tracking-wide transition-colors duration-300"
                   style={{ color: solid ? "#25282b" : "rgba(250,248,245,0.85)" }}
                   onMouseEnter={e => (e.currentTarget.style.color = "#e0271c")}
                   onMouseLeave={e => (e.currentTarget.style.color = solid ? "#25282b" : "rgba(250,248,245,0.85)")}
@@ -137,7 +145,7 @@ export default function Header() {
           </nav>
 
           {/* Right utilities */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-2.5 xl:gap-4">
             <button
               onClick={() => setLang(lang === "EN" ? "BN" : "EN")}
               id="lang-toggle"
