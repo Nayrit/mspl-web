@@ -67,7 +67,7 @@ export function localBusinessJsonLd() {
       latitude: 23.7315638,
       longitude: 90.4146837,
     },
-    department: siteConfig.factories.map((f, idx) => ({
+    department: siteConfig.factories.map((f) => ({
       "@type": "LocalBusiness",
       name: `${siteConfig.name} - ${f.name}`,
       address: {

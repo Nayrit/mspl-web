@@ -25,7 +25,7 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const { t, lang, setLang } = useLang();
+  const { t } = useLang();
   const pathname = usePathname();
   const [scrolled,   setScrolled]   = useState(false);
   const [megaOpen,   setMegaOpen]   = useState(false);

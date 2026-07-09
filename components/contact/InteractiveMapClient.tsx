@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { allLocations, type SiteLocation } from "@/lib/site";
+import { allLocations } from "@/lib/site";
 
 export default function InteractiveMapClient() {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);

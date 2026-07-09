@@ -27,28 +27,6 @@ export default function ContactForm() {
     const result = await submitContactForm(data);
 
     if (result.success) {
-      // Also send email notification directly to msplbd@gmail.com
-      try {
-        await fetch("https://formsubmit.co/ajax/msplbd@gmail.com", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            _subject: `New Website Enquiry from ${data.get("name")}`,
-            Name: data.get("name"),
-            Email: data.get("email"),
-            Phone: data.get("phone") || "N/A",
-            Company: data.get("company") || "N/A",
-            ProductFamily: data.get("productFamily") || "N/A",
-            Message: data.get("message"),
-          }),
-        });
-      } catch {
-        // Continue even if network error on third-party service
-      }
-
       setStatus("success");
       form.reset();
     } else {
@@ -73,22 +51,22 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Name *</label>
-          <input id="name" name="name" required className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+          <input id="name" name="name" required maxLength={200} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
         </div>
         <div>
           <label htmlFor="company" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Company</label>
-          <input id="company" name="company" className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+          <input id="company" name="company" maxLength={200} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="email" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Email *</label>
-          <input id="email" name="email" type="email" required className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+          <input id="email" name="email" type="email" required maxLength={254} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
         </div>
         <div>
           <label htmlFor="phone" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Phone</label>
-          <input id="phone" name="phone" type="tel" className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+          <input id="phone" name="phone" type="tel" maxLength={30} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
         </div>
       </div>
 
@@ -104,13 +82,13 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Message *</label>
-        <textarea id="message" name="message" required rows={5} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-y" />
+        <textarea id="message" name="message" required maxLength={5000} rows={5} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-y" />
       </div>
 
       <div className="flex items-start gap-3">
         <input id="consent" name="consent" type="checkbox" required className="mt-1 accent-[#e0271c]" />
         <label htmlFor="consent" className="font-sans text-xs text-charcoal-400 leading-relaxed">
-          By submitting, you agree to be contacted about your enquiry. We&apos;ll never share your details.
+          By submitting, you agree to be contacted about your enquiry. We&apos;ll never share your details for marketing.
         </label>
       </div>
 

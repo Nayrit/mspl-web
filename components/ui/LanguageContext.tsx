@@ -107,7 +107,7 @@ const translations = {
   },
 } as const;
 
-type DeepLoose<T> = T extends readonly (infer I)[]
+type DeepLoose<T> = T extends readonly unknown[]
   ? string[]
   : T extends object
   ? { [K in keyof T]: DeepLoose<T[K]> }

@@ -5,6 +5,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/layout/JsonLd";
 import { LanguageProvider } from "@/components/ui/LanguageContext";
+import { ConsentProvider } from "@/components/ui/ConsentContext";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import CustomCursor from "@/components/ui/CustomCursor";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import CookieConsent from "@/components/ui/CookieConsent";
@@ -57,10 +59,6 @@ export const metadata: Metadata = {
   },
 };
 
-import Script from "next/script";
-
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
@@ -70,35 +68,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/mspl-logo.png" />
       </head>
       <body className="font-sans antialiased" style={{ backgroundColor: "#faf8f5", color: "#25282b" }}>
-        {/* GA4 Measurement Script */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        />
-        <Script
-          id="google-analytics-4"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_MEASUREMENT_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
-        <LanguageProvider>
-          <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />
-          <CustomCursor />
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
-          <FloatingCTA />
-          <WhatsAppButton />
-          <CookieConsent />
-        </LanguageProvider>
+        <ConsentProvider>
+          <LanguageProvider>
+            <GoogleAnalytics />
+            <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />
+            <CustomCursor />
+            <Header />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <FloatingCTA />
+            <WhatsAppButton />
+            <CookieConsent />
+          </LanguageProvider>
+        </ConsentProvider>
       </body>
     </html>
   );

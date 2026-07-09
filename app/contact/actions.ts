@@ -1,6 +1,7 @@
 "use server";
 
-import { siteConfig } from "@/lib/site";
+import { sendContactEmail } from "@/lib/form-submit";
+import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 
 interface FormResult {
   success: boolean;
@@ -10,6 +11,11 @@ interface FormResult {
 export async function submitContactForm(data: FormData): Promise<FormResult> {
   if (data.get("website")) {
     return { success: true };
+  }
+
+  const ip = await getClientIp();
+  if (isRateLimited(`contact:${ip}`)) {
+    return { success: false, error: "Too many requests. Please try again in a minute." };
   }
 
   const name = String(data.get("name") ?? "").trim();
@@ -25,25 +31,25 @@ export async function submitContactForm(data: FormData): Promise<FormResult> {
     return { success: false, error: "Please enter a valid email address." };
   }
 
+  if (name.length > 200 || email.length > 254 || message.length > 5000) {
+    return { success: false, error: "One or more fields exceed the allowed length." };
+  }
+
   const company = String(data.get("company") ?? "").trim();
   const phone = String(data.get("phone") ?? "").trim();
   const productFamily = String(data.get("productFamily") ?? "").trim();
 
-  const body = [
-    `Name: ${name}`,
-    company && `Company: ${company}`,
-    `Email: ${email}`,
-    phone && `Phone: ${phone}`,
-    productFamily && `Product family: ${productFamily}`,
-    "",
-    message,
-  ].filter(Boolean).join("\n");
-
-  console.log("[Contact form submission]", {
-    to: siteConfig.email,
-    subject: `Website enquiry from ${name}`,
-    body,
-  });
-
-  return { success: true };
+  try {
+    await sendContactEmail({
+      name,
+      email,
+      company: company || undefined,
+      phone: phone || undefined,
+      productFamily: productFamily || undefined,
+      message,
+    });
+    return { success: true };
+  } catch {
+    return { success: false, error: "Something went wrong. Please try again or email us directly." };
+  }
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/pages/PageHero";
 import MachineryGrid from "@/components/pages/MachineryGrid";
 import CTABand from "@/components/pages/CTABand";

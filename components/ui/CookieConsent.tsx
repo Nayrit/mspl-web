@@ -1,28 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useConsent } from "@/components/ui/ConsentContext";
 
 export default function CookieConsent() {
-  const [visible, setVisible] = useState(false);
+  const { bannerVisible, accept, reject } = useConsent();
 
-  useEffect(() => {
-    if (!localStorage.getItem("mspl-cookie-consent")) {
-      setVisible(true);
-    }
-  }, []);
-
-  if (!visible) return null;
-
-  const accept = () => {
-    localStorage.setItem("mspl-cookie-consent", "accepted");
-    setVisible(false);
-  };
-
-  const reject = () => {
-    localStorage.setItem("mspl-cookie-consent", "rejected");
-    setVisible(false);
-  };
+  if (!bannerVisible) return null;
 
   return (
     <div
@@ -33,7 +17,7 @@ export default function CookieConsent() {
       <div className="container-editorial">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-charcoal text-parchment-50 p-5 md:p-6 shadow-2xl border-t-2 border-primary">
           <p className="font-sans text-sm text-parchment-100/75 max-w-2xl">
-            We use cookies to understand how our site is used and to improve it.{" "}
+            We use cookies to understand how our site is used and to improve it. Analytics cookies load only if you accept.{" "}
             <Link href="/privacy-policy" className="text-primary hover:underline">Learn more</Link>
           </p>
           <div className="flex items-center gap-3 shrink-0">

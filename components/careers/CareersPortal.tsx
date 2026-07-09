@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/site";
+import { submitCareerApplication } from "@/app/careers/actions";
 
 interface JobOpening {
   id: string;
@@ -80,7 +81,8 @@ export default function CareersPortal() {
   const [selectedDept, setSelectedDept] = useState("All");
   const [activeJobId, setActiveJobId] = useState<string | null>(null);
   const [appliedPos, setAppliedPos] = useState<string>("");
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formError, setFormError] = useState("");
 
   const filteredJobs =
     selectedDept === "All" ? jobOpenings : jobOpenings.filter((j) => j.department === selectedDept);
@@ -94,21 +96,19 @@ export default function CareersPortal() {
   async function handleApplicationSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setFormStatus("submitting");
+    setFormError("");
 
     const form = e.currentTarget;
     const data = new FormData(form);
+    const result = await submitCareerApplication(data);
 
-    try {
-      await fetch("https://formsubmit.co/ajax/msplbd@gmail.com", {
-        method: "POST",
-        body: data,
-      });
-    } catch {
-      // Continue even if third-party network issue
+    if (result.success) {
+      setFormStatus("success");
+      form.reset();
+    } else {
+      setFormStatus("error");
+      setFormError(result.error ?? "Something went wrong. Please try again.");
     }
-
-    setFormStatus("success");
-    form.reset();
   }
 
   return (
@@ -342,10 +342,14 @@ export default function CareersPortal() {
               <button
                 type="submit"
                 disabled={formStatus === "submitting"}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary hover:bg-primary-dark text-white font-sans text-xs uppercase tracking-wider font-bold transition-all shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary hover:bg-primary-dark text-white font-sans text-xs uppercase tracking-wider font-bold transition-all shadow-lg disabled:opacity-60"
               >
                 {formStatus === "submitting" ? "Submitting Application…" : "Submit Career Application &rarr;"}
               </button>
+
+              {formStatus === "error" && (
+                <p className="font-sans text-sm text-primary" role="alert">{formError}</p>
+              )}
             </form>
           )}
         </div>

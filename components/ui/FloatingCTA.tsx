@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
 import { siteConfig } from "@/lib/site";
 

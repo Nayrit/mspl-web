@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 export default function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
   return (
     <script
