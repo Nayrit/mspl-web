@@ -10,11 +10,11 @@ const navLinks = [
   { key: "about" as const,          href: "/about" },
   { key: "whatWeDo" as const,       href: "/what-we-do", hasMega: true,
     megaItems: [
+      { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging",  img: "/card-offset-packaging.jpg",  desc: "Commercial packaging with premium finishes", highlighted: true },
       { label: "Computer & Business Forms",   href: "/what-we-do/computer-forms",    img: "/card-computer-forms.jpg",    desc: "Secure, traceable continuous forms & OMR sheets" },
       { label: "Web Printing",                href: "/what-we-do/web-printing",       img: "/card-web-printing.jpg",      desc: "Textbooks, exercise books & calendars at volume" },
-      { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging",  img: "/card-offset-packaging.jpg",  desc: "Commercial packaging with premium finishes" },
-      { label: "Thermal & ATM/POS Rolls",     href: "/what-we-do/thermal-rolls",     img: "/card-thermal-rolls.jpg",     desc: "Precision-slit, dust-free transactional rolls" },
       { label: "Rigid Boxes",                 href: "/what-we-do/rigid-boxes",        img: "/card-rigid-boxes.jpg",       desc: "Luxury packaging on automated smart lines" },
+      { label: "Thermal & ATM/POS Rolls",     href: "/what-we-do/thermal-rolls",     img: "/card-thermal-rolls.jpg",     desc: "Precision-slit, dust-free transactional rolls" },
       { label: "Stickers & Labels",           href: "/what-we-do/stickers-labels",   img: "/card-stickers-labels.jpg",   desc: "High-definition adhesive labels, built to stick" },
     ],
   },
@@ -96,36 +96,69 @@ export default function Header() {
                   <AnimatePresence>
                     {megaOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[720px] shadow-2xl z-50 border-t-2"
-                        style={{ backgroundColor: "#faf8f5", borderColor: "#e0271c" }}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className="fixed top-16 lg:top-20 left-0 right-0 w-full shadow-2xl z-50 border-t border-charcoal-200/30 overflow-hidden"
+                        style={{ backgroundColor: "#faf8f5" }}
                         role="menu"
                       >
-                        <div className="grid grid-cols-3 gap-0 p-2">
-                          {item.megaItems?.map(mega => (
-                            <Link key={mega.label} href={mega.href} className="group flex gap-3 p-4 transition-colors duration-200" style={{ backgroundColor: "transparent" }}
-                              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#f2ede7")}
-                              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}
+                        {/* Accent top line */}
+                        <div className="h-[3px] w-full" style={{ backgroundColor: "#e0271c" }} />
+
+                        <div className="container-editorial py-8 lg:py-10">
+                          <div className="flex items-center justify-between mb-6 pb-3 border-b border-charcoal-200/50">
+                            <p className="font-display font-bold text-sm tracking-wider uppercase text-charcoal">
+                              Manufacturing Specialisms
+                            </p>
+                            <Link
+                              href="/what-we-do"
                               onClick={() => setMegaOpen(false)}
+                              className="font-sans text-xs font-semibold text-primary hover:underline flex items-center gap-1"
                             >
-                              <div className="w-14 h-14 flex-shrink-0 overflow-hidden" style={{ backgroundColor: "#e4e5e6" }}>
-                                <img src={mega.img} alt={mega.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                              </div>
-                              <div>
-                                <p className="font-sans text-xs font-semibold text-charcoal leading-tight mb-1 group-hover:text-primary transition-colors" style={{ color: "#25282b" }} onMouseEnter={e=>(e.currentTarget.style.color="#e0271c")} onMouseLeave={e=>(e.currentTarget.style.color="#25282b")}>{mega.label}</p>
-                                <p className="font-sans text-[0.65rem] leading-tight" style={{ color: "#72777d" }}>{mega.desc}</p>
-                              </div>
+                              Explore all 6 divisions →
                             </Link>
-                          ))}
-                        </div>
-                        <div className="border-t px-6 py-3" style={{ borderColor: "#e4e5e6", backgroundColor: "#f2ede7" }}>
-                          <Link href="/what-we-do" className="font-sans text-xs font-medium flex items-center gap-1 transition-colors" style={{ color: "#72777d" }}
-                            onMouseEnter={e=>(e.currentTarget.style.color="#e0271c")} onMouseLeave={e=>(e.currentTarget.style.color="#72777d")}
-                            onClick={() => setMegaOpen(false)}
-                          >
-                            View all specialisms <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                          </Link>
+                          </div>
+
+                          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+                            {item.megaItems?.map(mega => (
+                              <Link
+                                key={mega.label}
+                                href={mega.href}
+                                onClick={() => setMegaOpen(false)}
+                                className="group block"
+                              >
+                                <div className="relative aspect-[16/9] w-full overflow-hidden bg-charcoal-100 mb-4">
+                                  <img
+                                    src={mega.img}
+                                    alt={mega.label}
+                                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                                  />
+                                  {("highlighted" in mega && mega.highlighted) && (
+                                    <div className="absolute top-3 left-3 bg-primary text-white font-sans text-[10px] font-bold uppercase tracking-widest px-3 py-1 shadow-md">
+                                      Flagship Specialism
+                                    </div>
+                                  )}
+                                </div>
+
+                                <div className="flex items-start justify-between gap-3">
+                                  <div>
+                                    <h3 className="font-display font-bold text-base xl:text-lg text-charcoal group-hover:text-primary transition-colors duration-200">
+                                      {mega.label}
+                                    </h3>
+                                    <p className="font-sans text-xs text-charcoal-400 mt-1 line-clamp-1">
+                                      {mega.desc}
+                                    </p>
+                                  </div>
+                                  <span className="font-sans text-lg text-charcoal-400 group-hover:text-primary transition-all duration-200 group-hover:translate-x-1">
+                                    →
+                                  </span>
+                                </div>
+                                <div className="mt-3.5 border-b border-charcoal-200 group-hover:border-primary transition-colors duration-200" />
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       </motion.div>
                     )}
