@@ -58,11 +58,24 @@ export default function CapabilitiesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-charcoal-100">
             {c.facilities.map((f, i) => (
               <ScrollFadeIn key={f.name} direction="up" delay={i * 0.08}>
-                <div className="bg-parchment-50 p-8 h-full group hover:border-l-2 hover:border-primary transition-all">
-                  <p className="font-display text-xl font-bold text-charcoal mb-2 group-hover:text-primary transition-colors">{f.name}</p>
-                  <p className="font-sans text-sm text-charcoal-400">{f.location}</p>
-                  {"note" in f && f.note && (
-                    <p className="font-sans text-xs text-charcoal-300 mt-3">{f.note}</p>
+                <div className="bg-parchment-50 p-8 h-full group hover:border-l-2 hover:border-primary transition-all flex flex-col justify-between">
+                  <div>
+                    <p className="font-display text-xl font-bold text-charcoal mb-2 group-hover:text-primary transition-colors">{f.name}</p>
+                    <p className="font-sans text-sm text-charcoal-400">{f.location}</p>
+                    {"note" in f && f.note && (
+                      <p className="font-sans text-xs text-charcoal-300 mt-3">{f.note}</p>
+                    )}
+                  </div>
+                  {"mapUrl" in f && f.mapUrl && (
+                    <a
+                      href={f.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-primary hover:text-gold uppercase tracking-wider transition-colors mt-6 pt-4 border-t border-charcoal-100/40"
+                    >
+                      <span>View on Google Maps</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
                   )}
                 </div>
               </ScrollFadeIn>

@@ -13,9 +13,22 @@ export const capabilitiesContent = {
     { value: "25,000+", label: "MT annual product throughput" },
   ],
   facilities: [
-    { name: "Factory 1", location: "Madhabdi, Narsingdi", note: "Our largest site, now drawing half its power from solar." },
-    { name: "Factory 2", location: "Shonpara, Narayanganj" },
-    { name: "Factory 3", location: "Pubail, Gazipur" },
+    {
+      name: "Factory 1",
+      location: "Madhabdi, Narsingdi",
+      note: "Our largest site, now drawing half its power from solar.",
+      mapUrl: "https://maps.app.goo.gl/RzGojVqmjPKdDhjq7",
+    },
+    {
+      name: "Factory 2",
+      location: "Shonpara, Narayanganj",
+      mapUrl: "https://maps.app.goo.gl/7hfhs6sajjY2ZfVXA",
+    },
+    {
+      name: "Factory 3",
+      location: "Pubail, Gazipur",
+      mapUrl: "https://maps.app.goo.gl/ibAAtpmcVxfVZPLLA",
+    },
   ],
   logistics: {
     heading: "We deliver it ourselves.",

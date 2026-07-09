@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/pages/PageHero";
 import ContactForm from "@/components/contact/ContactForm";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
+import LocationsMapSection from "@/components/contact/LocationsMapSection";
 import { siteConfig } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -49,24 +50,11 @@ export default function ContactPage() {
                       {siteConfig.email}
                     </a>
                   </div>
-                  <div>
-                    <p className="eyebrow text-charcoal-300 mb-2">Factories</p>
-                    <ul className="space-y-2">
-                      {siteConfig.factories.map((f) => (
-                        <li key={f.name} className="font-sans text-sm text-charcoal-400">
-                          <strong className="text-charcoal">{f.name}</strong> — {f.location}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
               </ScrollFadeIn>
 
               <ScrollFadeIn direction="up" delay={0.15} className="mt-10">
-                <div className="aspect-video overflow-hidden border border-charcoal-100">
-                  <img src="/capabilities-factory.jpg" alt="Master Simex manufacturing facility" className="w-full h-full object-cover" loading="lazy" />
-                </div>
-                <p className="font-sans text-xs text-charcoal-300 mt-3">Map integration can be added when coordinates are confirmed.</p>
+                <LocationsMapSection />
               </ScrollFadeIn>
             </div>
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { footerWhatWeDoLinks, companyLinks } from "@/lib/navigation";
+import { siteConfig } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -96,13 +97,18 @@ export default function Footer() {
                 <p className="font-sans text-[0.65rem] tracking-[0.12em] uppercase text-white/40 mb-1">
                   Head Office
                 </p>
-                <p className="font-sans text-sm text-white/60 leading-relaxed">
+                <a
+                  href={siteConfig.address.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block font-sans text-sm text-white/60 hover:text-gold transition-colors leading-relaxed group"
+                >
                   Suite 15 A–D, Paramount Heights
                   <br />
                   65/2/1 Culvert Road
                   <br />
                   Dhaka 1000, Bangladesh
-                </p>
+                </a>
               </div>
               <div>
                 <p className="font-sans text-[0.65rem] tracking-[0.12em] uppercase text-white/40 mb-1">

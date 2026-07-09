@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="font-display text-xl font-bold text-charcoal">How we use it</h2>
           <p>We use your information solely to respond to your enquiry and provide our services. We do not sell or share your personal data with third parties for marketing purposes.</p>
           <h2 className="font-display text-xl font-bold text-charcoal">Cookies</h2>
-          <p>We use cookies to understand site usage and improve performance. You can accept or manage cookies via the banner shown on your first visit.</p>
+          <p>We use cookies to understand site usage and improve performance. You can accept or reject cookies via the banner shown on your first visit.</p>
           <h2 className="font-display text-xl font-bold text-charcoal">Contact</h2>
           <p>Questions about this policy? Email <a href="mailto:msplbd@gmail.com" className="text-primary hover:underline">msplbd@gmail.com</a>.</p>
         </div>

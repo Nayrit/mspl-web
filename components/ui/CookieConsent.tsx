@@ -19,6 +19,11 @@ export default function CookieConsent() {
     setVisible(false);
   };
 
+  const reject = () => {
+    localStorage.setItem("mspl-cookie-consent", "rejected");
+    setVisible(false);
+  };
+
   return (
     <div
       role="dialog"
@@ -34,8 +39,15 @@ export default function CookieConsent() {
           <div className="flex items-center gap-3 shrink-0">
             <button
               type="button"
+              onClick={reject}
+              className="font-sans text-xs font-semibold tracking-wider uppercase px-5 py-3 border border-parchment-100/30 text-parchment-100/80 hover:border-parchment-100 hover:text-parchment-100 transition-colors"
+            >
+              Reject
+            </button>
+            <button
+              type="button"
               onClick={accept}
-              className="font-sans text-xs font-semibold tracking-wider uppercase px-6 py-3 transition-colors"
+              className="font-sans text-xs font-semibold tracking-wider uppercase px-6 py-3 transition-colors hover:brightness-110"
               style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
             >
               Accept
