@@ -1,9 +1,9 @@
 export const footerWhatWeDoLinks = [
+  { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging" },
   { label: "Computer & Business Forms", href: "/what-we-do/computer-forms" },
   { label: "Web Printing", href: "/what-we-do/web-printing" },
-  { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging" },
-  { label: "Thermal & ATM/POS Rolls", href: "/what-we-do/thermal-rolls" },
   { label: "Rigid Boxes", href: "/what-we-do/rigid-boxes" },
+  { label: "Thermal & ATM/POS Rolls", href: "/what-we-do/thermal-rolls" },
   { label: "Stickers & Labels", href: "/what-we-do/stickers-labels" },
 ] as const;
 
@@ -23,7 +23,6 @@ export const whatWeDoLinks = [
 
 export const companyLinks = [
   { label: "About", href: "/about" },
-  { label: "Our Story", href: "/about/story" },
   { label: "Leadership", href: "/about/leadership" },
   { label: "Mission, Vision & Values", href: "/about/mission" },
   { label: "Capabilities", href: "/capabilities" },
