@@ -145,34 +145,7 @@ export default function Header() {
           </nav>
 
           {/* Right utilities */}
-          <div className="hidden lg:flex items-center gap-2.5 xl:gap-4">
-            <button
-              onClick={() => setLang(lang === "EN" ? "BN" : "EN")}
-              id="lang-toggle"
-              className="flex items-center justify-center font-sans text-xs font-bold tracking-wider transition-all duration-300 px-3 py-1.5 rounded border"
-              style={{ borderColor: solid ? "#c8cacc" : "rgba(250,248,245,0.3)", color: solid ? "#25282b" : "rgba(250,248,245,0.85)" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor="#e0271c"; (e.currentTarget as HTMLElement).style.color="#e0271c"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor= solid ? "#c8cacc":"rgba(250,248,245,0.3)"; (e.currentTarget as HTMLElement).style.color= solid?"#25282b":"rgba(250,248,245,0.85)"; }}
-              aria-label="Toggle language"
-            >
-              {lang === "EN" ? "বাংলা" : "EN"}
-            </button>
-
-            <a
-              href="/mspl-company-profile.pdf"
-              download
-              id="header-download-profile"
-              className="hidden xl:flex items-center gap-1.5 font-sans text-[0.68rem] font-medium tracking-wide transition-colors duration-300"
-              style={{ color: solid ? "#72777d" : "rgba(250,248,245,0.55)" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#e0271c")}
-              onMouseLeave={e => (e.currentTarget.style.color = solid ? "#72777d" : "rgba(250,248,245,0.55)")}
-            >
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              {t.nav.downloadProfile}
-            </a>
-
+          <div className="hidden lg:flex items-center gap-4">
             <Link href="/contact" id="header-cta"
               className="font-sans text-[0.72rem] font-bold tracking-wider uppercase px-5 py-2.5 transition-all duration-300"
               style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
@@ -250,9 +223,6 @@ export default function Header() {
               >
                 {t.nav.getInTouch}
               </Link>
-              <button onClick={() => setLang(lang === "EN" ? "BN" : "EN")} className="font-sans text-sm font-bold tracking-widest uppercase py-2 border border-charcoal-200 rounded" style={{ color: "#25282b" }}>
-                {lang === "EN" ? "বাংলা" : "EN"}
-              </button>
             </div>
           </motion.div>
         )}
