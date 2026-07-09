@@ -28,7 +28,6 @@ export async function submitContactForm(data: FormData): Promise<FormResult> {
   const company = String(data.get("company") ?? "").trim();
   const phone = String(data.get("phone") ?? "").trim();
   const productFamily = String(data.get("productFamily") ?? "").trim();
-  const volume = String(data.get("volume") ?? "").trim();
 
   const body = [
     `Name: ${name}`,
@@ -36,7 +35,6 @@ export async function submitContactForm(data: FormData): Promise<FormResult> {
     `Email: ${email}`,
     phone && `Phone: ${phone}`,
     productFamily && `Product family: ${productFamily}`,
-    volume && `Estimated volume: ${volume}`,
     "",
     message,
   ].filter(Boolean).join("\n");

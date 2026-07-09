@@ -42,7 +42,6 @@ export default function ContactForm() {
             Phone: data.get("phone") || "N/A",
             Company: data.get("company") || "N/A",
             ProductFamily: data.get("productFamily") || "N/A",
-            EstimatedVolume: data.get("volume") || "N/A",
             Message: data.get("message"),
           }),
         });
@@ -93,20 +92,14 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="productFamily" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Product family</label>
-          <select id="productFamily" name="productFamily" className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors">
-            <option value="">Select a product family</option>
-            {productFamilies.map((p) => (
-              <option key={p} value={p}>{p}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="volume" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Estimated volume</label>
-          <input id="volume" name="volume" className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
-        </div>
+      <div>
+        <label htmlFor="productFamily" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Product family</label>
+        <select id="productFamily" name="productFamily" className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors">
+          <option value="">Select a product family</option>
+          {productFamilies.map((p) => (
+            <option key={p} value={p}>{p}</option>
+          ))}
+        </select>
       </div>
 
       <div>

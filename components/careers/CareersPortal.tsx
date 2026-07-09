@@ -101,19 +101,7 @@ export default function CareersPortal() {
     try {
       await fetch("https://formsubmit.co/ajax/msplbd@gmail.com", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          _subject: `New Career Application for ${data.get("position")} from ${data.get("name")}`,
-          Name: data.get("name"),
-          Email: data.get("email"),
-          Phone: data.get("phone"),
-          Position: data.get("position"),
-          LinkedInOrPortfolio: data.get("linkedin") || "N/A",
-          CoverNote: data.get("cover") || "N/A",
-        }),
+        body: data,
       });
     } catch {
       // Continue even if third-party network issue
@@ -310,6 +298,24 @@ export default function CareersPortal() {
                   placeholder="https://linkedin.com/in/..."
                   className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-sm text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                 />
+              </div>
+
+              {/* CV / Resume File Upload Field */}
+              <div>
+                <label htmlFor="applicant-cv" className="block font-sans text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">
+                  Upload CV / Resume (PDF or DOCX) *
+                </label>
+                <input
+                  id="applicant-cv"
+                  name="attachment"
+                  type="file"
+                  required
+                  accept=".pdf,.doc,.docx"
+                  className="w-full bg-white/5 border border-white/15 rounded-lg px-3 py-2.5 font-sans text-xs text-white/80 file:mr-4 file:py-1.5 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-bold file:uppercase file:tracking-wider file:bg-primary file:text-white hover:file:bg-primary-dark cursor-pointer transition-colors"
+                />
+                <p className="font-sans text-[11px] text-white/50 mt-1.5">
+                  Supported formats: .PDF, .DOC, .DOCX (Max size 10MB)
+                </p>
               </div>
 
               <div>
