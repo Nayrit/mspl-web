@@ -6,10 +6,12 @@ import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/layout/JsonLd";
 import { LanguageProvider } from "@/components/ui/LanguageContext";
 import { ConsentProvider } from "@/components/ui/ConsentContext";
+import { SplashProvider } from "@/components/ui/SplashProvider";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import CustomCursor from "@/components/ui/CustomCursor";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import CookieConsent from "@/components/ui/CookieConsent";
+import SplashScreen from "@/components/ui/SplashScreen";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
@@ -69,17 +71,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="font-sans antialiased" style={{ backgroundColor: "#faf8f5", color: "#25282b" }}>
         <ConsentProvider>
-          <LanguageProvider>
-            <GoogleAnalytics />
-            <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />
-            <CustomCursor />
-            <Header />
-            <main id="main-content">{children}</main>
-            <Footer />
-            <FloatingCTA />
-            <WhatsAppButton />
-            <CookieConsent />
-          </LanguageProvider>
+          <SplashProvider>
+            <LanguageProvider>
+              <SplashScreen />
+              <GoogleAnalytics />
+              <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />
+              <CustomCursor />
+              <Header />
+              <main id="main-content">{children}</main>
+              <Footer />
+              <FloatingCTA />
+              <WhatsAppButton />
+              <CookieConsent />
+            </LanguageProvider>
+          </SplashProvider>
         </ConsentProvider>
       </body>
     </html>

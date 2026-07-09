@@ -1,0 +1,140 @@
+"use client";
+
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { LOGO_COLORS, PAGE_TRANSITION_EASE } from "@/lib/brand-colors";
+import { useSplash } from "@/components/ui/SplashProvider";
+
+type SplashPhase = "show" | "exit" | "hidden";
+
+function subscribeReducedMotion(onStoreChange: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  media.addEventListener("change", onStoreChange);
+  return () => media.removeEventListener("change", onStoreChange);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+export default function SplashScreen() {
+  const { completeSplash } = useSplash();
+  const reducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    () => false,
+  );
+  const [phase, setPhase] = useState<SplashPhase>("show");
+
+  useEffect(() => {
+    if (reducedMotion) {
+      completeSplash();
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    const exitTimer = window.setTimeout(() => setPhase("exit"), 2400);
+    const doneTimer = window.setTimeout(() => {
+      setPhase("hidden");
+      completeSplash();
+      document.body.style.overflow = "";
+    }, 3400);
+
+    return () => {
+      window.clearTimeout(exitTimer);
+      window.clearTimeout(doneTimer);
+      document.body.style.overflow = "";
+    };
+  }, [completeSplash, reducedMotion]);
+
+  if (reducedMotion || phase === "hidden") return null;
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key="splash"
+        className="fixed inset-0 z-[99999] flex flex-col items-center justify-center overflow-hidden"
+        style={{ backgroundColor: LOGO_COLORS.black }}
+        initial={{ y: 0 }}
+        animate={phase === "exit" ? { y: "-100%" } : { y: 0 }}
+        transition={{ duration: 0.95, ease: PAGE_TRANSITION_EASE }}
+        aria-hidden={phase === "exit"}
+        aria-label="Loading Master Simex"
+        role="presentation"
+      >
+        <div
+          className="absolute top-0 left-0 right-0 h-[3px]"
+          style={{ backgroundColor: LOGO_COLORS.red }}
+        />
+
+        <motion.div
+          className="flex flex-col items-center gap-5 px-6 text-center"
+          initial={{ scale: 2.5, opacity: 0 }}
+          animate={
+            phase === "exit"
+              ? { scale: 1.15, opacity: 0 }
+              : { scale: 1, opacity: 1 }
+          }
+          transition={{
+            duration: phase === "exit" ? 0.55 : 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <motion.div
+            animate={
+              phase === "show"
+                ? { scale: [1, 1.04, 1], opacity: [1, 0.94, 1] }
+                : { scale: 1, opacity: 1 }
+            }
+            transition={{
+              duration: 2,
+              repeat: phase === "show" ? Infinity : 0,
+              ease: "easeInOut",
+            }}
+          >
+            <Image
+              src="/mspl-logo.png"
+              alt="Master Simex Paper Limited"
+              width={240}
+              height={140}
+              priority
+              className="h-auto w-[min(72vw,240px)] object-contain"
+            />
+          </motion.div>
+
+          <motion.div
+            className="flex items-center gap-3 sm:gap-4"
+            initial={{ opacity: 0, y: 12 }}
+            animate={phase === "show" ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{ delay: 0.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="h-px w-8 sm:w-12" style={{ backgroundColor: LOGO_COLORS.greyDark }} />
+            <p
+              className="font-sans text-[0.65rem] sm:text-xs tracking-[0.2em] uppercase"
+              style={{ color: LOGO_COLORS.grey }}
+            >
+              Paper Converting
+              <span style={{ color: LOGO_COLORS.green }}> · </span>
+              Printing
+              <span style={{ color: LOGO_COLORS.green }}> · </span>
+              Packaging
+            </p>
+            <span className="h-px w-8 sm:w-12" style={{ backgroundColor: LOGO_COLORS.greyDark }} />
+          </motion.div>
+
+          <motion.p
+            className="font-sans text-[0.6rem] sm:text-[0.65rem] tracking-[0.28em] uppercase"
+            style={{ color: LOGO_COLORS.greyDark }}
+            initial={{ opacity: 0 }}
+            animate={phase === "show" ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            Since 2002
+          </motion.p>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
