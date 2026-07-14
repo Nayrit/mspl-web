@@ -12,7 +12,7 @@ export default function MarqueeTicker() {
   return (
     <div
       className="overflow-hidden select-none relative"
-      style={{ backgroundColor: "#e0271c", paddingTop: "0.75rem", paddingBottom: "0.75rem" }}
+      style={{ backgroundColor: "#d61016", paddingTop: "0.75rem", paddingBottom: "0.75rem" }}
       aria-hidden="true"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

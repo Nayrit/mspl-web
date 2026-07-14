@@ -52,7 +52,7 @@ export default function ClientLogo({ name, slug, imagePath, className = "", sect
       case "brac-university": return "#003366";
       case "marico": return "#008080";
       case "the-city-bank": return "#ed1c24";
-      default: return "#e0271c";
+      default: return "#d61016";
     }
   };
 

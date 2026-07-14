@@ -12,7 +12,7 @@ export default function ClosingCTABand() {
 
   return (
     <section ref={ref} className="relative overflow-hidden" style={{ backgroundColor: "#25282b" }} aria-label="Get in touch">
-      <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: "#e0271c" }} />
+      <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: "#d61016" }} />
 
       <div className="absolute right-0 top-1/2 -translate-y-1/2 select-none pointer-events-none hidden xl:block pr-20">
         <motion.span
@@ -32,7 +32,7 @@ export default function ClosingCTABand() {
       <div className="container-editorial py-24 lg:py-36 relative z-10">
         <div className="max-w-3xl">
           <motion.div initial={{ opacity:0,x:-20 }} animate={isInView?{opacity:1,x:0}:{}} transition={{ duration:0.6 }} className="flex items-center gap-3 mb-8">
-            <span className="block h-px w-8" style={{ backgroundColor: "#e0271c" }} />
+            <span className="block h-px w-8" style={{ backgroundColor: "#d61016" }} />
             <span className="font-sans font-medium" style={{ fontSize:"0.6875rem",letterSpacing:"0.18em",textTransform:"uppercase",color:"rgba(224,39,28,0.8)" }}>
               {t.closing.eyebrow}
             </span>
@@ -56,9 +56,9 @@ export default function ClosingCTABand() {
           <motion.div initial={{ opacity:0,y:20 }} animate={isInView?{opacity:1,y:0}:{}} transition={{ duration:0.7,delay:0.3 }} className="flex flex-wrap items-center gap-6">
             <Link href="/contact" id="closing-cta"
               className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 group transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
-              style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
-              onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#b51f16")}
-              onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#e0271c")}
+              style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
+              onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#ac0b11")}
+              onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#d61016")}
             >
               {t.closing.cta}
               <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -67,8 +67,8 @@ export default function ClosingCTABand() {
             </Link>
 
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(224,39,28,0.15)" }}>
-                <svg className="w-4 h-4" style={{ color:"#e0271c" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(214,16,22,0.15)" }}>
+                <svg className="w-4 h-4" style={{ color:"#d61016" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -86,11 +86,11 @@ export default function ClosingCTABand() {
           <div className="text-right space-y-1">
             <p className="font-sans text-xs tracking-widest uppercase" style={{ color:"rgba(250,248,245,0.2)" }}>Contact us directly</p>
             <a href="tel:+88022335096" className="block font-sans text-sm transition-colors" style={{ color:"rgba(250,248,245,0.4)" }}
-              onMouseEnter={e=>(e.currentTarget.style.color="#e0271c")} onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.4)")}>
+              onMouseEnter={e=>(e.currentTarget.style.color="#d61016")} onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.4)")}>
               +880 2 2233 50096
             </a>
             <a href="mailto:msplbd@gmail.com" className="block font-sans text-sm transition-colors" style={{ color:"rgba(250,248,245,0.4)" }}
-              onMouseEnter={e=>(e.currentTarget.style.color="#e0271c")} onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.4)")}>
+              onMouseEnter={e=>(e.currentTarget.style.color="#d61016")} onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.4)")}>
               msplbd@gmail.com
             </a>
           </div>

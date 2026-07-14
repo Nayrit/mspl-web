@@ -86,7 +86,7 @@ export default function ContactForm() {
       </div>
 
       <div className="flex items-start gap-3">
-        <input id="consent" name="consent" type="checkbox" required className="mt-1 accent-[#e0271c]" />
+        <input id="consent" name="consent" type="checkbox" required className="mt-1 accent-[#d61016]" />
         <label htmlFor="consent" className="font-sans text-xs text-charcoal-400 leading-relaxed">
           By submitting, you agree to be contacted about your enquiry. We&apos;ll never share your details for marketing.
         </label>
@@ -100,7 +100,7 @@ export default function ContactForm() {
         type="submit"
         disabled={status === "loading"}
         className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 transition-all duration-300 disabled:opacity-60"
-        style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
+        style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
       >
         {status === "loading" ? "Sending…" : "Send enquiry"}
       </button>

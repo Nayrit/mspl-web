@@ -24,7 +24,7 @@ export default function KeyNumbersBand() {
       <div className="container-editorial relative">
         <ScrollFadeIn direction="up">
           <div className="flex items-center gap-3 mb-16 lg:mb-20">
-            <span className="block h-px w-8" style={{ backgroundColor: "#e0271c" }} />
+            <span className="block h-px w-8" style={{ backgroundColor: "#d61016" }} />
             <span className="font-sans font-medium" style={{ fontSize:"0.6875rem",letterSpacing:"0.18em",textTransform:"uppercase",color:"rgba(250,248,245,0.4)" }}>
               {t.numbers.label}
             </span>
@@ -41,7 +41,7 @@ export default function KeyNumbersBand() {
                 onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#25282b")}
               >
                 <div>
-                  <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left whitespace-nowrap" style={{ fontSize:"clamp(2rem, 3vw, 4rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#e0271c" }}>
+                  <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left whitespace-nowrap" style={{ fontSize:"clamp(2rem, 3vw, 4rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#d61016" }}>
                     {stat.isText
                       ? <span>{stat.textValue}</span>
                       : <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={1800} />
@@ -53,7 +53,7 @@ export default function KeyNumbersBand() {
                     onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.35)")}
                   >{stat.detail}</p>
                 </div>
-                <div className="mt-6 h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ backgroundColor:"#e0271c" }} />
+                <div className="mt-6 h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ backgroundColor:"#d61016" }} />
               </div>
             </ScrollFadeIn>
           ))}

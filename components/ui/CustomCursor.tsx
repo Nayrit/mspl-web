@@ -74,7 +74,7 @@ export default function CustomCursor() {
           width: clicking ? "6px" : "8px",
           height: clicking ? "6px" : "8px",
           borderRadius: "50%",
-          backgroundColor: "#e0271c",
+          backgroundColor: "#d61016",
           transition: "width 0.15s, height 0.15s",
         }}
       />
@@ -86,8 +86,8 @@ export default function CustomCursor() {
           width: onLink ? "48px" : "40px",
           height: onLink ? "48px" : "40px",
           borderRadius: "50%",
-          border: `1.5px solid ${onLink ? "#e0271c" : "rgba(224,39,28,0.4)"}`,
-          backgroundColor: onLink ? "rgba(224,39,28,0.08)" : "transparent",
+          border: `1.5px solid ${onLink ? "#d61016" : "rgba(214,16,22,0.4)"}`,
+          backgroundColor: onLink ? "rgba(214,16,22,0.08)" : "transparent",
           transition: "width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s",
           marginLeft: onLink ? "-4px" : "0",
           marginTop: onLink ? "-4px" : "0",

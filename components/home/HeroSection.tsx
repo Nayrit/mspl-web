@@ -87,14 +87,14 @@ export default function HeroSection() {
       >
         <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-5xl">
           <motion.div variants={item} className="mb-3 sm:mb-5">
-            <span className="inline-flex items-center gap-3 font-sans text-[0.65rem] font-medium tracking-[0.2em] uppercase" style={{ color: "#e0271c" }}>
+            <span className="inline-flex items-center gap-3 font-sans text-[0.65rem] font-medium tracking-[0.2em] uppercase" style={{ color: "#d61016" }}>
               {t.hero.eyebrow}
             </span>
           </motion.div>
 
           <motion.h1 variants={item} className="font-display font-bold text-[#faf8f5] mb-4 sm:mb-6 leading-none" style={{ fontSize: "clamp(2.5rem,5.2vw + 0.5rem,6.2rem)", letterSpacing: "-0.035em" }}>
             <span className="block mb-1">{t.hero.headline1}</span>
-            <span className="relative inline-block overflow-hidden min-h-[1.15em] text-[#e0271c]">
+            <span className="relative inline-block overflow-hidden min-h-[1.15em] text-[#d61016]">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={current}
@@ -117,9 +117,9 @@ export default function HeroSection() {
           <motion.div variants={item} className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-10">
             <Link href="/what-we-do" id="hero-cta-primary"
               className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 group transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
-              style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#b51f16")}
-              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#e0271c")}
+              style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#ac0b11")}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#d61016")}
             >
               {t.hero.cta1}
               <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -129,7 +129,7 @@ export default function HeroSection() {
             <Link href="/contact" id="hero-cta-secondary"
               className="inline-flex items-center gap-2 font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300"
               style={{ border: "1px solid rgba(250,248,245,0.3)", color: "#faf8f5" }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#e0271c"; (e.currentTarget as HTMLElement).style.color = "#e0271c"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#d61016"; (e.currentTarget as HTMLElement).style.color = "#d61016"; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(250,248,245,0.3)"; (e.currentTarget as HTMLElement).style.color = "#faf8f5"; }}
             >
               {t.hero.cta2}
@@ -158,7 +158,7 @@ export default function HeroSection() {
                 {i === current && (
                   <motion.span
                     className="absolute inset-0"
-                    style={{ backgroundColor: "#e0271c", transformOrigin: "left", scaleX: 0 }}
+                    style={{ backgroundColor: "#d61016", transformOrigin: "left", scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: SLIDE_MS / 1000, ease: "linear" }}
                   />
@@ -179,7 +179,7 @@ export default function HeroSection() {
                 aria-label={idx === 0 ? "Previous slide" : "Next slide"}
                 className="w-10 h-10 flex items-center justify-center transition-all duration-300"
                 style={{ border: "1px solid rgba(250,248,245,0.15)", color: "rgba(250,248,245,0.5)" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#e0271c"; (e.currentTarget as HTMLElement).style.color = "#e0271c"; }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#d61016"; (e.currentTarget as HTMLElement).style.color = "#d61016"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(250,248,245,0.15)"; (e.currentTarget as HTMLElement).style.color = "rgba(250,248,245,0.5)"; }}
               >
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -209,7 +209,7 @@ export default function HeroSection() {
 
       <motion.div
         className="absolute bottom-0 left-0 right-0 h-px z-20 origin-left"
-        style={{ backgroundColor: "#e0271c", scaleX: scrollLineScale }}
+        style={{ backgroundColor: "#d61016", scaleX: scrollLineScale }}
       />
 
       <motion.div

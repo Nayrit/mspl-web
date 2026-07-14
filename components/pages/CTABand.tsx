@@ -23,7 +23,7 @@ export default function CTABand({ heading, body, ctaLabel, ctaHref, secondary }:
               <Link
                 href={ctaHref}
                 className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 transition-all duration-300"
-                style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
+                style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
               >
                 {ctaLabel}
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

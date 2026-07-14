@@ -63,7 +63,7 @@ export default function Header() {
         style={{ backgroundColor: solid ? "rgba(250,248,245,0.97)" : "transparent", backdropFilter: solid ? "blur(12px)" : "none", boxShadow: solid ? "0 1px 0 rgba(37,40,43,0.08)" : "none" }}
       >
         {/* Red top rule — only when solid */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-500" style={{ backgroundColor: solid ? "#e0271c" : "transparent" }} />
+        <div className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-500" style={{ backgroundColor: solid ? "#d61016" : "transparent" }} />
 
         <div className="container-editorial flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -83,7 +83,7 @@ export default function Header() {
                   <button
                     className="flex items-center gap-1 font-sans text-[0.75rem] xl:text-[0.8rem] font-medium tracking-wide transition-colors duration-300"
                     style={{ color: solid ? "#25282b" : "rgba(250,248,245,0.85)" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "#e0271c")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#d61016")}
                     onMouseLeave={e => (e.currentTarget.style.color = solid ? "#25282b" : "rgba(250,248,245,0.85)")}
                     id="nav-what-we-do"
                   >
@@ -105,7 +105,7 @@ export default function Header() {
                         role="menu"
                       >
                         {/* Accent top line */}
-                        <div className="h-[3px] w-full" style={{ backgroundColor: "#e0271c" }} />
+                        <div className="h-[3px] w-full" style={{ backgroundColor: "#d61016" }} />
 
                         <div className="container-editorial py-6 lg:py-8">
                           <div className="flex items-center justify-between mb-4 pb-2.5 border-b border-charcoal-200/50">
@@ -197,7 +197,7 @@ export default function Header() {
                 <Link key={item.key} href={item.href}
                   className="font-sans text-[0.75rem] xl:text-[0.8rem] font-medium tracking-wide transition-colors duration-300"
                   style={{ color: solid ? "#25282b" : "rgba(250,248,245,0.85)" }}
-                  onMouseEnter={e => (e.currentTarget.style.color = "#e0271c")}
+                  onMouseEnter={e => (e.currentTarget.style.color = "#d61016")}
                   onMouseLeave={e => (e.currentTarget.style.color = solid ? "#25282b" : "rgba(250,248,245,0.85)")}
                 >
                   {t.nav[item.key]}
@@ -210,9 +210,9 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <Link href="/contact" id="header-cta"
               className="font-sans text-[0.72rem] font-bold tracking-wider uppercase px-5 py-2.5 transition-all duration-300"
-              style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#b51f16")}
-              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#e0271c")}
+              style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#ac0b11")}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#d61016")}
             >
               {t.nav.getInTouch}
             </Link>
@@ -250,14 +250,14 @@ export default function Header() {
             style={{ backgroundColor: "#faf8f5" }}
           >
             {/* Red top rule */}
-            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ backgroundColor: "#e0271c" }} />
+            <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ backgroundColor: "#d61016" }} />
             <nav className="flex flex-col px-8 gap-1">
               {navLinks.map((item, i) => (
                 <motion.div key={item.key} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.06 + 0.1 }}>
                   <Link href={item.href}
                     className="block font-display text-3xl font-bold py-3 border-b transition-colors"
                     style={{ color: "#25282b", borderColor: "#e4e5e6" }}
-                    onMouseEnter={e=>(e.currentTarget.style.color="#e0271c")}
+                    onMouseEnter={e=>(e.currentTarget.style.color="#d61016")}
                     onMouseLeave={e=>(e.currentTarget.style.color="#25282b")}
                     onClick={() => setMobileOpen(false)}
                   >
@@ -270,7 +270,7 @@ export default function Header() {
               <Link href="/contact?quote=1"
                 className="w-full text-center font-sans font-semibold text-sm tracking-wider uppercase py-4 transition-colors border border-charcoal-200"
                 style={{ color: "#25282b" }}
-                onMouseEnter={e=>{ e.currentTarget.style.borderColor="#e0271c"; e.currentTarget.style.color="#e0271c"; }}
+                onMouseEnter={e=>{ e.currentTarget.style.borderColor="#d61016"; e.currentTarget.style.color="#d61016"; }}
                 onMouseLeave={e=>{ e.currentTarget.style.borderColor="#e4e5e6"; e.currentTarget.style.color="#25282b"; }}
                 onClick={() => setMobileOpen(false)}
               >
@@ -278,9 +278,9 @@ export default function Header() {
               </Link>
               <Link href="/contact"
                 className="w-full text-center font-sans font-semibold text-sm tracking-wider uppercase py-4 transition-colors"
-                style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
-                onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#b51f16")}
-                onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#e0271c")}
+                style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
+                onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#ac0b11")}
+                onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#d61016")}
                 onClick={() => setMobileOpen(false)}
               >
                 {t.nav.getInTouch}

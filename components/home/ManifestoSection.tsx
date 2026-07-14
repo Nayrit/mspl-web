@@ -67,7 +67,7 @@ export default function ManifestoSection() {
                 <p
                   className="font-display font-bold mb-2 transition-all duration-300 group-hover:scale-105 origin-left"
                   style={{ fontSize: "clamp(2rem,3.5vw,3.25rem)", lineHeight: 1, color: "#25282b" }}
-                  onMouseEnter={e => (e.currentTarget.style.color = "#e0271c")}
+                  onMouseEnter={e => (e.currentTarget.style.color = "#d61016")}
                   onMouseLeave={e => (e.currentTarget.style.color = "#25282b")}
                 >
                   {num}

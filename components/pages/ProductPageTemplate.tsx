@@ -108,7 +108,7 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
           <Link
             href="/contact?quote=1"
             className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 transition-all duration-300 shrink-0"
-            style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
+            style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
           >
             Request a quote
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

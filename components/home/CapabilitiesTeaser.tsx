@@ -47,8 +47,8 @@ export default function CapabilitiesTeaser() {
                         onMouseEnter={() => setActiveStep(i)}
                         className="font-sans text-xs font-medium px-2 py-1 transition-all duration-300"
                         style={{
-                          color: activeStep === i ? "#e0271c" : "#25282b",
-                          backgroundColor: activeStep === i ? "rgba(224,39,28,0.08)" : "transparent",
+                          color: activeStep === i ? "#d61016" : "#25282b",
+                          backgroundColor: activeStep === i ? "rgba(214,16,22,0.08)" : "transparent",
                         }}
                       >
                         {step}

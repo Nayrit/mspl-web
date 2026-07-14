@@ -32,7 +32,7 @@ export default function CookieConsent() {
               type="button"
               onClick={accept}
               className="font-sans text-xs font-semibold tracking-wider uppercase px-6 py-3 transition-colors hover:brightness-110"
-              style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
+              style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
             >
               Accept
             </button>

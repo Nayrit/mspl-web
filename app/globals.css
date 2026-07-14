@@ -5,9 +5,9 @@
   --font-display: var(--font-playfair), Georgia, serif;
   --font-sans:    var(--font-inter), system-ui, sans-serif;
 
-  --color-primary:       #e0271c;
-  --color-primary-light: #e84f45;
-  --color-primary-dark:  #b51f16;
+  --color-primary:       #d61016;
+  --color-primary-light: #e33b40;
+  --color-primary-dark:  #ac0b11;
 
   --color-charcoal:     #25282b;
   --color-charcoal-50:  #f4f4f5;
@@ -62,7 +62,7 @@
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    outline: 2px solid #e0271c;
+    outline: 2px solid #d61016;
     outline-offset: 2px;
   }
 
@@ -71,7 +71,7 @@
     button, a { cursor: pointer; }
   }
 
-  ::selection { background-color: #e0271c; color: #faf8f5; }
+  ::selection { background-color: #d61016; color: #faf8f5; }
 
   h1,h2,h3,h4,h5,h6 {
     font-family: var(--font-playfair), Georgia, serif;
@@ -92,35 +92,35 @@
 /* ─── Explicit colour utilities (ensures Tailwind v4 picks them up) ──────── */
 @layer utilities {
   /* Primary */
-  .bg-primary            { background-color: #e0271c !important; }
-  .bg-primary-light      { background-color: #e84f45 !important; }
-  .bg-primary-dark       { background-color: #b51f16 !important; }
-  .text-primary          { color: #e0271c !important; }
-  .text-primary-light    { color: #e84f45 !important; }
-  .border-primary        { border-color: #e0271c !important; }
-  .ring-primary          { --tw-ring-color: #e0271c; }
-  .from-primary          { --tw-gradient-from: #e0271c; }
-  .to-primary            { --tw-gradient-to: #e0271c; }
-  .via-primary           { --tw-gradient-via: #e0271c; }
-  .fill-primary          { fill: #e0271c; }
-  .stroke-primary        { stroke: #e0271c; }
+  .bg-primary            { background-color: #d61016 !important; }
+  .bg-primary-light      { background-color: #e33b40 !important; }
+  .bg-primary-dark       { background-color: #ac0b11 !important; }
+  .text-primary          { color: #d61016 !important; }
+  .text-primary-light    { color: #e33b40 !important; }
+  .border-primary        { border-color: #d61016 !important; }
+  .ring-primary          { --tw-ring-color: #d61016; }
+  .from-primary          { --tw-gradient-from: #d61016; }
+  .to-primary            { --tw-gradient-to: #d61016; }
+  .via-primary           { --tw-gradient-via: #d61016; }
+  .fill-primary          { fill: #d61016; }
+  .stroke-primary        { stroke: #d61016; }
 
-  .hover\:bg-primary:hover       { background-color: #e0271c !important; }
-  .hover\:bg-primary-dark:hover  { background-color: #b51f16 !important; }
-  .hover\:text-primary:hover     { color: #e0271c !important; }
-  .hover\:border-primary:hover   { border-color: #e0271c !important; }
-  .group:hover .group-hover\:text-primary { color: #e0271c !important; }
+  .hover\:bg-primary:hover       { background-color: #d61016 !important; }
+  .hover\:bg-primary-dark:hover  { background-color: #ac0b11 !important; }
+  .hover\:text-primary:hover     { color: #d61016 !important; }
+  .hover\:border-primary:hover   { border-color: #d61016 !important; }
+  .group:hover .group-hover\:text-primary { color: #d61016 !important; }
 
   /* Opacity variants */
-  .bg-primary\/5   { background-color: rgba(224,39,28,0.05)  !important; }
-  .bg-primary\/10  { background-color: rgba(224,39,28,0.10)  !important; }
-  .bg-primary\/15  { background-color: rgba(224,39,28,0.15)  !important; }
-  .bg-primary\/20  { background-color: rgba(224,39,28,0.20)  !important; }
-  .bg-primary\/30  { background-color: rgba(224,39,28,0.30)  !important; }
-  .border-primary\/20 { border-color: rgba(224,39,28,0.20) !important; }
-  .border-primary\/30 { border-color: rgba(224,39,28,0.30) !important; }
-  .text-primary\/70   { color: rgba(224,39,28,0.70) !important; }
-  .text-primary\/80   { color: rgba(224,39,28,0.80) !important; }
+  .bg-primary\/5   { background-color: rgba(214,16,22,0.05)  !important; }
+  .bg-primary\/10  { background-color: rgba(214,16,22,0.10)  !important; }
+  .bg-primary\/15  { background-color: rgba(214,16,22,0.15)  !important; }
+  .bg-primary\/20  { background-color: rgba(214,16,22,0.20)  !important; }
+  .bg-primary\/30  { background-color: rgba(214,16,22,0.30)  !important; }
+  .border-primary\/20 { border-color: rgba(214,16,22,0.20) !important; }
+  .border-primary\/30 { border-color: rgba(214,16,22,0.30) !important; }
+  .text-primary\/70   { color: rgba(214,16,22,0.70) !important; }
+  .text-primary\/80   { color: rgba(214,16,22,0.80) !important; }
 
   /* Typography utilities */
   .text-display-2xl {

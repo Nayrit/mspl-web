@@ -14,7 +14,7 @@ export default function NotFound() {
         <Link
           href="/"
           className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4"
-          style={{ backgroundColor: "#e0271c", color: "#faf8f5" }}
+          style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
         >
           Back to home
         </Link>
