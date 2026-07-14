@@ -1,7 +1,7 @@
 /** Brand colors sampled from /public/mspl-logo.png */
 export const LOGO_COLORS = {
   black: "#000000",
-  red: "#ec1f28",
+  red: "#d61016",
   green: "#1caf4d",
   grey: "#939598",
   greyDark: "#77787b",

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import PageHero from "@/components/pages/PageHero";
 import CareersPortal from "@/components/careers/CareersPortal";
 import { pageMetadata } from "@/lib/seo";
+import { getJobOpenings } from "@/lib/cms/careers";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata(
   "Careers | Master Simex Paper Limited",
@@ -9,7 +12,9 @@ export const metadata: Metadata = pageMetadata(
   "/careers",
 );
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const jobs = await getJobOpenings();
+
   return (
     <>
       <PageHero
@@ -18,7 +23,7 @@ export default function CareersPage() {
         subhead="Explore open positions across our Head Office and three manufacturing sites in Bangladesh, or submit a spontaneous career application."
         compact
       />
-      <CareersPortal />
+      <CareersPortal jobs={jobs} />
     </>
   );
 }

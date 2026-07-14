@@ -1,91 +1,25 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/site";
 import { submitCareerApplication } from "@/app/careers/actions";
+import type { JobOpening } from "@/lib/cms/types";
 
-interface JobOpening {
-  id: string;
-  title: string;
-  department: string;
-  location: string;
-  type: string;
-  experience: string;
-  description: string;
-  responsibilities: string[];
-}
-
-const jobOpenings: JobOpening[] = [
-  {
-    id: "offset-manager",
-    title: "Senior Offset Press Production Manager",
-    department: "Production & Engineering",
-    location: "Factory 1 — Madhabdi, Narsingdi",
-    type: "Full-Time",
-    experience: "7+ Years",
-    description: "Oversee automated multi-colour Heidelberg press lines and ensure strict adherence to high-speed commercial printing schedules.",
-    responsibilities: [
-      "Manage daily multi-shift production workflow on Heidelberg CD 102 and CD 74 press lines",
-      "Monitor colour density, registration accuracy, and zero-defect quality benchmarks",
-      "Lead pressroom engineering maintenance and optimize consumable usage",
-    ],
-  },
-  {
-    id: "qa-inspector",
-    title: "Quality Assurance & Security Forms Inspector",
-    department: "Quality Assurance",
-    location: "Factory 1 — Madhabdi, Narsingdi",
-    type: "Full-Time",
-    experience: "4+ Years",
-    description: "Supervise ISO 9001:2015 inspection protocols for high-security exam papers, OMR sheets, and MICR-encoded banking instruments.",
-    responsibilities: [
-      "Conduct rigorous optical and physical checks on variable data and barcode perforation lines",
-      "Maintain audit-ready compliance documentation across all production batches",
-      "Collaborate with client security inspectors during confidential print runs",
-    ],
-  },
-  {
-    id: "packaging-specialist",
-    title: "Industrial & Rigid Box Packaging Engineer",
-    department: "Packaging & Converting",
-    location: "Factory 2 — Shonpara, Narayanganj",
-    type: "Full-Time",
-    experience: "5+ Years",
-    description: "Lead technical setup and die-line optimization for automated rigid-box and commercial carton manufacturing.",
-    responsibilities: [
-      "Optimize CAD packaging prototypes and supervise automated Iijima die-cutting machinery",
-      "Work closely with corporate brand clients on structural integrity and luxury finishes",
-      "Supervise daily output on Dultong rigid-box forming lines",
-    ],
-  },
-  {
-    id: "sales-executive",
-    title: "Corporate Accounts & Institutional Sales Executive",
-    department: "Sales & Client Relations",
-    location: "Head Office — Dhaka",
-    type: "Full-Time",
-    experience: "3+ Years",
-    description: "Drive strategic partnerships with banking institutions, pharmaceutical enterprises, and government education boards.",
-    responsibilities: [
-      "Manage end-to-end institutional tendering and key client relations",
-      "Coordinate custom paper specification requirements with technical plant managers",
-      "Expand B2B supply agreements for thermal POS rolls and security computer forms",
-    ],
-  },
-];
-
-const departments = ["All", "Production & Engineering", "Quality Assurance", "Packaging & Converting", "Sales & Client Relations"];
-
-export default function CareersPortal() {
+export default function CareersPortal({ jobs }: { jobs: JobOpening[] }) {
   const [selectedDept, setSelectedDept] = useState("All");
   const [activeJobId, setActiveJobId] = useState<string | null>(null);
   const [appliedPos, setAppliedPos] = useState<string>("");
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [formError, setFormError] = useState("");
 
+  const departments = useMemo(() => {
+    const unique = Array.from(new Set(jobs.map((j) => j.department)));
+    return ["All", ...unique];
+  }, [jobs]);
+
   const filteredJobs =
-    selectedDept === "All" ? jobOpenings : jobOpenings.filter((j) => j.department === selectedDept);
+    selectedDept === "All" ? jobs : jobs.filter((j) => j.department === selectedDept);
 
   function handleApplyClick(title: string) {
     setAppliedPos(title);
@@ -134,6 +68,11 @@ export default function CareersPortal() {
 
         {/* Job Listings Grid */}
         <div className="space-y-4 mb-20">
+          {filteredJobs.length === 0 && (
+            <p className="font-sans text-sm text-charcoal-400 py-8">
+              No open positions in this department right now. You can still submit a spontaneous application below.
+            </p>
+          )}
           {filteredJobs.map((job) => {
             const isExpanded = activeJobId === job.id;
             return (

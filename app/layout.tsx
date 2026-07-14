@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/layout/JsonLd";
+import SiteChrome from "@/components/layout/SiteChrome";
 import { LanguageProvider } from "@/components/ui/LanguageContext";
 import { ConsentProvider } from "@/components/ui/ConsentContext";
 import { SplashProvider } from "@/components/ui/SplashProvider";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
-import CustomCursor from "@/components/ui/CustomCursor";
-import FloatingCTA from "@/components/ui/FloatingCTA";
-import CookieConsent from "@/components/ui/CookieConsent";
-import SplashScreen from "@/components/ui/SplashScreen";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
 const playfair = Playfair_Display({
@@ -73,16 +67,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ConsentProvider>
           <SplashProvider>
             <LanguageProvider>
-              <SplashScreen />
               <GoogleAnalytics />
               <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />
-              <CustomCursor />
-              <Header />
-              <main id="main-content">{children}</main>
-              <Footer />
-              <FloatingCTA />
-              <WhatsAppButton />
-              <CookieConsent />
+              <SiteChrome>{children}</SiteChrome>
             </LanguageProvider>
           </SplashProvider>
         </ConsentProvider>

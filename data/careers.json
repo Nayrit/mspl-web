@@ -1,0 +1,58 @@
+[
+  {
+    "id": "offset-manager",
+    "title": "Senior Offset Press Production Manager",
+    "department": "Production & Engineering",
+    "location": "Factory 1 — Madhabdi, Narsingdi",
+    "type": "Full-Time",
+    "experience": "7+ Years",
+    "description": "Oversee automated multi-colour Heidelberg press lines and ensure strict adherence to high-speed commercial printing schedules.",
+    "responsibilities": [
+      "Manage daily multi-shift production workflow on Heidelberg CD 102 and CD 74 press lines",
+      "Monitor colour density, registration accuracy, and zero-defect quality benchmarks",
+      "Lead pressroom engineering maintenance and optimize consumable usage"
+    ]
+  },
+  {
+    "id": "qa-inspector",
+    "title": "Quality Assurance & Security Forms Inspector",
+    "department": "Quality Assurance",
+    "location": "Factory 1 — Madhabdi, Narsingdi",
+    "type": "Full-Time",
+    "experience": "4+ Years",
+    "description": "Supervise ISO 9001:2015 inspection protocols for high-security exam papers, OMR sheets, and MICR-encoded banking instruments.",
+    "responsibilities": [
+      "Conduct rigorous optical and physical checks on variable data and barcode perforation lines",
+      "Maintain audit-ready compliance documentation across all production batches",
+      "Collaborate with client security inspectors during confidential print runs"
+    ]
+  },
+  {
+    "id": "packaging-specialist",
+    "title": "Industrial & Rigid Box Packaging Engineer",
+    "department": "Packaging & Converting",
+    "location": "Factory 2 — Shonpara, Narayanganj",
+    "type": "Full-Time",
+    "experience": "5+ Years",
+    "description": "Lead technical setup and die-line optimization for automated rigid-box and commercial carton manufacturing.",
+    "responsibilities": [
+      "Optimize CAD packaging prototypes and supervise automated Iijima die-cutting machinery",
+      "Work closely with corporate brand clients on structural integrity and luxury finishes",
+      "Supervise daily output on Dultong rigid-box forming lines"
+    ]
+  },
+  {
+    "id": "sales-executive",
+    "title": "Corporate Accounts & Institutional Sales Executive",
+    "department": "Sales & Client Relations",
+    "location": "Head Office — Dhaka",
+    "type": "Full-Time",
+    "experience": "3+ Years",
+    "description": "Drive strategic partnerships with banking institutions, pharmaceutical enterprises, and government education boards.",
+    "responsibilities": [
+      "Manage end-to-end institutional tendering and key client relations",
+      "Coordinate custom paper specification requirements with technical plant managers",
+      "Expand B2B supply agreements for thermal POS rolls and security computer forms"
+    ]
+  }
+]
