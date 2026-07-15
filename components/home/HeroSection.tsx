@@ -87,7 +87,7 @@ export default function HeroSection() {
       >
         <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-5xl">
           <motion.div variants={item} className="mb-3 sm:mb-5">
-            <span className="inline-flex items-center gap-3 font-sans text-[0.65rem] font-medium tracking-[0.2em] uppercase" style={{ color: "#d61016" }}>
+            <span className="inline-flex items-center gap-3 eyebrow" style={{ color: "#d61016" }}>
               {t.hero.eyebrow}
             </span>
           </motion.div>

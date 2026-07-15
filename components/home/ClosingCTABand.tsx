@@ -33,7 +33,7 @@ export default function ClosingCTABand() {
         <div className="max-w-3xl">
           <motion.div initial={{ opacity:0,x:-20 }} animate={isInView?{opacity:1,x:0}:{}} transition={{ duration:0.6 }} className="flex items-center gap-3 mb-8">
             <span className="block h-px w-8" style={{ backgroundColor: "#d61016" }} />
-            <span className="font-sans font-medium" style={{ fontSize:"0.6875rem",letterSpacing:"0.18em",textTransform:"uppercase",color:"rgba(224,39,28,0.8)" }}>
+            <span className="eyebrow" style={{ color: "rgba(224,39,28,0.8)" }}>
               {t.closing.eyebrow}
             </span>
           </motion.div>

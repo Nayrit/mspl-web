@@ -5,12 +5,12 @@ import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import { useLang } from "@/components/ui/LanguageContext";
 
 const stats = [
-  { value: 23,     suffix: "+", label: "Years of manufacturing",   detail: "Established 2002" },
-  { value: 3,      suffix: "",  label: "Production facilities",    detail: "Across Bangladesh" },
-  { value: 250000, suffix: "+", label: "Sq ft of production space", detail: "Under a single roof" },
-  { value: 25000,  suffix: "+", label: "MT annual throughput",     detail: "Paper converted per year" },
-  { value: 600,    suffix: "",  label: "People",                   detail: "Skilled workforce" },
-  { value: 0,      suffix: "",  label: "ISO 9001:2015 certified",  detail: "Quality management standard", isText: true, textValue: "ISO" },
+  { value: 23,     suffix: "+", label: "Years of manufacturing",   detail: "Established 2002",            image: "/hero-bg.jpg" },
+  { value: 3,      suffix: "",  label: "Production facilities",    detail: "Across Bangladesh",           image: "/capabilities-factory.jpg" },
+  { value: 250000, suffix: "+", label: "Sq ft of production space", detail: "Under a single roof",        image: "/card-offset-packaging.jpg" },
+  { value: 25000,  suffix: "+", label: "MT annual throughput",     detail: "Paper converted per year",    image: "/card-web-printing.jpg" },
+  { value: 600,    suffix: "",  label: "People",                   detail: "Skilled workforce",           image: "/hero-bg-2.jpg" },
+  { value: 0,      suffix: "",  label: "ISO 9001:2015 certified",  detail: "Quality management standard", image: "/sustainability-solar.jpg", isText: true, textValue: "ISO" },
 ];
 
 export default function KeyNumbersBand() {
@@ -25,7 +25,7 @@ export default function KeyNumbersBand() {
         <ScrollFadeIn direction="up">
           <div className="flex items-center gap-3 mb-16 lg:mb-20">
             <span className="block h-px w-8" style={{ backgroundColor: "#d61016" }} />
-            <span className="font-sans font-medium" style={{ fontSize:"0.6875rem",letterSpacing:"0.18em",textTransform:"uppercase",color:"rgba(250,248,245,0.4)" }}>
+            <span className="eyebrow" style={{ color: "rgba(250,248,245,0.6)" }}>
               {t.numbers.label}
             </span>
           </div>
@@ -35,12 +35,23 @@ export default function KeyNumbersBand() {
           {stats.map((stat, i) => (
             <ScrollFadeIn key={stat.label} direction="up" delay={i * 0.08} className="h-full">
               <div
-                className="h-full flex flex-col justify-between p-6 sm:p-8 lg:p-8 xl:p-12 group transition-all duration-500 cursor-default hover:-translate-y-1"
+                className="relative overflow-hidden h-full flex flex-col justify-between p-6 sm:p-8 lg:p-8 xl:p-12 group transition-all duration-500 cursor-default hover:-translate-y-1 min-h-[240px]"
                 style={{ backgroundColor:"#25282b" }}
-                onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#2d2f32")}
-                onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#25282b")}
               >
-                <div>
+                {/* Aesthetic Background Image Placeholder Layer */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                  <img
+                    src={stat.image}
+                    alt=""
+                    className="w-full h-full object-cover object-center opacity-25 grayscale transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-45 group-hover:grayscale-0"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#25282b] via-[#25282b]/85 to-[#25282b]/40 transition-opacity duration-500 group-hover:opacity-80" />
+                  <div className="absolute inset-0 bg-[#25282b]/40 transition-colors duration-500 group-hover:bg-[#25282b]/20" />
+                </div>
+
+                {/* Card Writing / Content */}
+                <div className="relative z-10">
                   <div className="font-display font-bold mb-3 transition-transform duration-500 group-hover:scale-105 origin-left whitespace-nowrap" style={{ fontSize:"clamp(2rem, 3vw, 4rem)",lineHeight:1,letterSpacing:"-0.03em",color:"#d61016" }}>
                     {stat.isText
                       ? <span>{stat.textValue}</span>
@@ -53,7 +64,7 @@ export default function KeyNumbersBand() {
                     onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.35)")}
                   >{stat.detail}</p>
                 </div>
-                <div className="mt-6 h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ backgroundColor:"#d61016" }} />
+                <div className="relative z-10 mt-6 h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ backgroundColor:"#d61016" }} />
               </div>
             </ScrollFadeIn>
           ))}

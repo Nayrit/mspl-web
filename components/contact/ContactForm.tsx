@@ -11,6 +11,7 @@ const subjects = [
   "Rigid Boxes",
   "Stickers & Labels",
   "General Enquiry",
+  "Become a Supplier",
   "Other",
 ];
 

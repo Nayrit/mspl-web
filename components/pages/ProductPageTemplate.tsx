@@ -22,7 +22,7 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img src={product.image} alt={product.eyebrow} className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute bottom-4 left-4 right-4 bg-charcoal/90 backdrop-blur-sm p-4">
-                  <p className="eyebrow text-primary text-[0.6rem] mb-1">Daily capacity</p>
+                  <p className="eyebrow text-primary mb-1">Daily capacity</p>
                   <p className="font-display font-bold text-parchment-50 text-lg">{capability.dailyCapacity}</p>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
                         key={item.label}
                         className={`bg-parchment-50 p-8 ${isLastOdd ? "md:col-span-2" : ""}`}
                       >
-                        <p className="eyebrow text-charcoal-300 mb-3 text-[0.6rem]">{item.label}</p>
+                        <p className="eyebrow text-charcoal-300 mb-3">{item.label}</p>
                         {item.content}
                       </div>
                     );
@@ -91,7 +91,7 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
 
           {capability.finishing && (
             <ScrollFadeIn direction="up" delay={0.1} className="mt-12">
-              <p className="eyebrow text-charcoal-300 mb-4 text-[0.6rem]">What we offer</p>
+              <p className="eyebrow text-charcoal-300 mb-4">What we offer</p>
               <div className="flex flex-wrap gap-2">
                 {capability.finishing.map((f) => (
                   <span key={f} className="font-sans text-xs text-charcoal-400 px-3 py-1.5 bg-parchment-200">{f}</span>

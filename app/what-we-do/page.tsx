@@ -43,7 +43,7 @@ export default function WhatWeDoOverviewPage() {
                     <img src={product.image} alt={product.eyebrow} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                   </div>
                   <div className="p-7">
-                    <SectionEyebrow withLine={false} className="mb-2 text-[0.6rem]">{product.eyebrow}</SectionEyebrow>
+                    <SectionEyebrow withLine={false} className="mb-2">{product.eyebrow}</SectionEyebrow>
                     <h2 className="font-display text-xl font-bold text-charcoal mb-3 group-hover:text-primary transition-colors">{product.headline}</h2>
                     <p className="font-sans text-sm text-charcoal-400 mb-4 line-clamp-2">{product.intro}</p>
                     {product.overviewCapacity && (

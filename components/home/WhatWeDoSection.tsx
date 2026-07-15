@@ -109,7 +109,7 @@ function ServiceCard({ service, index, exploreLabel }: { service: typeof service
         </span>
 
         <div className="relative z-10 p-7 h-full flex flex-col justify-end min-h-[400px]">
-          <span className="eyebrow text-primary/80 mb-2 text-[0.6rem]">{service.short}</span>
+          <span className="eyebrow text-primary/80 mb-2">{service.short}</span>
           <h3 className="font-display text-xl lg:text-2xl font-bold text-parchment-50 leading-tight mb-3">{service.title}</h3>
 
           <AnimatePresence>
