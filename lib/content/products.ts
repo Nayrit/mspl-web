@@ -15,6 +15,7 @@ export interface ProductPage {
   ctaHeading: string;
   seo: { title: string; description: string };
   overviewCapacity?: string;
+  gallery?: { slot: string; title: string; caption: string; image: string }[];
 }
 
 export const products: ProductPage[] = [
@@ -76,6 +77,44 @@ export const products: ProductPage[] = [
     },
     ctaHeading: "Planning a print run?",
     overviewCapacity: "6,000 reams printed & 400,000 books bound daily",
+    gallery: [
+      {
+        slot: "Photo Slot #1",
+        title: "High-Speed Rotary Web Press Run",
+        caption: "Placeholder: Rotary web presses running high-volume textbook and guide book sheets at maximum speed.",
+        image: "/card-web-printing.jpg",
+      },
+      {
+        slot: "Photo Slot #2",
+        title: "Integrated Auto-Binding Line",
+        caption: "Placeholder: Automated binding stations folding, collating, and binding up to 400,000 books every single day.",
+        image: "/capabilities-factory.jpg",
+      },
+      {
+        slot: "Photo Slot #3",
+        title: "8-Colour Cover Printing & UV Unit",
+        caption: "Placeholder: Precision cover printing presses outputting vibrant 8-colour covers with specialised UV coating.",
+        image: "/hero-bg-4.jpg",
+      },
+      {
+        slot: "Photo Slot #4",
+        title: "Educational Paper Roll Storage Bay",
+        caption: "Placeholder: Temperature-controlled paper roll inventory staged and prepared for national educational orders.",
+        image: "/hero-bg-3.jpg",
+      },
+      {
+        slot: "Photo Slot #5",
+        title: "Automated Three-Knife Trimming Station",
+        caption: "Placeholder: Post-binding quality inspection and high-precision three-knife trimming for clean, crisp edges.",
+        image: "/hero-bg-2.jpg",
+      },
+      {
+        slot: "Photo Slot #6",
+        title: "Palletised Textbook Despatch & Staging",
+        caption: "Placeholder: Finished exercise and guide books shrink-wrapped, palletised, and staged for nationwide transit.",
+        image: "/card-offset-packaging.jpg",
+      },
+    ],
     seo: {
       title: "Web Printing — Textbooks, Exercise Books & Educational Print | Master Simex",
       description: "High-volume web printing of textbooks, guide books, exercise books, diaries and calendars with auto-binding and UV finishing. Reliable nationwide delivery from Bangladesh.",

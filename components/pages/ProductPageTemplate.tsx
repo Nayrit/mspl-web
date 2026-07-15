@@ -102,6 +102,53 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
         </div>
       </section>
 
+      {/* 6-Picture Production Gallery Placeholders */}
+      {product.gallery && product.gallery.length > 0 && (
+        <section className="section-padding bg-parchment-50 border-t border-charcoal-100">
+          <div className="container-editorial">
+            <ScrollFadeIn direction="up">
+              <div className="mb-10">
+                <SectionEyebrow className="mb-2">Production Gallery</SectionEyebrow>
+                <h2 className="font-display text-display-md font-bold text-charcoal">
+                  Visual Showcase & Photo Slots
+                </h2>
+              </div>
+            </ScrollFadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {product.gallery.map((item, i) => (
+                <ScrollFadeIn key={item.slot + i} direction="up" delay={i * 0.08}>
+                  <div className="aspect-square sm:aspect-[4/5] overflow-hidden relative group bg-charcoal cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <span className="absolute top-4 right-4 bg-charcoal/85 backdrop-blur-md text-parchment-50 font-sans text-[10px] uppercase font-bold tracking-wider px-3 py-1.5 rounded border border-white/10 shadow-md z-10">
+                      {item.slot} • Replaceable
+                    </span>
+
+                    {/* Interactive Hover Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 sm:p-10 z-20">
+                      <p className="eyebrow text-primary mb-2 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+                        {item.slot}
+                      </p>
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-parchment-50 mb-3 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                        {item.title}
+                      </h3>
+                      <p className="font-sans text-sm text-parchment-100/90 leading-relaxed transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                        {item.caption}
+                      </p>
+                    </div>
+                  </div>
+                </ScrollFadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="section-padding bg-charcoal text-parchment-50">
         <div className="container-editorial flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           <h2 className="font-display text-display-md font-bold">{product.ctaHeading}</h2>

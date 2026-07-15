@@ -30,6 +30,44 @@ export const capabilitiesContent = {
       mapUrl: "https://maps.app.goo.gl/ibAAtpmcVxfVZPLLA",
     },
   ],
+  gallery: [
+    {
+      slot: "Photo Slot #1",
+      title: "Narsingdi Solar-Powered Facility Floor",
+      caption: "Placeholder: High-efficiency production lines operating in our solar-powered Madhabdi, Narsingdi factory.",
+      image: "/capabilities-factory.jpg",
+    },
+    {
+      slot: "Photo Slot #2",
+      title: "Heidelberg & Komori Press Row",
+      caption: "Placeholder: Multi-colour offset press lineup maintaining defect rates below 1% under strict quality control.",
+      image: "/hero-bg.jpg",
+    },
+    {
+      slot: "Photo Slot #3",
+      title: "Automated Rigid Box Converting Line",
+      caption: "Placeholder: Dultong automated smart line folding, gluing, and wrapping luxury rigid boxes at volume.",
+      image: "/card-rigid-boxes.jpg",
+    },
+    {
+      slot: "Photo Slot #4",
+      title: "Pre-Press & Kodak CTP Plate-Making",
+      caption: "Placeholder: In-house digital pre-press and thermal CTP plate imaging room ensuring crisp detail transfer.",
+      image: "/paper-texture.jpg",
+    },
+    {
+      slot: "Photo Slot #5",
+      title: "High-Speed Rotary Web Printing Bay",
+      caption: "Placeholder: Dedicated rotary presses outputting continuous forms and educational textbook reams daily.",
+      image: "/card-web-printing.jpg",
+    },
+    {
+      slot: "Photo Slot #6",
+      title: "Quality Inspection & Despatch Bay",
+      caption: "Placeholder: Final QC checking stations and palletised loading dock ready for nationwide distribution.",
+      image: "/hero-bg-2.jpg",
+    },
+  ],
   logistics: {
     heading: "We deliver it ourselves.",
     body: "A dedicated fleet supports seamless, nationwide distribution — an Ashok Leyland 7-tonne truck and Isuzu and Dyna covered vans (1.5 and 3 tonne). Route-optimisation systems maximise efficiency and cut transit time, while trusted vendor partnerships give us the scalability to meet strict timelines and large-scale distribution requirements — reliably, and on schedule.",
