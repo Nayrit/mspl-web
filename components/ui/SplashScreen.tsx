@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useSyncExternalStore, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { LOGO_COLORS, PAGE_TRANSITION_EASE } from "@/lib/brand-colors";
 import { useSplash } from "@/components/ui/SplashProvider";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
@@ -126,15 +125,10 @@ export default function SplashScreen() {
               ease: "easeInOut",
             }}
           >
-            <Image
+            <img
               src={logo}
               alt="Master Simex Paper Limited"
-              width={240}
-              height={140}
-              priority
-              unoptimized
-              className="object-contain"
-              style={{ width: "min(72vw, 240px)", height: "auto" }}
+              className="w-[min(72vw,240px)] h-auto object-contain"
             />
           </motion.div>
 
