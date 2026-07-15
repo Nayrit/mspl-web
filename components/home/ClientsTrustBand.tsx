@@ -22,7 +22,7 @@ const clientLogos = [
   { name: "The City Bank",             slug: "the-city-bank",   imagePath: "/clients/the-city-bank.png" },
 ];
 
-const sectors = ["Government", "Finance & Banking", "Education", "Healthcare", "FMCG & Brands"];
+const sectors = ["Government", "Finance & Banking", "Education", "Healthcare", "FMCG Brands"];
 
 function LogoMarqueeRow({ logos, reverse = false }: { logos: typeof clientLogos; reverse?: boolean }) {
   const items = [...logos, ...logos];

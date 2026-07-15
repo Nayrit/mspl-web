@@ -8,10 +8,10 @@ import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
 
 const equipment = [
-  { name: "Heidelberg", logo: "/logos/heidelberg.png" },
-  { name: "Komori",     logo: "/logos/komori.png" },
-  { name: "Gallus",     logo: "/logos/gallus.png" },
-  { name: "Nilpeter",   logo: "/logos/nilpeter.png" },
+  { name: "Heidelberg", logo: "/logos/heidelberg.png", className: "h-6 sm:h-7 w-auto max-w-[140px] sm:max-w-[160px] object-contain" },
+  { name: "Gallus",     logo: "/logos/gallus.png",     className: "h-5 sm:h-6 w-auto max-w-[120px] sm:max-w-[140px] object-contain" },
+  { name: "Komori",     logo: "/logos/komori.png",     className: "h-5 sm:h-6 w-auto max-w-[130px] sm:max-w-[150px] object-contain" },
+  { name: "Nilpeter",   logo: "/logos/nilpeter.png",   className: "h-6 sm:h-7 w-auto max-w-[130px] sm:max-w-[150px] object-contain" },
 ];
 const processSteps = ["Design", "Pre-press", "Printing", "Converting", "Finishing", "Binding", "Packaging"];
 
@@ -72,14 +72,14 @@ export default function CapabilitiesTeaser() {
             <ScrollFadeIn direction="up" delay={0.3}>
               <div className="mb-10 pt-8 border-t border-charcoal-100">
                 <p className="eyebrow text-charcoal-300 mb-4 text-[0.6rem]">World-class press manufacturers</p>
-                <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+                <div className="grid grid-cols-2 gap-y-6 gap-x-8 sm:gap-x-12 items-center max-w-md sm:max-w-lg">
                   {equipment.map((brand) => (
-                    <div key={brand.name} className="flex items-center transition-transform duration-300 hover:scale-105">
+                    <div key={brand.name} className="flex items-center justify-start h-10 transition-transform duration-300 hover:scale-105">
                       <img
                         src={brand.logo}
                         alt={brand.name}
                         title={brand.name}
-                        className="h-7 sm:h-9 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                        className={`${brand.className} grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300`}
                       />
                     </div>
                   ))}
