@@ -4,7 +4,8 @@ import { useState, FormEvent } from "react";
 import { submitContactForm } from "@/app/contact/actions";
 
 const subjects = [
-  "Computer & Business Forms",
+  "Computer Forms",
+  "Business Forms",
   "Web Printing",
   "Offset & Packaging",
   "Thermal & Rolls",

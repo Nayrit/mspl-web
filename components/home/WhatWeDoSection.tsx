@@ -10,12 +10,21 @@ import { useLang } from "@/components/ui/LanguageContext";
 const services = [
   {
     id: "computer-forms",
-    title: "Computer & Business Forms",
-    short: "Continuous & Multi-ply",
-    description: "Secure, traceable continuous paper, OMR/ICR/OCR forms and multi-ply business forms.",
+    title: "Computer Forms",
+    short: "Continuous & OMR/ICR",
+    description: "Precision continuous paper, pin-feed forms, and secure OMR/ICR/OCR forms with litho coding and UV print.",
     href: "/what-we-do/computer-forms",
     img: "/card-computer-forms.jpg",
-    tags: ["OMR / ICR / OCR", "Multi-ply", "Security print"],
+    tags: ["Continuous paper", "OMR / ICR / OCR", "Security print"],
+  },
+  {
+    id: "business-forms",
+    title: "Business Forms",
+    short: "Multi-ply & Transactional",
+    description: "NCR multi-ply auto-carbon forms, medical bills, utility forms and bank SWIFT papers with crisp transfer.",
+    href: "/what-we-do/business-forms",
+    img: "/card-computer-forms.jpg",
+    tags: ["NCR multi-ply", "Auto-carbon", "Transactional"],
   },
   {
     id: "web-printing",

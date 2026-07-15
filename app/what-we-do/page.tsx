@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
   "What We Do — Products & Solutions | Master Simex Paper Limited",
-  "Explore six manufacturing specialisms from Master Simex: secure forms, web printing, offset & packaging, thermal rolls, rigid boxes and labels — all made in-house in Bangladesh.",
+  "Explore seven manufacturing specialisms from Master Simex: computer forms, business forms, web printing, offset & packaging, thermal rolls, rigid boxes and labels — all made in-house in Bangladesh.",
   "/what-we-do",
 );
 
@@ -18,7 +18,7 @@ export default function WhatWeDoOverviewPage() {
     <>
       <PageHero
         eyebrow="What we do"
-        headline="Six specialisms. One roof."
+        headline="Seven specialisms. One roof."
         subhead="An extensive portfolio, meticulously designed to meet the most specialised demands — blending cutting-edge technology with uncompromising quality."
         image="/hero-bg-3.jpg"
       />
@@ -27,7 +27,7 @@ export default function WhatWeDoOverviewPage() {
         <div className="container-editorial max-w-3xl">
           <ScrollFadeIn direction="up">
             <p className="text-body-lg text-charcoal-400 font-sans leading-relaxed">
-              Whatever the format — a secure exam form, a nationwide textbook run, a luxury gift box, a million metres of label — we make it in-house, to a single standard. Below are the six families that make up our work.
+              Whatever the format — a secure exam form, a multi-ply transaction sheet, a nationwide textbook run, a luxury gift box, a million metres of label — we make it in-house, to a single standard. Below are the seven families that make up our work.
             </p>
           </ScrollFadeIn>
         </div>

@@ -1,6 +1,7 @@
 export const footerWhatWeDoLinks = [
   { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging" },
-  { label: "Computer & Business Forms", href: "/what-we-do/computer-forms" },
+  { label: "Computer Forms", href: "/what-we-do/computer-forms" },
+  { label: "Business Forms", href: "/what-we-do/business-forms" },
   { label: "Web Printing", href: "/what-we-do/web-printing" },
   { label: "Rigid Boxes", href: "/what-we-do/rigid-boxes" },
   { label: "Thermal & ATM/POS Rolls", href: "/what-we-do/thermal-rolls" },
@@ -8,9 +9,8 @@ export const footerWhatWeDoLinks = [
 ] as const;
 
 export const whatWeDoLinks = [
-  { label: "Computer & Business Forms", href: "/what-we-do/computer-forms", img: "/card-computer-forms.jpg", desc: "Secure continuous forms, OMR/ICR/OCR & multi-ply business forms" },
-  { label: "Computer Forms", href: "/what-we-do/computer-forms", img: "/card-computer-forms.jpg", desc: "Continuous paper & litho-coded secure forms" },
-  { label: "Business Forms", href: "/what-we-do/business-forms", img: "/card-computer-forms.jpg", desc: "NCR multi-ply auto-carbon business forms" },
+  { label: "Computer Forms", href: "/what-we-do/computer-forms", img: "/card-computer-forms.jpg", desc: "Precision continuous paper & litho-coded secure forms" },
+  { label: "Business Forms", href: "/what-we-do/business-forms", img: "/card-computer-forms.jpg", desc: "NCR multi-ply auto-carbon forms for critical transactions" },
   { label: "OMR Forms", href: "/what-we-do/omr-forms", img: "/card-computer-forms.jpg", desc: "Optical Mark Recognition examination forms" },
   { label: "Exam Copy", href: "/what-we-do/exam-copy", img: "/card-web-printing.jpg", desc: "Examination materials at national scale" },
   { label: "Exercise Books", href: "/what-we-do/exercise-books", img: "/card-web-printing.jpg", desc: "Exercise books printed and bound at volume" },

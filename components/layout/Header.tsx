@@ -11,7 +11,8 @@ const navLinks = [
   { key: "whatWeDo" as const,       href: "/what-we-do", hasMega: true,
     megaItems: [
       { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging",  img: "/card-offset-packaging.jpg",  desc: "Commercial packaging with premium finishes", highlighted: true },
-      { label: "Computer & Business Forms",   href: "/what-we-do/computer-forms",    img: "/card-computer-forms.jpg",    desc: "Secure, traceable continuous forms & OMR sheets" },
+      { label: "Computer Forms",              href: "/what-we-do/computer-forms",    img: "/card-computer-forms.jpg",    desc: "Precision continuous paper & OMR sheets" },
+      { label: "Business Forms",              href: "/what-we-do/business-forms",    img: "/card-computer-forms.jpg",    desc: "NCR multi-ply auto-carbon forms" },
       { label: "Web Printing",                href: "/what-we-do/web-printing",       img: "/card-web-printing.jpg",      desc: "Textbooks, exercise books & calendars at volume" },
       { label: "Rigid Boxes",                 href: "/what-we-do/rigid-boxes",        img: "/card-rigid-boxes.jpg",       desc: "Luxury packaging on automated smart lines" },
       { label: "Thermal & ATM/POS Rolls",     href: "/what-we-do/thermal-rolls",     img: "/card-thermal-rolls.jpg",     desc: "Precision-slit, dust-free transactional rolls" },
@@ -117,7 +118,7 @@ export default function Header() {
                               onClick={() => setMegaOpen(false)}
                               className="font-sans text-xs font-semibold text-primary hover:underline flex items-center gap-1"
                             >
-                              Explore all 6 divisions →
+                              Explore all 7 divisions →
                             </Link>
                           </div>
 

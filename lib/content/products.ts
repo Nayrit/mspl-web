@@ -20,25 +20,46 @@ export interface ProductPage {
 export const products: ProductPage[] = [
   {
     slug: "computer-forms",
-    eyebrow: "Computer & Business Forms",
+    eyebrow: "Computer Forms",
     headline: "Documents you can trust to be exactly right.",
-    intro: "We produce a complete range of high-performance continuous papers and forms designed to secure and simplify critical transactions. From OMR, ICR and OCR forms with litho coding to barcode- and QR-enabled documents for accurate data capture — every product is engineered to be personalised, traceable and reliable. That's what lets banks, government bodies and institutions process sensitive information with confidence.",
+    intro: "We produce high-performance continuous papers, pin-feed computer forms, and secure OMR, ICR and OCR forms with litho coding, barcode and QR-enabled tracking. Engineered to run flawlessly through matrix and continuous printers without jamming or dust, ensuring accurate data capture and reliable record-keeping for banks, government bodies, and institutions.",
     image: "/card-computer-forms.jpg",
     whatWeMake: [
-      "Computer continuous paper", "OMR / ICR / OCR forms", "Admit cards", "Registration cards",
-      "Tabulation sheets", "NCR multi-ply auto-carbon forms", "Medical centre bills",
-      "Electricity bill forms", "Pharmaceutical order sheets", "Bank SWIFT papers",
+      "Computer continuous paper", "OMR / ICR / OCR forms", "Pin-feed continuous forms", "Admit cards",
+      "Registration cards", "Tabulation sheets", "Bank statement forms", "Examination answer sheets",
     ],
     capability: {
-      security: "Computer forms: litho coding, barcode and QR-enabled, with up to 6-colour UV print.",
-      customisation: "Computer forms: 60–100 GSM. Business forms: 2–5 ply, 50–55 GSM.",
-      dailyCapacity: "Computer forms: 350,000 sheets. Business forms: 450,000 sheets.",
+      security: "Litho coding, barcode and QR-enabled tracking, with up to 6-colour UV security print and microtext.",
+      customisation: "60–100 GSM premium paper, custom pin-feed hole punching, multi-part continuous rolls and folded stacks.",
+      dailyCapacity: "350,000 sheets.",
     },
-    ctaHeading: "Have a secure form to produce?",
-    overviewCapacity: "Up to 800,000 sheets/day",
+    ctaHeading: "Have a secure computer form to produce?",
+    overviewCapacity: "350,000 sheets/day",
     seo: {
-      title: "Computer & Business Forms — OMR, Continuous & Secure Forms | Master Simex",
-      description: "Secure OMR/ICR/OCR forms, continuous computer paper, multi-ply business forms and SWIFT papers with litho coding, barcode/QR and UV security. Made in Bangladesh.",
+      title: "Computer Forms — Continuous Paper & Secure OMR Forms | Master Simex",
+      description: "Precision continuous computer paper, pin-feed forms, and secure OMR/ICR/OCR examination forms with litho coding, QR and UV security. 350,000 sheets/day.",
+    },
+  },
+  {
+    slug: "business-forms",
+    eyebrow: "Business Forms",
+    headline: "Multi-ply forms built for critical transactions.",
+    intro: "We engineer NCR multi-ply auto-carbon business forms for banks, utilities, healthcare facilities, and institutions where every copy must be legible, tamper-evident, and traceable. From medical centre bills and electricity invoices to pharmaceutical order sheets and bank SWIFT papers, our business forms deliver crisp transfer across up to 5 plies without smudging.",
+    image: "/card-computer-forms.jpg",
+    whatWeMake: [
+      "NCR multi-ply auto-carbon forms", "Medical centre bills & invoices", "Electricity & utility bill forms",
+      "Pharmaceutical order sheets", "Bank SWIFT papers", "Delivery challans & receipts", "Custom multi-part vouchers",
+    ],
+    capability: {
+      machinery: "Precision rotary and collating presses equipped with automated edge-gluing and numbering systems.",
+      customisation: "2–5 ply configurations using premium 50–55 GSM CB/CFB/CF carbonless paper, custom serial numbering, and perforated tear-offs.",
+      dailyCapacity: "450,000 sheets.",
+    },
+    ctaHeading: "Have a business form to produce?",
+    overviewCapacity: "450,000 sheets/day",
+    seo: {
+      title: "Business Forms — NCR Multi-ply & Secure Transactional Forms | Master Simex",
+      description: "NCR multi-ply auto-carbon business forms, medical bills, utility forms, and bank SWIFT papers with crisp carbonless transfer. 450,000 sheets/day from Master Simex.",
     },
   },
   {
@@ -145,19 +166,6 @@ export const products: ProductPage[] = [
 ];
 
 export const productSubPages: Record<string, Partial<ProductPage> & { parentSlug: string }> = {
-  "business-forms": {
-    parentSlug: "computer-forms",
-    eyebrow: "Business Forms",
-    headline: "Multi-ply forms built for critical transactions.",
-    intro: "NCR multi-ply auto-carbon business forms engineered for banks, utilities, healthcare and institutions where every copy must be legible, secure and traceable.",
-    image: "/card-computer-forms.jpg",
-    whatWeMake: ["NCR multi-ply auto-carbon forms", "Medical centre bills", "Electricity bill forms", "Pharmaceutical order sheets", "Bank SWIFT papers"],
-    ctaHeading: "Have a business form to produce?",
-    seo: {
-      title: "Business Forms — Multi-ply Secure Forms | Master Simex",
-      description: "NCR multi-ply auto-carbon business forms for banks, utilities and institutions. 450,000 sheets/day capacity. Made in Bangladesh.",
-    },
-  },
   "omr-forms": {
     parentSlug: "computer-forms",
     eyebrow: "OMR Forms",

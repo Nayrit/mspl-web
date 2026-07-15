@@ -25,7 +25,7 @@ const translations = {
     numbers: { label: "The scale behind the sheet" },
     whatWeDo: {
       eyebrow: "What we do",
-      heading1: "Six specialisms.", heading2: "One roof.",
+      heading1: "Seven specialisms.", heading2: "One roof.",
       intro: "From secure computer forms to luxury rigid boxes, our portfolio is built to meet the most specialised demands — blending advanced technology with uncompromising quality.",
       explore: "Explore",
     },
@@ -75,7 +75,7 @@ const translations = {
     numbers: { label: "শিটের পেছনের মাপকাঠি" },
     whatWeDo: {
       eyebrow: "আমরা কী করি",
-      heading1: "ছয়টি বিশেষায়ন।", heading2: "এক ছাদ।",
+      heading1: "সাতটি বিশেষায়ন।", heading2: "এক ছাদ।",
       intro: "নিরাপদ কম্পিউটার ফর্ম থেকে বিলাসবহুল কঠোর বাক্স পর্যন্ত — আমাদের পোর্টফোলিও সবচেয়ে বিশেষায়িত চাহিদা পূরণের জন্য তৈরি।",
       explore: "দেখুন",
     },
