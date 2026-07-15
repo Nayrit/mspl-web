@@ -31,7 +31,7 @@ export default function LeadershipMessage({ role, paragraphs, name, title, image
                 <p key={p.slice(0, 40)} className="font-sans text-body-lg text-charcoal-400 leading-relaxed">{p}</p>
               ))}
             </div>
-            <p className="mt-8 font-display text-lg font-bold text-charcoal">— {name}, {title}</p>
+            <p className="mt-8 font-display text-lg font-bold text-charcoal">{name}, {title}</p>
           </ScrollFadeIn>
         </div>
       </div>

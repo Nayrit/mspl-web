@@ -34,6 +34,12 @@
   --color-gold:       #c8a96e;
   --color-gold-light: #d9be91;
   --color-gold-dark:  #a88a4e;
+
+  /* Branded scrollbar (viewport + nested scroll areas) */
+  --scrollbar-thumb:       #d61016;
+  --scrollbar-thumb-hover: #ac0b11;
+  --scrollbar-track:       #e4e5e6;
+  --scrollbar-size:        10px;
 }
 
 /* ─── Base reset ─────────────────────────────────────────────────────────── */
@@ -43,6 +49,9 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Firefox + modern Chromium/Safari (standard spec) */
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
 
   body {
@@ -53,6 +62,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
 
   /* Restore default cursor on mobile/touch */
@@ -85,6 +96,83 @@
 
   @media (pointer: coarse) {
     button { cursor: pointer; }
+  }
+}
+
+/* ─── Branded scrollbar (cross-browser) ──────────────────────────────────── */
+/*
+ * Standard: scrollbar-color / scrollbar-width (Firefox, Chrome 121+, Safari 18.2+)
+ * WebKit:    ::-webkit-scrollbar-* (Chrome, Safari, Edge — rounded thumb + track)
+ * Touch/iOS: overlay scrollbars may stay system-default; scrolling is unaffected.
+ */
+@supports selector(::-webkit-scrollbar) {
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+  }
+
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--scrollbar-track);
+    min-height: 2.5rem;
+  }
+
+  html::-webkit-scrollbar-thumb:hover,
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
+  html::-webkit-scrollbar-corner,
+  body::-webkit-scrollbar-corner {
+    background: var(--scrollbar-track);
+  }
+
+  /* Nested overflow regions (mega menu, modals, tables, etc.) */
+  *::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 9999px;
+    border: 2px solid var(--scrollbar-track);
+    min-height: 2rem;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: var(--scrollbar-track);
+  }
+}
+
+/* Inherit branded colors on any element that scrolls */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Respect Windows high-contrast / forced-colors accessibility */
+@media (forced-colors: active) {
+  html,
+  body,
+  * {
+    scrollbar-color: auto;
   }
 }
 

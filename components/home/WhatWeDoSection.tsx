@@ -155,7 +155,7 @@ export default function WhatWeDoSection() {
   const { t } = useLang();
 
   return (
-    <section className="section-padding bg-parchment-50" aria-label="What we do — our specialisms">
+    <section className="section-padding bg-parchment-50" aria-label="What we do: our specialisms">
       <div className="container-editorial">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 lg:mb-20">
           <ScrollFadeIn direction="up">

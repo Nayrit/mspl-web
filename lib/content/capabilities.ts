@@ -5,7 +5,7 @@ export const capabilitiesContent = {
     eyebrow: "Inside our factories",
     headline: "Everything, under our own roof.",
   },
-  inHouse: "Every step of our production happens in-house — from design and pre-press to printing, converting, finishing, binding and final packaging. That control is deliberate. It's how we hold quality, consistency and craftsmanship steady from the first idea to the last box on the pallet.",
+  inHouse: "Every step of our production happens in-house, from design and pre-press to printing, converting, finishing, binding and final packaging. That control is deliberate. It's how we hold quality, consistency and craftsmanship steady from the first idea to the last box on the pallet.",
   capacity: [
     { value: "3", label: "Production facilities" },
     { value: "600", label: "Skilled professionals" },
@@ -70,7 +70,7 @@ export const capabilitiesContent = {
   ],
   logistics: {
     heading: "We deliver it ourselves.",
-    body: "A dedicated fleet supports seamless, nationwide distribution — an Ashok Leyland 7-tonne truck and Isuzu and Dyna covered vans (1.5 and 3 tonne). Route-optimisation systems maximise efficiency and cut transit time, while trusted vendor partnerships give us the scalability to meet strict timelines and large-scale distribution requirements — reliably, and on schedule.",
+    body: "A dedicated fleet supports seamless, nationwide distribution: an Ashok Leyland 7-tonne truck and Isuzu and Dyna covered vans (1.5 and 3 tonne). Route-optimisation systems maximise efficiency and cut transit time, while trusted vendor partnerships give us the scalability to meet strict timelines and large-scale distribution requirements, reliably and on schedule.",
   },
   certification: "ISO 9001:2015 certified for quality management.",
   cta: {
@@ -80,7 +80,7 @@ export const capabilitiesContent = {
   },
   seo: {
     title: "Capabilities & Manufacturing | Master Simex Paper Limited",
-    description: "Three facilities, 250,000+ sq ft, 25,000+ MT/year and presses from Heidelberg, Komori, Gallus and Nilpeter — all in-house. ISO 9001:2015 certified. Inside Master Simex.",
+    description: "Three facilities, 250,000+ sq ft, 25,000+ MT/year and presses from Heidelberg, Komori, Gallus and Nilpeter, all in-house. ISO 9001:2015 certified. Inside Master Simex.",
   },
 };
 

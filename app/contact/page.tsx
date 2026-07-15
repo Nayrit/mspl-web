@@ -18,7 +18,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Get in touch"
         headline="Let's talk about what you need made."
-        subhead="Tell us about your project — format, volume, finish, timeline — and our team will come back with how we'll deliver it. Average turnaround on custom work is 10 days."
+        subhead="Tell us about your project (format, volume, finish, timeline) and our team will come back with how we'll deliver it. Average turnaround on custom work is 10 days."
         compact
       />
 

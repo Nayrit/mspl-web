@@ -29,7 +29,7 @@ export function detectDocumentType(buffer: Uint8Array): DetectedDocumentType | n
   if (startsWithBytes(buffer, [0x25, 0x50, 0x44, 0x46])) return "pdf"; // %PDF
   // Legacy .doc (OLE Compound File)
   if (startsWithBytes(buffer, [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1])) return "doc";
-  // .docx is a ZIP (PK) — accept only when filename claims docx separately
+  // .docx is a ZIP (PK) - accept only when filename claims docx separately
   if (startsWithBytes(buffer, [0x50, 0x4b, 0x03, 0x04]) || startsWithBytes(buffer, [0x50, 0x4b, 0x05, 0x06])) {
     return "docx";
   }

@@ -12,7 +12,7 @@ export default async function AdminImagesPage() {
       <div>
         <h1 className="text-3xl font-bold">Images</h1>
         <p className="text-sm text-[#72777d] mt-1 max-w-2xl">
-          Every picture on the site is listed below by page / section. Replace them one by one —
+          Every picture on the site is listed below by page / section. Replace them one by one;
           each slot is independent, even if two slots share the same default photo today.
         </p>
         <p className="text-xs text-[#72777d] mt-2">{slots.length} image slots across {sections.length} sections</p>

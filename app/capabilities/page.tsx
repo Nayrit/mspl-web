@@ -143,11 +143,11 @@ export default async function CapabilitiesPage() {
 
       <MachineryGrid
         heading="The machines behind the standard."
-        intro="Our production line is built on equipment from world-renowned brands — for global standards of quality and reliability."
+        intro="Our production line is built on equipment from world-renowned brands, for global standards of quality and reliability."
         machines={machines}
       />
 
-      {/* Sustainability Section — Full Page Editorial Style */}
+      {/* Sustainability Section - Full Page Editorial Style */}
       <div id="sustainability" className="border-t border-charcoal-100">
         {/* Intro & Narrative Section */}
         <section className="section-padding bg-parchment" aria-label="Sustainability & Triple Bottom Line">

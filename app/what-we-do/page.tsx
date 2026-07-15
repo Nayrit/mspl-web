@@ -9,8 +9,8 @@ import { getImagePath, getImagePathMap } from "@/lib/cms/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
-  "What We Do — Products & Solutions | Master Simex Paper Limited",
-  "Explore seven manufacturing specialisms from Master Simex: computer forms, business forms, web printing, offset & packaging, thermal rolls, rigid boxes and labels — all made in-house in Bangladesh.",
+  "What We Do: Products & Solutions | Master Simex Paper Limited",
+  "Explore seven manufacturing specialisms from Master Simex: computer forms, business forms, web printing, offset & packaging, thermal rolls, rigid boxes and labels, all made in-house in Bangladesh.",
   "/what-we-do",
 );
 
@@ -24,7 +24,7 @@ export default async function WhatWeDoOverviewPage() {
       <PageHero
         eyebrow="What we do"
         headline="Seven specialisms. One roof."
-        subhead="An extensive portfolio, meticulously designed to meet the most specialised demands — blending cutting-edge technology with uncompromising quality."
+        subhead="An extensive portfolio, meticulously designed to meet the most specialised demands, blending cutting-edge technology with uncompromising quality."
         image={heroImage || "/hero-bg-3.jpg"}
       />
 
@@ -32,7 +32,7 @@ export default async function WhatWeDoOverviewPage() {
         <div className="container-editorial max-w-3xl">
           <ScrollFadeIn direction="up">
             <p className="text-body-lg text-charcoal-400 font-sans leading-relaxed">
-              Whatever the format — a secure exam form, a multi-ply transaction sheet, a nationwide textbook run, a luxury gift box, a million metres of label — we make it in-house, to a single standard. Below are the seven families that make up our work.
+              Whatever the format (a secure exam form, a multi-ply transaction sheet, a nationwide textbook run, a luxury gift box, a million metres of label), we make it in-house, to a single standard. Below are the seven families that make up our work.
             </p>
           </ScrollFadeIn>
         </div>
@@ -64,7 +64,7 @@ export default async function WhatWeDoOverviewPage() {
 
       <CTABand
         heading="Not sure which fits your job?"
-        body="Tell us the outcome you're after. We'll point you to the right line — or combine several."
+        body="Tell us the outcome you're after. We'll point you to the right line, or combine several."
         ctaLabel="Talk to our team"
         ctaHref="/contact"
       />

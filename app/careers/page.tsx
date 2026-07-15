@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata(
   "Careers | Master Simex Paper Limited",
-  "Career opportunities at Master Simex Paper Limited — joining Bangladesh's paper converting, printing and packaging industry.",
+  "Career opportunities at Master Simex Paper Limited: joining Bangladesh's paper converting, printing and packaging industry.",
   "/careers",
 );
 

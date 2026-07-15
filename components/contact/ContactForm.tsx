@@ -41,7 +41,7 @@ export default function ContactForm() {
   if (status === "success") {
     return (
       <div className="bg-parchment-50 border border-primary/30 p-8 lg:p-10">
-        <p className="font-display text-2xl font-bold text-charcoal mb-3">Thanks — your enquiry is on its way.</p>
+        <p className="font-display text-2xl font-bold text-charcoal mb-3">Thanks. Your enquiry is on its way.</p>
         <p className="font-sans text-charcoal-400">We&apos;ll be in touch shortly.</p>
       </div>
     );

@@ -197,7 +197,7 @@ export default function InteractiveMapClient() {
               {activeLocation.badge}
             </span>
             <p className="font-display text-sm font-bold text-charcoal">
-              {activeLocation.name} — {activeLocation.city}
+              {activeLocation.name}, {activeLocation.city}
             </p>
           </div>
           <div className="flex items-center gap-2">

@@ -28,7 +28,7 @@ export default function ProofBlocks({ heading, intro, blocks }: ProofBlocksProps
                 <ul className="space-y-2">
                   {block.items.map((item) => (
                     <li key={item} className="font-sans text-sm text-charcoal-400 leading-relaxed flex gap-2">
-                      <span className="text-primary shrink-0">—</span>
+                      <span className="text-primary shrink-0">•</span>
                       {item}
                     </li>
                   ))}

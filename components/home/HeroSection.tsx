@@ -7,12 +7,12 @@ import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImages } from "@/components/ui/SiteImagesContext";
 
 const slideMeta = [
-  { slotId: "home-hero-1", fallback: "/hero-bg.jpg",              alt: "Master Simex — elevating design" },
-  { slotId: "home-hero-2", fallback: "/hero-bg-2.jpg",            alt: "Master Simex — elevating ideas" },
-  { slotId: "home-hero-3", fallback: "/card-rigid-boxes.jpg",     alt: "Master Simex — elevating shapes" },
-  { slotId: "home-hero-4", fallback: "/hero-bg-4.jpg",            alt: "Master Simex — elevating inspiration" },
-  { slotId: "home-hero-5", fallback: "/sustainability-solar.jpg", alt: "Master Simex — elevating sustainability" },
-  { slotId: "home-hero-6", fallback: "/capabilities-factory.jpg", alt: "Master Simex — elevating creativity" },
+  { slotId: "home-hero-1", fallback: "/hero-bg.jpg",              alt: "Master Simex: elevating design" },
+  { slotId: "home-hero-2", fallback: "/hero-bg-2.jpg",            alt: "Master Simex: elevating ideas" },
+  { slotId: "home-hero-3", fallback: "/card-rigid-boxes.jpg",     alt: "Master Simex: elevating shapes" },
+  { slotId: "home-hero-4", fallback: "/hero-bg-4.jpg",            alt: "Master Simex: elevating inspiration" },
+  { slotId: "home-hero-5", fallback: "/sustainability-solar.jpg", alt: "Master Simex: elevating sustainability" },
+  { slotId: "home-hero-6", fallback: "/capabilities-factory.jpg", alt: "Master Simex: elevating creativity" },
 ];
 const SLIDE_MS = 3800;
 

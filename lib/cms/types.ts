@@ -18,7 +18,7 @@ export interface ImageSlot {
   usedOn: string;
   /** Current public path (may change after a dedicated upload) */
   path: string;
-  /** Original bundled path — used as default before first custom upload */
+  /** Original bundled path - used as default before first custom upload */
   defaultPath: string;
   updatedAt: number;
 }

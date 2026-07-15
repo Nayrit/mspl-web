@@ -14,7 +14,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
   "About Us | Master Simex Paper Limited",
-  "Two decades of precision, innovation and integrity — explore our mission, vision, history, and executive leadership all in one comprehensive overview.",
+  "Two decades of precision, innovation and integrity: explore our mission, vision, history, and executive leadership all in one comprehensive overview.",
   "/about",
 );
 
@@ -79,10 +79,10 @@ export default async function AboutPage() {
               </h2>
               <div className="space-y-6 font-sans text-body-lg text-charcoal-400 leading-relaxed">
                 <p>
-                  In 2002, Master Simex was born from a bold idea: to redefine paper converting in Bangladesh by setting new benchmarks in quality, security and innovation. What began as a determined endeavour soon became a story of relentless progress — driven by an unwavering focus on what our customers actually needed.
+                  In 2002, Master Simex was born from a bold idea: to redefine paper converting in Bangladesh by setting new benchmarks in quality, security and innovation. What began as a determined endeavour soon became a story of relentless progress, driven by an unwavering focus on what our customers actually needed.
                 </p>
                 <p>
-                  Through the years, we turned challenges into opportunities. We pioneered advanced security features — online litho coding, automated perforation, variable data printing — that set us apart in an evolving industry. Each milestone deepened our reputation as a trusted partner to the sectors where precision is non-negotiable: government, finance, education and healthcare.
+                  Through the years, we turned challenges into opportunities. We pioneered advanced security features (online litho coding, automated perforation, variable data printing) that set us apart in an evolving industry. Each milestone deepened our reputation as a trusted partner to the sectors where precision is non-negotiable: government, finance, education and healthcare.
                 </p>
                 <p>
                   Our journey has been about more than growth. It&apos;s been a test of innovation, adaptability and integrity. From our earliest days to our standing today as an industry leader, we&apos;ve kept pushing boundaries, sharpening efficiency and delivering value others couldn&apos;t. And we&apos;re only building on it.
@@ -108,7 +108,7 @@ export default async function AboutPage() {
 
         <ProofBlocks
           heading="A model built to deliver."
-          intro="Our approach pairs customer-centric innovation with sustainable growth — and the numbers show it works."
+          intro="Our approach pairs customer-centric innovation with sustainable growth, and the numbers show it works."
           blocks={storyProofBlocks}
         />
       </div>

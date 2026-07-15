@@ -25,9 +25,9 @@ export default function PrivacyPolicyPage() {
           <h2 className="font-display text-xl font-bold text-charcoal">Third-party services</h2>
           <p>We use the following service providers to operate this website:</p>
           <ul className="list-disc list-inside space-y-2">
-            <li><strong>FormSubmit</strong> — delivers contact and career form submissions to our team by email. Form data (including CV attachments) is transmitted through their servers when you submit a form.</li>
-            <li><strong>Google Analytics</strong> — collects anonymised usage statistics if you accept analytics cookies via our cookie banner. Analytics does not load if you reject cookies.</li>
-            <li><strong>OpenStreetMap</strong> — serves map tiles on our contact page. Your IP address may be visible to their tile servers when the map loads.</li>
+            <li><strong>FormSubmit</strong>: delivers contact and career form submissions to our team by email. Form data (including CV attachments) is transmitted through their servers when you submit a form.</li>
+            <li><strong>Google Analytics</strong>: collects anonymised usage statistics if you accept analytics cookies via our cookie banner. Analytics does not load if you reject cookies.</li>
+            <li><strong>OpenStreetMap</strong>: serves map tiles on our contact page. Your IP address may be visible to their tile servers when the map loads.</li>
           </ul>
 
           <h2 className="font-display text-xl font-bold text-charcoal">Cookies</h2>

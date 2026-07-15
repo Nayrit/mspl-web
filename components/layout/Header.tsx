@@ -66,12 +66,12 @@ export default function Header() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{ backgroundColor: solid ? "rgba(250,248,245,0.97)" : "transparent", backdropFilter: solid ? "blur(12px)" : "none", boxShadow: solid ? "0 1px 0 rgba(37,40,43,0.08)" : "none" }}
       >
-        {/* Red top rule — only when solid */}
+        {/* Red top rule - only when solid */}
         <div className="absolute top-0 left-0 right-0 h-[2px] transition-all duration-500" style={{ backgroundColor: solid ? "#d61016" : "transparent" }} />
 
         <div className="container-editorial flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center" aria-label="Master Simex — Home">
+          <Link href="/" className="flex-shrink-0 flex items-center" aria-label="Master Simex, Home">
             <img
               src={logo}
               alt="Master Simex Paper Limited"
