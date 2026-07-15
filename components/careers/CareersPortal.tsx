@@ -179,7 +179,7 @@ export default function CareersPortal({ jobs }: { jobs: JobOpening[] }) {
                     name="name"
                     required
                     placeholder="Enter your full name"
-                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-sm text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-base text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                   />
                 </div>
                 <div>
@@ -192,7 +192,7 @@ export default function CareersPortal({ jobs }: { jobs: JobOpening[] }) {
                     type="email"
                     required
                     placeholder="yourname@email.com"
-                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-sm text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-base text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                   />
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function CareersPortal({ jobs }: { jobs: JobOpening[] }) {
                     type="tel"
                     required
                     placeholder="+880 1XXX XXXXXX"
-                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-sm text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-base text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                   />
                 </div>
                 <div>
@@ -221,7 +221,7 @@ export default function CareersPortal({ jobs }: { jobs: JobOpening[] }) {
                     required
                     defaultValue={appliedPos}
                     placeholder="e.g. Production Manager or Spontaneous Application"
-                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-sm text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                    className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-base text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                   />
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function CareersPortal({ jobs }: { jobs: JobOpening[] }) {
                   name="linkedin"
                   type="url"
                   placeholder="https://linkedin.com/in/..."
-                  className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-sm text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-base text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                 />
               </div>
 
@@ -267,21 +267,21 @@ export default function CareersPortal({ jobs }: { jobs: JobOpening[] }) {
                   required
                   rows={4}
                   placeholder="Summarize your experience and why you are interested in Master Simex..."
-                  className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-sm text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-y"
+                  className="w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 font-sans text-base text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-y"
                 />
               </div>
 
-              <div className="flex items-start gap-3">
-                <input id="career-consent" name="consent" type="checkbox" required className="mt-1 accent-primary" />
-                <label htmlFor="career-consent" className="font-sans text-xs text-white/70 leading-relaxed">
+              <label htmlFor="career-consent" className="flex items-start gap-3 min-h-[44px] cursor-pointer">
+                <input id="career-consent" name="consent" type="checkbox" required className="mt-1 w-5 h-5 shrink-0 accent-primary" />
+                <span className="font-sans text-sm text-white/70 leading-relaxed">
                   I consent to Master Simex Paper Limited processing my application and contacting me regarding career opportunities.
-                </label>
-              </div>
+                </span>
+              </label>
 
               <button
                 type="submit"
                 disabled={formStatus === "submitting"}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary hover:bg-primary-dark text-white font-sans text-xs uppercase tracking-wider font-bold transition-all shadow-lg disabled:opacity-60"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 min-h-[48px] rounded-lg bg-primary hover:bg-primary-dark text-white font-sans text-xs uppercase tracking-wider font-bold transition-all shadow-lg disabled:opacity-60"
               >
                 {formStatus === "submitting" ? "Submitting Application…" : "Submit Career Application &rarr;"}
               </button>

@@ -97,7 +97,17 @@ export default function InteractiveMapClient() {
 
     map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
 
+    const onResize = () => {
+      map.invalidateSize();
+    };
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", onResize);
+    // Leaflet often needs a delayed invalidate after layout settles (esp. mobile)
+    window.setTimeout(onResize, 250);
+
     return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", onResize);
       map.remove();
       mapInstanceRef.current = null;
     };
@@ -154,10 +164,11 @@ export default function InteractiveMapClient() {
         </div>
 
         {/* Location Selector Pills */}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-2">
           <button
+            type="button"
             onClick={() => handleSelectLocation("all")}
-            className={`px-3 py-1.5 text-[0.7rem] font-sans font-medium uppercase tracking-wider transition-all duration-200 border ${
+            className={`px-4 py-2.5 min-h-[44px] text-xs font-sans font-medium uppercase tracking-wider transition-all duration-200 border ${
               selectedId === "all"
                 ? "bg-charcoal text-white border-charcoal"
                 : "bg-white text-charcoal-400 border-charcoal-100 hover:border-charcoal hover:text-charcoal"
@@ -169,9 +180,10 @@ export default function InteractiveMapClient() {
             const isSelected = selectedId === loc.id;
             return (
               <button
+                type="button"
                 key={loc.id}
                 onClick={() => handleSelectLocation(loc.id)}
-                className={`px-3 py-1.5 text-[0.7rem] font-sans font-medium uppercase tracking-wider transition-all duration-200 border ${
+                className={`px-4 py-2.5 min-h-[44px] text-xs font-sans font-medium uppercase tracking-wider transition-all duration-200 border ${
                   isSelected
                     ? "bg-primary text-white border-primary shadow-sm"
                     : "bg-white text-charcoal-400 border-charcoal-100 hover:border-primary hover:text-primary"

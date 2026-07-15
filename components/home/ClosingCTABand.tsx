@@ -55,10 +55,8 @@ export default function ClosingCTABand() {
 
           <motion.div initial={{ opacity:0,y:20 }} animate={isInView?{opacity:1,y:0}:{}} transition={{ duration:0.7,delay:0.3 }} className="flex flex-wrap items-center gap-6">
             <Link href="/contact" id="closing-cta"
-              className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 group transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+              className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 min-h-[48px] group transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:brightness-90"
               style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
-              onMouseEnter={e=>(e.currentTarget.style.backgroundColor="#ac0b11")}
-              onMouseLeave={e=>(e.currentTarget.style.backgroundColor="#d61016")}
             >
               {t.closing.cta}
               <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -78,6 +76,16 @@ export default function ClosingCTABand() {
               </p>
             </div>
           </motion.div>
+
+          <div className="mt-8 xl:hidden space-y-2">
+            <p className="font-sans text-xs tracking-widest uppercase" style={{ color:"rgba(250,248,245,0.35)" }}>Contact us directly</p>
+            <a href="tel:+8802223350096" className="block font-sans text-sm min-h-[40px] flex items-center" style={{ color:"rgba(250,248,245,0.7)" }}>
+              +880 2 2233 50096
+            </a>
+            <a href="mailto:msplbd@gmail.com" className="block font-sans text-sm min-h-[40px] flex items-center" style={{ color:"rgba(250,248,245,0.7)" }}>
+              msplbd@gmail.com
+            </a>
+          </div>
         </div>
 
         <motion.div initial={{ opacity:0 }} animate={isInView?{opacity:1}:{}} transition={{ duration:1,delay:0.5 }}
@@ -85,12 +93,10 @@ export default function ClosingCTABand() {
         >
           <div className="text-right space-y-1">
             <p className="font-sans text-xs tracking-widest uppercase" style={{ color:"rgba(250,248,245,0.2)" }}>Contact us directly</p>
-            <a href="tel:+88022335096" className="block font-sans text-sm transition-colors" style={{ color:"rgba(250,248,245,0.4)" }}
-              onMouseEnter={e=>(e.currentTarget.style.color="#d61016")} onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.4)")}>
+            <a href="tel:+8802223350096" className="block font-sans text-sm transition-colors hover:text-primary" style={{ color:"rgba(250,248,245,0.4)" }}>
               +880 2 2233 50096
             </a>
-            <a href="mailto:msplbd@gmail.com" className="block font-sans text-sm transition-colors" style={{ color:"rgba(250,248,245,0.4)" }}
-              onMouseEnter={e=>(e.currentTarget.style.color="#d61016")} onMouseLeave={e=>(e.currentTarget.style.color="rgba(250,248,245,0.4)")}>
+            <a href="mailto:msplbd@gmail.com" className="block font-sans text-sm transition-colors hover:text-primary" style={{ color:"rgba(250,248,245,0.4)" }}>
               msplbd@gmail.com
             </a>
           </div>

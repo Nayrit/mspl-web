@@ -2,15 +2,24 @@
 
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/site";
+import { useConsent } from "@/components/ui/ConsentContext";
 
 export default function FloatingCTA() {
+  const { bannerVisible } = useConsent();
   const whatsappHref = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Hello Master Simex, I'd like to enquire about your products.")}`;
   const phoneHref = `tel:${siteConfig.phones[0].replace(/\s|-/g, "")}`;
   const emailHref = `mailto:${siteConfig.email}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3" aria-label="Quick contact options">
-      {/* WhatsApp Button */}
+    <div
+      className="fixed right-4 z-50 flex flex-col items-center gap-3 sm:right-6"
+      style={{
+        bottom: bannerVisible
+          ? "calc(7.5rem + env(safe-area-inset-bottom, 0px))"
+          : "calc(1.5rem + env(safe-area-inset-bottom, 0px))",
+      }}
+      aria-label="Quick contact options"
+    >
       <motion.a
         href={whatsappHref}
         target="_blank"
@@ -19,7 +28,7 @@ export default function FloatingCTA() {
         aria-label="Chat on WhatsApp"
         whileHover={{ scale: 1.1, x: -2 }}
         whileTap={{ scale: 0.94 }}
-        className="w-12 h-12 rounded-full text-white shadow-lg shadow-[#25D366]/35 hover:shadow-xl hover:shadow-[#25D366]/50 flex items-center justify-center transition-colors duration-300 select-none"
+        className="w-12 h-12 min-h-[48px] min-w-[48px] rounded-full text-white shadow-lg shadow-[#25D366]/35 hover:shadow-xl hover:shadow-[#25D366]/50 flex items-center justify-center transition-colors duration-300 select-none"
         style={{ backgroundColor: "#25D366" }}
       >
         <svg className="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -27,30 +36,28 @@ export default function FloatingCTA() {
         </svg>
       </motion.a>
 
-      {/* Call Button */}
       <motion.a
         href={phoneHref}
         title="Call Us"
         aria-label="Call Us"
         whileHover={{ scale: 1.1, x: -2 }}
         whileTap={{ scale: 0.94 }}
-        className="w-12 h-12 rounded-full bg-primary hover:bg-primary-dark text-parchment-50 shadow-lg shadow-primary/35 hover:shadow-xl hover:shadow-primary/50 flex items-center justify-center transition-colors duration-300 select-none"
+        className="w-12 h-12 min-h-[48px] min-w-[48px] rounded-full bg-primary hover:bg-primary-dark text-parchment-50 shadow-lg shadow-primary/35 hover:shadow-xl hover:shadow-primary/50 flex items-center justify-center transition-colors duration-300 select-none"
       >
-        <svg className="w-5.5 h-5.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+        <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       </motion.a>
 
-      {/* Email Button */}
       <motion.a
         href={emailHref}
         title="Email Us"
         aria-label="Email Us"
         whileHover={{ scale: 1.1, x: -2 }}
         whileTap={{ scale: 0.94 }}
-        className="w-12 h-12 rounded-full bg-charcoal hover:bg-[#33373b] text-parchment-50 border border-white/15 shadow-lg shadow-charcoal/40 hover:shadow-xl hover:shadow-charcoal/50 flex items-center justify-center transition-colors duration-300 select-none"
+        className="w-12 h-12 min-h-[48px] min-w-[48px] rounded-full bg-charcoal hover:bg-[#33373b] text-parchment-50 border border-white/15 shadow-lg shadow-charcoal/40 hover:shadow-xl hover:shadow-charcoal/50 flex items-center justify-center transition-colors duration-300 select-none"
       >
-        <svg className="w-5.5 h-5.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+        <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       </motion.a>

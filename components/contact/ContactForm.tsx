@@ -54,28 +54,28 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Name *</label>
-          <input id="name" name="name" required maxLength={200} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+          <input id="name" name="name" required maxLength={200} autoComplete="name" className="form-control" />
         </div>
         <div>
           <label htmlFor="company" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Company</label>
-          <input id="company" name="company" maxLength={200} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+          <input id="company" name="company" maxLength={200} autoComplete="organization" className="form-control" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="email" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Email *</label>
-          <input id="email" name="email" type="email" required maxLength={254} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+          <input id="email" name="email" type="email" required maxLength={254} autoComplete="email" className="form-control" />
         </div>
         <div>
           <label htmlFor="phone" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Phone</label>
-          <input id="phone" name="phone" type="tel" maxLength={30} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors" />
+          <input id="phone" name="phone" type="tel" maxLength={30} autoComplete="tel" inputMode="tel" className="form-control" />
         </div>
       </div>
 
       <div>
         <label htmlFor="subject" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Subject</label>
-        <select id="subject" name="subject" className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors">
+        <select id="subject" name="subject" className="form-control">
           <option value="">Select a subject</option>
           {subjects.map((s) => (
             <option key={s} value={s}>{s}</option>
@@ -85,15 +85,15 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Message *</label>
-        <textarea id="message" name="message" required maxLength={5000} rows={5} className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-y" />
+        <textarea id="message" name="message" required maxLength={5000} rows={5} className="form-control resize-y" />
       </div>
 
-      <div className="flex items-start gap-3">
-        <input id="consent" name="consent" type="checkbox" required className="mt-1 accent-[#d61016]" />
-        <label htmlFor="consent" className="font-sans text-xs text-charcoal-400 leading-relaxed">
+      <label htmlFor="consent" className="flex items-start gap-3 min-h-[44px] cursor-pointer">
+        <input id="consent" name="consent" type="checkbox" required className="mt-1 w-5 h-5 shrink-0 accent-[#d61016]" />
+        <span className="font-sans text-sm text-charcoal-400 leading-relaxed">
           By submitting, you agree to be contacted about your enquiry. We&apos;ll never share your details for marketing.
-        </label>
-      </div>
+        </span>
+      </label>
 
       {status === "error" && (
         <p className="font-sans text-sm text-primary" role="alert">{errorMsg}</p>

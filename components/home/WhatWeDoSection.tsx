@@ -100,13 +100,15 @@ function ServiceCard({ service, index, exploreLabel }: { service: typeof service
 
   return (
     <ScrollFadeIn direction="up" delay={index * 0.07} className={`${service.colSpan} h-full`}>
-      <article
-        className={`relative overflow-hidden rounded-xl group cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 bg-charcoal flex flex-col justify-end ${service.minHeight} h-full`}
+      <Link
+        href={service.href}
+        aria-label={`${exploreLabel} ${service.title}`}
+        className={`relative overflow-hidden rounded-xl group block shadow-lg hover:shadow-2xl active:scale-[0.99] transition-all duration-500 bg-charcoal flex flex-col justify-end ${service.minHeight} h-full`}
       >
         <div className="absolute inset-0">
           <img
             src={img}
-            alt={service.title}
+            alt=""
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
           />
@@ -138,15 +140,15 @@ function ServiceCard({ service, index, exploreLabel }: { service: typeof service
               ))}
             </div>
 
-            <Link href={service.href} className="inline-flex items-center gap-2 font-sans text-xs font-bold text-primary tracking-wider uppercase group/link shrink-0 hover:text-red-400 transition-colors" aria-label={`Explore ${service.title}`}>
+            <span className="inline-flex items-center gap-2 font-sans text-xs font-bold text-primary tracking-wider uppercase shrink-0">
               {exploreLabel}
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </Link>
+            </span>
           </div>
         </div>
-      </article>
+      </Link>
     </ScrollFadeIn>
   );
 }

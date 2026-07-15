@@ -66,7 +66,9 @@ export default function CapabilitiesTeaser() {
                       <button
                         type="button"
                         onMouseEnter={() => setActiveStep(i)}
-                        className="font-sans text-xs font-medium px-2 py-1 transition-all duration-300"
+                        onClick={() => setActiveStep(i)}
+                        aria-pressed={activeStep === i}
+                        className="font-sans text-xs font-medium px-3 py-2 min-h-[40px] transition-all duration-300"
                         style={{
                           color: activeStep === i ? "#d61016" : "#25282b",
                           backgroundColor: activeStep === i ? "rgba(214,16,22,0.08)" : "transparent",

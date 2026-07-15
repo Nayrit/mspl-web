@@ -129,15 +129,15 @@ export default function ProductPageTemplate({ product }: ProductPageTemplateProp
                       {item.slot} • Replaceable
                     </span>
 
-                    {/* Interactive Hover Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8 sm:p-10 z-20">
-                      <p className="eyebrow text-primary mb-2 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+                    {/* Overlay: always visible on touch; hover-reveal on fine pointers */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/55 to-transparent opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 sm:p-8 z-20">
+                      <p className="eyebrow text-primary mb-2 transform translate-y-0 [@media(hover:hover)]:translate-y-3 [@media(hover:hover)]:group-hover:translate-y-0 transition-transform duration-500">
                         {item.slot}
                       </p>
-                      <h3 className="font-display text-xl sm:text-2xl font-bold text-parchment-50 mb-3 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-parchment-50 mb-2 transform translate-y-0 [@media(hover:hover)]:translate-y-3 [@media(hover:hover)]:group-hover:translate-y-0 transition-transform duration-500 delay-75">
                         {item.title}
                       </h3>
-                      <p className="font-sans text-sm text-parchment-100/90 leading-relaxed transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                      <p className="font-sans text-sm text-parchment-100/90 leading-relaxed line-clamp-3 transform translate-y-0 [@media(hover:hover)]:translate-y-3 [@media(hover:hover)]:group-hover:translate-y-0 transition-transform duration-500 delay-100">
                         {item.caption}
                       </p>
                     </div>

@@ -62,7 +62,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-[100svh] min-h-[640px] overflow-hidden"
+      className="relative w-full min-h-[100svh] h-[100svh] max-sm:min-h-[520px] sm:min-h-[640px] overflow-hidden"
       style={{ backgroundColor: "#25282b" }}
       onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
       onMouseMove={handleMouseMove}
@@ -149,7 +149,7 @@ export default function HeroSection() {
           transition={{ delay: 1.2, duration: 0.8 }}
           className="flex items-center gap-6 pb-6"
         >
-          <div className="flex items-center gap-3" role="tablist">
+          <div className="flex items-center gap-1" role="tablist">
             {slides.map((_, i) => (
               <button
                 key={i}
@@ -157,18 +157,22 @@ export default function HeroSection() {
                 aria-selected={i === current}
                 aria-label={`Slide ${i + 1}`}
                 onClick={() => setCurrent(i)}
-                className="relative h-0.5 overflow-hidden transition-all duration-500"
-                style={{ width: i === current ? "2.5rem" : "1rem" }}
+                className="relative flex items-center justify-center min-h-[44px] min-w-[44px] px-1"
               >
-                <span className="absolute inset-0" style={{ backgroundColor: "rgba(250,248,245,0.2)" }} />
-                {i === current && (
-                  <motion.span
-                    className="absolute inset-0"
-                    style={{ backgroundColor: "#d61016", transformOrigin: "left", scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: SLIDE_MS / 1000, ease: "linear" }}
-                  />
-                )}
+                <span
+                  className="relative block h-0.5 overflow-hidden transition-all duration-500"
+                  style={{ width: i === current ? "2.5rem" : "1rem" }}
+                >
+                  <span className="absolute inset-0" style={{ backgroundColor: "rgba(250,248,245,0.2)" }} />
+                  {i === current && (
+                    <motion.span
+                      className="absolute inset-0"
+                      style={{ backgroundColor: "#d61016", transformOrigin: "left", scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: SLIDE_MS / 1000, ease: "linear" }}
+                    />
+                  )}
+                </span>
               </button>
             ))}
           </div>
@@ -183,7 +187,7 @@ export default function HeroSection() {
                 key={idx}
                 onClick={fn}
                 aria-label={idx === 0 ? "Previous slide" : "Next slide"}
-                className="w-10 h-10 flex items-center justify-center transition-all duration-300"
+                className="w-11 h-11 min-h-[44px] min-w-[44px] flex items-center justify-center transition-all duration-300 active:border-primary active:text-primary"
                 style={{ border: "1px solid rgba(250,248,245,0.15)", color: "rgba(250,248,245,0.5)" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#d61016"; (e.currentTarget as HTMLElement).style.color = "#d61016"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(250,248,245,0.15)"; (e.currentTarget as HTMLElement).style.color = "rgba(250,248,245,0.5)"; }}
