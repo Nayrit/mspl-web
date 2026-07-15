@@ -45,7 +45,7 @@ export default function SustainabilityTeaser() {
               </p>
             </ScrollFadeIn>
             <ScrollFadeIn direction="up" delay={0.25}>
-              <Link href="/sustainability" id="sustainability-cta" className="inline-flex items-center gap-3 font-sans text-sm font-semibold text-primary tracking-wide group border-b border-primary/40 pb-1 hover:border-primary transition-colors duration-300">
+              <Link href="/capabilities#sustainability" id="sustainability-cta" className="inline-flex items-center gap-3 font-sans text-sm font-semibold text-primary tracking-wide group border-b border-primary/40 pb-1 hover:border-primary transition-colors duration-300">
                 {t.sustainability.cta}
                 <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

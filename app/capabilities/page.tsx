@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/pages/PageHero";
 import MachineryGrid from "@/components/pages/MachineryGrid";
 import CTABand from "@/components/pages/CTABand";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { capabilitiesContent, machines } from "@/lib/content/capabilities";
+import { sustainabilityPage } from "@/lib/content/sustainability-page";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
@@ -15,6 +17,7 @@ export const metadata: Metadata = pageMetadata(
 
 export default function CapabilitiesPage() {
   const c = capabilitiesContent;
+  const s = sustainabilityPage;
 
   return (
     <>
@@ -135,6 +138,105 @@ export default function CapabilitiesPage() {
         intro="Our production line is built on equipment from world-renowned brands — for global standards of quality and reliability."
         machines={machines}
       />
+
+      {/* Sustainability Section — Full Page Editorial Style */}
+      <div id="sustainability" className="border-t border-charcoal-100">
+        {/* Intro & Narrative Section */}
+        <section className="section-padding bg-parchment" aria-label="Sustainability & Triple Bottom Line">
+          <div className="container-editorial">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+              {/* Left Column: Eyebrow & Big Headline */}
+              <div className="lg:col-span-5">
+                <ScrollFadeIn direction="up">
+                  <SectionEyebrow className="mb-6">{s.hero.eyebrow}</SectionEyebrow>
+                  <h2
+                    className="font-display font-bold text-charcoal mb-8 leading-tight"
+                    style={{ fontSize: "clamp(2.5rem, 4.5vw, 4rem)" }}
+                  >
+                    {s.hero.headline}
+                  </h2>
+                  <div className="w-16 h-1 bg-primary mb-8" />
+                  <p className="font-sans text-body-lg text-charcoal-400 font-light leading-relaxed">
+                    {s.tripleBottomLine}
+                  </p>
+                </ScrollFadeIn>
+              </div>
+
+              {/* Right Column: Narrative Feature Cards */}
+              <div className="lg:col-span-7 grid grid-cols-1 gap-6">
+                {s.narrative.map((p, idx) => (
+                  <ScrollFadeIn key={p.slice(0, 40)} direction="up" delay={idx * 0.1}>
+                    <div className="bg-parchment-50 p-8 sm:p-10 border-l-4 border-primary hover:bg-parchment-100/60 transition-all duration-300 shadow-sm hover:shadow-md">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="font-display text-2xl font-bold text-primary">0{idx + 1}</span>
+                        <span className="font-sans text-xs uppercase font-semibold tracking-wider text-charcoal/60">
+                          {idx === 0 ? "Clean Solar Energy" : "Circular Economy & Recycling"}
+                        </span>
+                      </div>
+                      <p className="font-sans text-base sm:text-body-lg text-charcoal leading-relaxed font-light">
+                        {p}
+                      </p>
+                    </div>
+                  </ScrollFadeIn>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Impact Pillars Section */}
+        <section className="section-padding bg-parchment-50 border-t border-charcoal-100/60">
+          <div className="container-editorial">
+            <ScrollFadeIn direction="up">
+              <div className="max-w-xl mb-12">
+                <SectionEyebrow className="mb-4">Our Commitments</SectionEyebrow>
+                <h3 className="font-display text-display-md font-bold text-charcoal">Core Impact Pillars</h3>
+              </div>
+            </ScrollFadeIn>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-charcoal-100">
+              {s.pillars.map((pillar, i) => (
+                <ScrollFadeIn key={pillar.title} direction="up" delay={i * 0.08}>
+                  <div className="bg-parchment-50 p-8 lg:p-10 group hover:bg-parchment transition-all duration-300 h-full flex flex-col justify-between border-t-4 border-transparent hover:border-primary">
+                    <div>
+                      <p className="font-display text-lg font-bold text-primary mb-4">0{i + 1}</p>
+                      <h4 className="font-display text-xl font-bold text-charcoal mb-3 group-hover:text-primary transition-colors">
+                        {pillar.title}
+                      </h4>
+                      <p className="font-sans text-sm text-charcoal-400 leading-relaxed font-light">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  </div>
+                </ScrollFadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Philosophy Band & CTA */}
+        <section className="py-16 lg:py-20 bg-charcoal text-parchment-50">
+          <div className="container-editorial flex flex-col sm:flex-row items-center justify-between gap-8">
+            <ScrollFadeIn direction="up" className="max-w-2xl">
+              <p className="eyebrow text-primary mb-3">Profit, People & Planet</p>
+              <h3 className="font-display text-2xl sm:text-3xl font-bold leading-snug">
+                Business growth and environmental responsibility are complementary forces.
+              </h3>
+            </ScrollFadeIn>
+            <ScrollFadeIn direction="left" delay={0.1}>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 bg-primary text-parchment-50 px-8 py-4 font-sans text-sm font-semibold tracking-wider uppercase hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl flex-shrink-0 group"
+              >
+                <span>Discuss practices</span>
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </ScrollFadeIn>
+          </div>
+        </section>
+      </div>
 
       <section className="section-padding bg-parchment">
         <div className="container-editorial grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
