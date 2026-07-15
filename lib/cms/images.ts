@@ -42,11 +42,10 @@ async function writeOverrides(
   overrides: Record<string, { path: string; updatedAt: number }>,
 ): Promise<void> {
   await fs.mkdir(path.dirname(DATA_PATH), { recursive: true });
-  await fs.writeFile(
-    DATA_PATH,
-    `${JSON.stringify({ overrides }, null, 2)}\n`,
-    "utf8",
-  );
+  const tempPath = `${DATA_PATH}.${process.pid}.${Date.now()}.tmp`;
+  const payload = `${JSON.stringify({ overrides }, null, 2)}\n`;
+  await fs.writeFile(tempPath, payload, "utf8");
+  await fs.rename(tempPath, DATA_PATH);
 }
 
 export async function getImageSlots(): Promise<ImageSlot[]> {

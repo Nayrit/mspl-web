@@ -39,6 +39,10 @@ export async function submitContactForm(data: FormData): Promise<FormResult> {
   const phone = String(data.get("phone") ?? "").trim();
   const subject = String(data.get("subject") ?? data.get("productFamily") ?? "").trim();
 
+  if (company.length > 200 || phone.length > 40 || subject.length > 200) {
+    return { success: false, error: "One or more fields exceed the allowed length." };
+  }
+
   try {
     await sendContactEmail({
       name,

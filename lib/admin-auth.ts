@@ -16,14 +16,28 @@ export async function createAdminSession(): Promise<void> {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
-    path: "/",
+    path: "/admin",
     maxAge: SESSION_TTL_MS / 1000,
   });
 }
 
 export async function destroyAdminSession(): Promise<void> {
   const jar = await cookies();
-  jar.delete(COOKIE_NAME);
+  jar.set(COOKIE_NAME, "", {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/admin",
+    maxAge: 0,
+  });
+  // Clear any legacy cookie that was scoped to "/"
+  jar.set(COOKIE_NAME, "", {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 0,
+  });
 }
 
 export async function isAdminAuthenticated(): Promise<boolean> {

@@ -1,5 +1,5 @@
 export const COOKIE_NAME = "mspl_admin_session";
-export const SESSION_TTL_MS = 1000 * 60 * 60 * 12;
+export const SESSION_TTL_MS = 1000 * 60 * 60 * 4; // 4 hours
 
 const DEV_FALLBACK_SECRET = "mspl-admin-dev-secret-change-in-production";
 

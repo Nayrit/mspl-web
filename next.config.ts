@@ -26,6 +26,9 @@ function buildContentSecurityPolicy(): string {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
     "frame-ancestors 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "form-action 'self'",
   ].join("; ");
 }
 

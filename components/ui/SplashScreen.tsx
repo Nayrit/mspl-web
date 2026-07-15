@@ -103,7 +103,8 @@ export default function SplashScreen() {
               height={140}
               priority
               unoptimized
-              className="h-auto w-[min(72vw,240px)] object-contain"
+              className="object-contain"
+              style={{ width: "min(72vw, 240px)", height: "auto" }}
             />
           </motion.div>
 

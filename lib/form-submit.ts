@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/site";
+import { sanitizeHeaderValue } from "@/lib/file-magic";
 
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${siteConfig.email}`;
 
@@ -11,7 +12,12 @@ export async function sendContactEmail(fields: {
   productFamily?: string;
   message: string;
 }): Promise<void> {
-  const subjectVal = fields.subject || fields.productFamily || "N/A";
+  const safeName = sanitizeHeaderValue(fields.name);
+  const subjectVal = sanitizeHeaderValue(fields.subject || fields.productFamily || "N/A", 160);
+  const emailSubject = fields.subject
+    ? sanitizeHeaderValue(`${subjectVal} - Enquiry from ${safeName}`, 180)
+    : sanitizeHeaderValue(`New Website Enquiry from ${safeName}`, 180);
+
   const response = await fetch(FORM_ENDPOINT, {
     method: "POST",
     headers: {
@@ -19,14 +25,14 @@ export async function sendContactEmail(fields: {
       Accept: "application/json",
     },
     body: JSON.stringify({
-      _subject: fields.subject ? `${fields.subject} - Enquiry from ${fields.name}` : `New Website Enquiry from ${fields.name}`,
+      _subject: emailSubject,
       _captcha: "false",
-      Name: fields.name,
+      Name: safeName,
       Email: fields.email,
-      Phone: fields.phone || "N/A",
-      Company: fields.company || "N/A",
+      Phone: fields.phone ? sanitizeHeaderValue(fields.phone, 40) : "N/A",
+      Company: fields.company ? sanitizeHeaderValue(fields.company, 200) : "N/A",
       Subject: subjectVal,
-      Message: fields.message,
+      Message: fields.message.slice(0, 5000),
     }),
   });
 
@@ -36,11 +42,12 @@ export async function sendContactEmail(fields: {
 }
 
 export async function sendCareerApplication(formData: FormData): Promise<void> {
+  const position = sanitizeHeaderValue(String(formData.get("position") ?? "Unknown role"), 160);
   const outbound = new FormData();
   for (const [key, value] of formData.entries()) {
     outbound.append(key, value);
   }
-  outbound.set("_subject", `Career Application: ${formData.get("position") ?? "Unknown role"}`);
+  outbound.set("_subject", sanitizeHeaderValue(`Career Application: ${position}`, 180));
   outbound.set("_captcha", "false");
 
   const response = await fetch(FORM_ENDPOINT, {

@@ -1,7 +1,7 @@
 "use server";
 
 import { sendCareerApplication } from "@/lib/form-submit";
-import { detectDocumentType } from "@/lib/file-magic";
+import { detectDocumentType, sanitizeHeaderValue } from "@/lib/file-magic";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
@@ -11,6 +11,15 @@ const ALLOWED_MIME_TYPES = new Set([
   "application/msword",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 ]);
+
+const LIMITS = {
+  name: 200,
+  email: 254,
+  phone: 40,
+  position: 200,
+  coverNote: 5000,
+  linkedin: 500,
+} as const;
 
 interface FormResult {
   success: boolean;
@@ -44,6 +53,16 @@ export async function submitCareerApplication(formData: FormData): Promise<FormR
     return { success: false, error: "Please fill in all required fields." };
   }
 
+  if (
+    name.length > LIMITS.name ||
+    email.length > LIMITS.email ||
+    phone.length > LIMITS.phone ||
+    position.length > LIMITS.position ||
+    coverNote.length > LIMITS.coverNote
+  ) {
+    return { success: false, error: "One or more fields exceed the allowed length." };
+  }
+
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { success: false, error: "Please enter a valid email address." };
   }
@@ -73,7 +92,10 @@ export async function submitCareerApplication(formData: FormData): Promise<FormR
   const lowerName = attachment.name.toLowerCase();
 
   if (!detected) {
-    return { success: false, error: "CV file content is not a valid PDF or Word document." };
+    return {
+      success: false,
+      error: "CV file content is not a valid PDF or Word document.",
+    };
   }
   if (detected === "pdf" && !lowerName.endsWith(".pdf")) {
     return { success: false, error: "CV extension must match the file type (.pdf)." };
@@ -86,19 +108,27 @@ export async function submitCareerApplication(formData: FormData): Promise<FormR
   }
 
   const linkedin = String(formData.get("linkedin") ?? "").trim();
-  if (linkedin && !/^https?:\/\/.+/i.test(linkedin)) {
-    return { success: false, error: "Please enter a valid URL for your LinkedIn or portfolio." };
+  if (linkedin) {
+    if (linkedin.length > LIMITS.linkedin) {
+      return { success: false, error: "LinkedIn / portfolio URL is too long." };
+    }
+    if (!/^https?:\/\/.+/i.test(linkedin)) {
+      return { success: false, error: "Please enter a valid URL for your LinkedIn or portfolio." };
+    }
   }
 
   try {
     const outbound = new FormData();
-    for (const [key, value] of formData.entries()) {
-      if (key === "attachment") continue;
-      outbound.append(key, value);
-    }
+    outbound.append("name", sanitizeHeaderValue(name, LIMITS.name));
+    outbound.append("email", email.slice(0, LIMITS.email));
+    outbound.append("phone", sanitizeHeaderValue(phone, LIMITS.phone));
+    outbound.append("position", sanitizeHeaderValue(position, LIMITS.position));
+    outbound.append("coverNote", coverNote.slice(0, LIMITS.coverNote));
+    outbound.append("consent", "yes");
+    if (linkedin) outbound.append("linkedin", linkedin.slice(0, LIMITS.linkedin));
     outbound.append(
       "attachment",
-      new File([fileBytes], attachment.name, {
+      new File([fileBytes], sanitizeHeaderValue(attachment.name, 180) || "cv.pdf", {
         type: attachment.type || "application/octet-stream",
       }),
     );
