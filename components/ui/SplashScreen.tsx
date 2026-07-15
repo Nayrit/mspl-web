@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { LOGO_COLORS, PAGE_TRANSITION_EASE } from "@/lib/brand-colors";
 import { useSplash } from "@/components/ui/SplashProvider";
+import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
 type SplashPhase = "show" | "exit" | "hidden";
 
@@ -20,6 +21,7 @@ function getReducedMotionSnapshot() {
 
 export default function SplashScreen() {
   const { completeSplash } = useSplash();
+  const logo = useSiteImage("brand-logo", "/mspl-logo.png");
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     getReducedMotionSnapshot,
@@ -95,11 +97,12 @@ export default function SplashScreen() {
             }}
           >
             <Image
-              src="/mspl-logo.png"
+              src={logo}
               alt="Master Simex Paper Limited"
               width={240}
               height={140}
               priority
+              unoptimized
               className="h-auto w-[min(72vw,240px)] object-contain"
             />
           </motion.div>

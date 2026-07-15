@@ -5,10 +5,12 @@ import Link from "next/link";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { useLang } from "@/components/ui/LanguageContext";
+import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
 const services = [
   {
     id: "offset-packaging",
+    slotId: "home-whatwedo-offset",
     title: "Offset Printing & Packaging",
     short: "Commercial & Premium",
     description: "Brochures, reports, books, and commercial packaging enhanced with foil stamping, UV printing, drip-off effects, and built-in security features.",
@@ -20,6 +22,7 @@ const services = [
   },
   {
     id: "computer-forms",
+    slotId: "home-whatwedo-computer-forms",
     title: "Computer Forms",
     short: "Continuous & OMR/ICR",
     description: "High-speed continuous paper, pin-feed computer forms, and examination-grade OMR/ICR/OCR tracking forms.",
@@ -31,6 +34,7 @@ const services = [
   },
   {
     id: "business-forms",
+    slotId: "home-whatwedo-business-forms",
     title: "Business Forms",
     short: "Multi-ply & Transactional",
     description: "NCR multi-ply auto-carbon forms, medical bills, utility forms and bank SWIFT papers with crisp transfer.",
@@ -42,6 +46,7 @@ const services = [
   },
   {
     id: "web-printing",
+    slotId: "home-whatwedo-web",
     title: "Web Printing",
     short: "Education & Publishing",
     description: "Textbooks, guide books, exercise books, diaries and calendars, printed and bound at high volume.",
@@ -53,6 +58,7 @@ const services = [
   },
   {
     id: "thermal-rolls",
+    slotId: "home-whatwedo-thermal",
     title: "Thermal & ATM/POS Rolls",
     short: "Transaction Environments",
     description: "Precision-slit, dust-free rolls engineered for high-demand POS, ATM, ECG, fax, and telex machines.",
@@ -64,6 +70,7 @@ const services = [
   },
   {
     id: "rigid-boxes",
+    slotId: "home-whatwedo-rigid",
     title: "Rigid Boxes",
     short: "Luxury Packaging",
     description: "Luxury packaging with a premium unboxing experience, produced on fully automated smart production lines.",
@@ -75,6 +82,7 @@ const services = [
   },
   {
     id: "stickers-labels",
+    slotId: "home-whatwedo-labels",
     title: "Stickers & Labels",
     short: "Adhesive Solutions",
     description: "Printed and unprinted adhesive labels, high-definition, waterproof, and engineered for durable adhesion.",
@@ -88,6 +96,7 @@ const services = [
 
 function ServiceCard({ service, index, exploreLabel }: { service: typeof services[0]; index: number; exploreLabel: string }) {
   const isPriority = index === 0;
+  const img = useSiteImage(service.slotId, service.img);
 
   return (
     <ScrollFadeIn direction="up" delay={index * 0.07} className={`${service.colSpan} h-full`}>
@@ -96,7 +105,7 @@ function ServiceCard({ service, index, exploreLabel }: { service: typeof service
       >
         <div className="absolute inset-0">
           <img
-            src={service.img}
+            src={img}
             alt={service.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"

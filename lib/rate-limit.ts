@@ -1,14 +1,19 @@
 const hits = new Map<string, number[]>();
 
-const WINDOW_MS = 60_000;
-const MAX_REQUESTS = 5;
+const DEFAULT_WINDOW_MS = 60_000;
+const DEFAULT_MAX_REQUESTS = 5;
 
-export function isRateLimited(key: string): boolean {
+export function isRateLimited(
+  key: string,
+  maxRequests: number = DEFAULT_MAX_REQUESTS,
+  windowMs: number = DEFAULT_WINDOW_MS,
+): boolean {
   const now = Date.now();
   const timestamps = hits.get(key) ?? [];
-  const recent = timestamps.filter((t) => now - t < WINDOW_MS);
+  const recent = timestamps.filter((t) => now - t < windowMs);
 
-  if (recent.length >= MAX_REQUESTS) {
+  if (recent.length >= maxRequests) {
+    hits.set(key, recent);
     return true;
   }
 

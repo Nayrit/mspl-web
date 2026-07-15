@@ -9,6 +9,7 @@ import JourneyTimeline from "@/components/pages/JourneyTimeline";
 import ProofBlocks from "@/components/pages/ProofBlocks";
 import LeadershipMessage from "@/components/pages/LeadershipMessage";
 import { storyMilestones, storyProofBlocks, missionVisionValues, leadershipMessages } from "@/lib/content/about";
+import { getImagePath } from "@/lib/cms/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
@@ -17,17 +18,20 @@ export const metadata: Metadata = pageMetadata(
   "/about",
 );
 
-const leadershipImages = ["/hero-bg.jpg", "/hero-bg-4.jpg"];
-
-export default function AboutPage() {
+export default async function AboutPage() {
   const { vision, mission, valuesIntro, coreValues } = missionVisionValues;
+  const heroImage = await getImagePath("page-about-hero");
+  const leadershipImages = [
+    await getImagePath("about-leadership-1"),
+    await getImagePath("about-leadership-2"),
+  ];
 
   return (
     <>
       <PageHero
         eyebrow="About Master Simex"
         headline="Two decades of precision, innovation and integrity."
-        image="/hero-bg-2.jpg"
+        image={heroImage || "/hero-bg-2.jpg"}
       />
       <AboutSubNav />
 
@@ -129,7 +133,7 @@ export default function AboutPage() {
             paragraphs={msg.body}
             name={msg.name}
             title={msg.title}
-            image={leadershipImages[i]}
+            image={leadershipImages[i] || "/hero-bg.jpg"}
           />
         ))}
       </div>

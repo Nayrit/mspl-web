@@ -4,25 +4,31 @@ import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import ClientLogo from "@/components/ui/ClientLogo";
 import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
+import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
 const clientLogos = [
-  { name: "Bangladesh Bank",           slug: "bangladesh-bank", imagePath: "/clients/bangladesh-bank.png" },
-  { name: "NCTB Bangladesh",           slug: "nctb",            imagePath: "/clients/nctb.png" },
-  { name: "Sonali Bank PLC",           slug: "sonali-bank",     imagePath: "/clients/sonali-bank.png" },
-  { name: "BRAC",                      slug: "brac",            imagePath: "/clients/brac.png" },
-  { name: "Grameenphone",              slug: "grameenphone",    imagePath: "/clients/Grameenphone.png" },
-  { name: "Robi Axiata",               slug: "robi",            imagePath: "/clients/robi.png" },
-  { name: "Dutch-Bangla Bank",         slug: "dbbl",            imagePath: "/clients/dbbl.png" },
-  { name: "National Board of Revenue", slug: "nbr",             imagePath: "/clients/nbr.png" },
-  { name: "DESCO",                     slug: "desco",           imagePath: "/clients/desco.png" },
-  { name: "ACI Limited",               slug: "aci",             imagePath: "/clients/aci.png" },
-  { name: "Square Group",              slug: "square",          imagePath: "/clients/square.png" },
-  { name: "BRAC University",           slug: "brac-university", imagePath: "/clients/brac-university.png" },
-  { name: "Marico Bangladesh",         slug: "marico",          imagePath: "/clients/marico.png" },
-  { name: "The City Bank",             slug: "the-city-bank",   imagePath: "/clients/the-city-bank.png" },
+  { name: "Bangladesh Bank",           slug: "bangladesh-bank", slotId: "client-bangladesh-bank", imagePath: "/clients/bangladesh-bank.png" },
+  { name: "NCTB Bangladesh",           slug: "nctb",            slotId: "client-nctb",            imagePath: "/clients/nctb.png" },
+  { name: "Sonali Bank PLC",           slug: "sonali-bank",     slotId: "client-sonali-bank",     imagePath: "/clients/sonali-bank.png" },
+  { name: "BRAC",                      slug: "brac",            slotId: "client-brac",            imagePath: "/clients/brac.png" },
+  { name: "Grameenphone",              slug: "grameenphone",    slotId: "client-grameenphone",    imagePath: "/clients/Grameenphone.png" },
+  { name: "Robi Axiata",               slug: "robi",            slotId: "client-robi",            imagePath: "/clients/robi.png" },
+  { name: "Dutch-Bangla Bank",         slug: "dbbl",            slotId: "client-dbbl",            imagePath: "/clients/dbbl.png" },
+  { name: "National Board of Revenue", slug: "nbr",             slotId: "client-nbr",             imagePath: "/clients/nbr.png" },
+  { name: "DESCO",                     slug: "desco",           slotId: "client-desco",           imagePath: "/clients/desco.png" },
+  { name: "ACI Limited",               slug: "aci",             slotId: "client-aci",             imagePath: "/clients/aci.png" },
+  { name: "Square Group",              slug: "square",          slotId: "client-square",          imagePath: "/clients/square.png" },
+  { name: "BRAC University",           slug: "brac-university", slotId: "client-brac-university", imagePath: "/clients/brac-university.png" },
+  { name: "Marico Bangladesh",         slug: "marico",          slotId: "client-marico",          imagePath: "/clients/marico.png" },
+  { name: "The City Bank",             slug: "the-city-bank",   slotId: "client-city-bank",       imagePath: "/clients/the-city-bank.png" },
 ];
 
 const sectors = ["Government", "Finance & Banking", "Education", "Healthcare", "FMCG Brands"];
+
+function ResolvedClientLogo({ client }: { client: (typeof clientLogos)[number] }) {
+  const imagePath = useSiteImage(client.slotId, client.imagePath);
+  return <ClientLogo name={client.name} slug={client.slug} imagePath={imagePath} />;
+}
 
 function LogoMarqueeRow({ logos, reverse = false }: { logos: typeof clientLogos; reverse?: boolean }) {
   const items = [...logos, ...logos];
@@ -37,7 +43,7 @@ function LogoMarqueeRow({ logos, reverse = false }: { logos: typeof clientLogos;
       >
         {items.map((client, i) => (
           <div key={`${client.slug}-${i}`} className="flex-shrink-0">
-            <ClientLogo name={client.name} slug={client.slug} imagePath={client.imagePath} />
+            <ResolvedClientLogo client={client} />
           </div>
         ))}
       </div>

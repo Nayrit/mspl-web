@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
+import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
 interface PageHeroProps {
   eyebrow: string;
@@ -13,6 +14,8 @@ interface PageHeroProps {
 }
 
 export default function PageHero({ eyebrow, headline, subhead, image, dark = false, compact = false }: PageHeroProps) {
+  const texture = useSiteImage("brand-texture", "/paper-texture.jpg");
+
   return (
     <section
       className={`relative overflow-hidden ${compact ? "pt-32 pb-16 lg:pt-40 lg:pb-20" : "pt-32 pb-20 lg:pt-44 lg:pb-28"}`}
@@ -29,7 +32,10 @@ export default function PageHero({ eyebrow, headline, subhead, image, dark = fal
       )}
 
       {!image && (
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url('/paper-texture.jpg')", backgroundSize: "cover" }} />
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{ backgroundImage: `url('${texture}')`, backgroundSize: "cover" }}
+        />
       )}
 
       <div className="container-editorial relative z-10 max-w-4xl">

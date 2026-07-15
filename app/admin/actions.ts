@@ -2,8 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { promises as fs } from "fs";
-import path from "path";
 import {
   createAdminSession,
   destroyAdminSession,
@@ -11,7 +9,9 @@ import {
   verifyAdminCredentials,
 } from "@/lib/admin-auth";
 import { getJobOpenings, saveJobOpenings, slugifyJobId } from "@/lib/cms/careers";
-import { bustImageCache, getImageSlot, publicPathFromWebPath } from "@/lib/cms/images";
+import { getImageSlot, saveUploadedImage, versionedImagePath } from "@/lib/cms/images";
+import { detectImageType } from "@/lib/file-magic";
+import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 import type { JobOpening } from "@/lib/cms/types";
 
 async function requireAdmin() {
@@ -23,6 +23,11 @@ async function requireAdmin() {
 export async function loginAction(formData: FormData): Promise<{ error?: string }> {
   const username = String(formData.get("username") ?? "").trim();
   const password = String(formData.get("password") ?? "");
+
+  const ip = await getClientIp();
+  if (isRateLimited(`admin-login:${ip}`, 5, 15 * 60 * 1000)) {
+    return { error: "Too many login attempts. Try again in 15 minutes." };
+  }
 
   if (!verifyAdminCredentials(username, password)) {
     return { error: "Invalid username or password." };
@@ -103,13 +108,9 @@ export async function deleteJobAction(formData: FormData): Promise<void> {
   redirect("/admin/careers");
 }
 
-const ALLOWED_MIME: Record<string, string> = {
-  "image/jpeg": ".jpg",
-  "image/png": ".png",
-  "image/webp": ".webp",
-};
-
-export async function uploadImageAction(formData: FormData): Promise<{ error?: string; success?: string }> {
+export async function uploadImageAction(
+  formData: FormData,
+): Promise<{ error?: string; success?: string; path?: string }> {
   await requireAdmin();
 
   const slotId = String(formData.get("slotId") ?? "").trim();
@@ -126,26 +127,19 @@ export async function uploadImageAction(formData: FormData): Promise<{ error?: s
   const slot = await getImageSlot(slotId);
   if (!slot) return { error: "Unknown image slot." };
 
-  const extFromMime = ALLOWED_MIME[file.type];
-  const currentExt = path.extname(slot.path).toLowerCase();
-  if (!extFromMime) {
-    return { error: "Only JPG, PNG, or WebP images are allowed." };
+  const buffer = new Uint8Array(await file.arrayBuffer());
+  const detected = detectImageType(buffer);
+  if (!detected) {
+    return { error: "File is not a valid JPEG, PNG, or WebP image." };
   }
 
-  // Keep the existing public path extension when possible so hardcoded URLs still work.
-  // If formats differ, still write to the configured path (browser will handle content by path).
-  const targetPath = publicPathFromWebPath(slot.path);
-  const buffer = Buffer.from(await file.arrayBuffer());
-  await fs.mkdir(path.dirname(targetPath), { recursive: true });
-  await fs.writeFile(targetPath, buffer);
+  const ext = detected === "jpeg" ? ".jpg" : detected === "png" ? ".png" : ".webp";
+  const updated = await saveUploadedImage(slotId, buffer, ext);
 
-  // If user uploads a different format to a .jpg path, file is still written there —
-  // recommend matching format in admin UI. Cache bust via images.json.
-  void currentExt;
-  void extFromMime;
-
-  await bustImageCache(slotId);
-  revalidatePath("/");
+  revalidatePath("/", "layout");
   revalidatePath("/admin/images");
-  return { success: `Updated ${slot.label}.` };
+  return {
+    success: `Updated ${updated.label}.`,
+    path: versionedImagePath(updated),
+  };
 }

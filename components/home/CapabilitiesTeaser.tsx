@@ -6,17 +6,33 @@ import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
+import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
 const equipment = [
-  { name: "Heidelberg", logo: "/logos/heidelberg.png", className: "h-8 sm:h-10 w-auto max-w-[180px] sm:max-w-[210px] object-contain" },
-  { name: "Gallus",     logo: "/logos/gallus.png",     className: "h-7 sm:h-9 w-auto max-w-[160px] sm:max-w-[180px] object-contain" },
-  { name: "Komori",     logo: "/logos/komori.png",     className: "h-7 sm:h-9 w-auto max-w-[165px] sm:max-w-[190px] object-contain" },
-  { name: "Nilpeter",   logo: "/logos/nilpeter.png",   className: "h-8 sm:h-10 w-auto max-w-[165px] sm:max-w-[190px] object-contain" },
+  { name: "Heidelberg", slotId: "home-logo-heidelberg", logo: "/logos/heidelberg.png", className: "h-8 sm:h-10 w-auto max-w-[180px] sm:max-w-[210px] object-contain" },
+  { name: "Gallus",     slotId: "home-logo-gallus",     logo: "/logos/gallus.png",     className: "h-7 sm:h-9 w-auto max-w-[160px] sm:max-w-[180px] object-contain" },
+  { name: "Komori",     slotId: "home-logo-komori",     logo: "/logos/komori.png",     className: "h-7 sm:h-9 w-auto max-w-[165px] sm:max-w-[190px] object-contain" },
+  { name: "Nilpeter",   slotId: "home-logo-nilpeter",   logo: "/logos/nilpeter.png",   className: "h-8 sm:h-10 w-auto max-w-[165px] sm:max-w-[190px] object-contain" },
 ];
 const processSteps = ["Design", "Pre-press", "Printing", "Converting", "Finishing", "Binding", "Packaging"];
 
+function EquipmentLogo({ brand }: { brand: (typeof equipment)[number] }) {
+  const logo = useSiteImage(brand.slotId, brand.logo);
+  return (
+    <div className="flex items-center justify-start h-14 sm:h-16 transition-transform duration-300 hover:scale-105">
+      <img
+        src={logo}
+        alt={brand.name}
+        title={brand.name}
+        className={`${brand.className} grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-300`}
+      />
+    </div>
+  );
+}
+
 export default function CapabilitiesTeaser() {
   const { t } = useLang();
+  const factoryImage = useSiteImage("home-capabilities-factory", "/capabilities-factory.jpg");
   const ref = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -74,14 +90,7 @@ export default function CapabilitiesTeaser() {
                 <p className="eyebrow text-charcoal-300 mb-5">World-class press manufacturers</p>
                 <div className="grid grid-cols-2 gap-y-8 gap-x-10 sm:gap-x-14 items-center max-w-lg sm:max-w-xl">
                   {equipment.map((brand) => (
-                    <div key={brand.name} className="flex items-center justify-start h-14 sm:h-16 transition-transform duration-300 hover:scale-105">
-                      <img
-                        src={brand.logo}
-                        alt={brand.name}
-                        title={brand.name}
-                        className={`${brand.className} grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-300`}
-                      />
-                    </div>
+                    <EquipmentLogo key={brand.name} brand={brand} />
                   ))}
                 </div>
               </div>
@@ -101,7 +110,7 @@ export default function CapabilitiesTeaser() {
             <div className="relative">
               <div className="relative overflow-hidden aspect-[4/5]">
                 <motion.img
-                  src="/capabilities-factory.jpg"
+                  src={factoryImage}
                   alt="Master Simex printing facility interior with Heidelberg presses"
                   className="w-full h-[110%] object-cover"
                   style={{ y: imgY }}

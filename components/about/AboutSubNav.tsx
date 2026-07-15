@@ -12,19 +12,15 @@ const aboutSections = [
 
 export default function AboutSubNav() {
   const pathname = usePathname();
-  const [activeId, setActiveId] = useState<string>("mission");
+  const [activeId, setActiveId] = useState<string>(() => {
+    if (typeof window === "undefined") return "mission";
+    const hash = window.location.hash.replace("#", "");
+    return ["mission", "history", "leadership"].includes(hash) ? hash : "mission";
+  });
 
   useEffect(() => {
-    // Check if hash exists on load
-    if (typeof window !== "undefined" && window.location.hash) {
-      const hash = window.location.hash.replace("#", "");
-      if (["mission", "history", "leadership"].includes(hash)) {
-        setActiveId(hash);
-      }
-    }
-
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 140; // offset for sticky headers
+      const scrollPos = window.scrollY + 140;
       let currentSection = "mission";
 
       for (const section of aboutSections) {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { footerWhatWeDoLinks, companyLinks } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site";
+import SiteImage from "@/components/ui/SiteImage";
 
 export default function Footer() {
   return (
@@ -11,8 +12,9 @@ export default function Footer() {
           {/* Col 1: Brand */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <img
-                src="/mspl-logo.png"
+              <SiteImage
+                slotId="brand-logo"
+                fallback="/mspl-logo.png"
                 alt="Master Simex Paper Limited"
                 className="h-11 w-auto object-contain brightness-110"
               />

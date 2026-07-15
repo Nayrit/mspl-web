@@ -4,19 +4,25 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
+import { useSiteImages } from "@/components/ui/SiteImagesContext";
 
-const slides = [
-  { src: "/hero-bg.jpg",              alt: "Master Simex — elevating design" },
-  { src: "/hero-bg-2.jpg",            alt: "Master Simex — elevating ideas" },
-  { src: "/card-rigid-boxes.jpg",     alt: "Master Simex — elevating shapes" },
-  { src: "/hero-bg-4.jpg",            alt: "Master Simex — elevating inspiration" },
-  { src: "/sustainability-solar.jpg", alt: "Master Simex — elevating sustainability" },
-  { src: "/capabilities-factory.jpg", alt: "Master Simex — elevating creativity" },
+const slideMeta = [
+  { slotId: "home-hero-1", fallback: "/hero-bg.jpg",              alt: "Master Simex — elevating design" },
+  { slotId: "home-hero-2", fallback: "/hero-bg-2.jpg",            alt: "Master Simex — elevating ideas" },
+  { slotId: "home-hero-3", fallback: "/card-rigid-boxes.jpg",     alt: "Master Simex — elevating shapes" },
+  { slotId: "home-hero-4", fallback: "/hero-bg-4.jpg",            alt: "Master Simex — elevating inspiration" },
+  { slotId: "home-hero-5", fallback: "/sustainability-solar.jpg", alt: "Master Simex — elevating sustainability" },
+  { slotId: "home-hero-6", fallback: "/capabilities-factory.jpg", alt: "Master Simex — elevating creativity" },
 ];
 const SLIDE_MS = 3800;
 
 export default function HeroSection() {
   const { t } = useLang();
+  const images = useSiteImages();
+  const slides = slideMeta.map((s) => ({
+    src: images[s.slotId] || s.fallback,
+    alt: s.alt,
+  }));
   const sectionRef = useRef<HTMLElement>(null);
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);

@@ -5,18 +5,19 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/components/ui/LanguageContext";
+import { useSiteImage, useSiteImages } from "@/components/ui/SiteImagesContext";
 
 const navLinks = [
   { key: "about" as const,          href: "/about" },
   { key: "whatWeDo" as const,       href: "/what-we-do", hasMega: true,
     megaItems: [
-      { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging",  img: "/card-offset-packaging.jpg",  desc: "Commercial packaging with premium finishes", highlighted: true },
-      { label: "Computer Forms",              href: "/what-we-do/computer-forms",    img: "/card-computer-forms.jpg",    desc: "Precision continuous paper & OMR sheets" },
-      { label: "Business Forms",              href: "/what-we-do/business-forms",    img: "/card-computer-forms.jpg",    desc: "NCR multi-ply auto-carbon forms" },
-      { label: "Web Printing",                href: "/what-we-do/web-printing",       img: "/card-web-printing.jpg",      desc: "Textbooks, exercise books & calendars at volume" },
-      { label: "Rigid Boxes",                 href: "/what-we-do/rigid-boxes",        img: "/card-rigid-boxes.jpg",       desc: "Luxury packaging on automated smart lines" },
-      { label: "Thermal & ATM/POS Rolls",     href: "/what-we-do/thermal-rolls",     img: "/card-thermal-rolls.jpg",     desc: "Precision-slit, dust-free transactional rolls" },
-      { label: "Stickers & Labels",           href: "/what-we-do/stickers-labels",   img: "/card-stickers-labels.jpg",   desc: "High-definition adhesive labels, built to stick" },
+      { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging",  slotId: "nav-mega-offset",         img: "/card-offset-packaging.jpg",  desc: "Commercial packaging with premium finishes", highlighted: true },
+      { label: "Computer Forms",              href: "/what-we-do/computer-forms",    slotId: "nav-mega-computer-forms", img: "/card-computer-forms.jpg",    desc: "Precision continuous paper & OMR sheets" },
+      { label: "Business Forms",              href: "/what-we-do/business-forms",    slotId: "nav-mega-business-forms", img: "/card-computer-forms.jpg",    desc: "NCR multi-ply auto-carbon forms" },
+      { label: "Web Printing",                href: "/what-we-do/web-printing",       slotId: "nav-mega-web",            img: "/card-web-printing.jpg",      desc: "Textbooks, exercise books & calendars at volume" },
+      { label: "Rigid Boxes",                 href: "/what-we-do/rigid-boxes",        slotId: "nav-mega-rigid",          img: "/card-rigid-boxes.jpg",       desc: "Luxury packaging on automated smart lines" },
+      { label: "Thermal & ATM/POS Rolls",     href: "/what-we-do/thermal-rolls",     slotId: "nav-mega-thermal",        img: "/card-thermal-rolls.jpg",     desc: "Precision-slit, dust-free transactional rolls" },
+      { label: "Stickers & Labels",           href: "/what-we-do/stickers-labels",   slotId: "nav-mega-labels",         img: "/card-stickers-labels.jpg",   desc: "High-definition adhesive labels, built to stick" },
     ],
   },
   { key: "capabilities" as const, href: "/capabilities" },
@@ -27,6 +28,8 @@ const navLinks = [
 
 export default function Header() {
   const { t } = useLang();
+  const logo = useSiteImage("brand-logo", "/mspl-logo.png");
+  const images = useSiteImages();
   const pathname = usePathname();
   const [scrolled,   setScrolled]   = useState(false);
   const [megaOpen,   setMegaOpen]   = useState(false);
@@ -70,7 +73,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center" aria-label="Master Simex — Home">
             <img
-              src="/mspl-logo.png"
+              src={logo}
               alt="Master Simex Paper Limited"
               className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
             />
@@ -132,7 +135,7 @@ export default function Header() {
                               >
                                 <div className="relative w-full flex-1 min-h-[190px] xl:min-h-[220px] overflow-hidden bg-charcoal-100 mb-4">
                                   <img
-                                    src={item.megaItems[0].img}
+                                    src={images[item.megaItems[0].slotId] || item.megaItems[0].img}
                                     alt={item.megaItems[0].label}
                                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                                   />
@@ -164,7 +167,7 @@ export default function Header() {
                                   <div>
                                     <div className="relative aspect-[16/9] w-full overflow-hidden bg-charcoal-100 mb-2.5">
                                       <img
-                                        src={mega.img}
+                                        src={images[mega.slotId] || mega.img}
                                         alt={mega.label}
                                         className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                                       />

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/pages/PageHero";
 import ProductPageTemplate from "@/components/pages/ProductPageTemplate";
-import { getProduct, products, productSubPages } from "@/lib/content/products";
+import { getProduct, products, productSubPages, applyCmsImagesToProduct } from "@/lib/content/products";
+import { getImagePathMap } from "@/lib/cms/images";
 import { pageMetadata } from "@/lib/seo";
 
 interface Props {
@@ -24,8 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProduct(slug);
-  if (!product) notFound();
+  const base = getProduct(slug);
+  if (!base) notFound();
+
+  const imageMap = await getImagePathMap();
+  const product = applyCmsImagesToProduct(base, imageMap);
 
   return (
     <>

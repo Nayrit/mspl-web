@@ -4,7 +4,8 @@ import PageHero from "@/components/pages/PageHero";
 import CTABand from "@/components/pages/CTABand";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
-import { products } from "@/lib/content/products";
+import { products, applyCmsImagesToProduct } from "@/lib/content/products";
+import { getImagePath, getImagePathMap } from "@/lib/cms/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
@@ -13,14 +14,18 @@ export const metadata: Metadata = pageMetadata(
   "/what-we-do",
 );
 
-export default function WhatWeDoOverviewPage() {
+export default async function WhatWeDoOverviewPage() {
+  const heroImage = await getImagePath("page-whatwedo-hero");
+  const imageMap = await getImagePathMap();
+  const catalog = products.map((p) => applyCmsImagesToProduct(p, imageMap));
+
   return (
     <>
       <PageHero
         eyebrow="What we do"
         headline="Seven specialisms. One roof."
         subhead="An extensive portfolio, meticulously designed to meet the most specialised demands — blending cutting-edge technology with uncompromising quality."
-        image="/hero-bg-3.jpg"
+        image={heroImage || "/hero-bg-3.jpg"}
       />
 
       <section className="section-padding bg-parchment">
@@ -36,7 +41,7 @@ export default function WhatWeDoOverviewPage() {
       <section className="section-padding bg-parchment-50 pt-0">
         <div className="container-editorial">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-charcoal-100">
-            {products.map((product, i) => (
+            {catalog.map((product, i) => (
               <ScrollFadeIn key={product.slug} direction="up" delay={i * 0.06}>
                 <Link href={`/what-we-do/${product.slug}`} className="group block bg-parchment-50 overflow-hidden h-full hover:bg-parchment-200 transition-colors duration-300">
                   <div className="aspect-[16/10] overflow-hidden">

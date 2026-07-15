@@ -264,3 +264,16 @@ export function getProduct(slug: string): ProductPage | null {
     seo: sub.seo ?? parent.seo,
   } as ProductPage;
 }
+
+/** Apply CMS overrides so product heroes / galleries update independently. */
+export function applyCmsImagesToProduct(
+  product: ProductPage,
+  map: Record<string, string>,
+): ProductPage {
+  const image = map[`product-${product.slug}`] || product.image;
+  const gallery = product.gallery?.map((item, index) => ({
+    ...item,
+    image: map[`product-web-gallery-${index + 1}`] || item.image,
+  }));
+  return { ...product, image, gallery };
+}

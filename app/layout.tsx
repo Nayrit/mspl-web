@@ -6,7 +6,9 @@ import SiteChrome from "@/components/layout/SiteChrome";
 import { LanguageProvider } from "@/components/ui/LanguageContext";
 import { ConsentProvider } from "@/components/ui/ConsentContext";
 import { SplashProvider } from "@/components/ui/SplashProvider";
+import { SiteImagesProvider } from "@/components/ui/SiteImagesContext";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import { getImagePathMap } from "@/lib/cms/images";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
 const playfair = Playfair_Display({
@@ -55,7 +57,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const imageMap = await getImagePathMap();
+
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
@@ -65,13 +69,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="font-sans antialiased" style={{ backgroundColor: "#faf8f5", color: "#25282b" }}>
         <ConsentProvider>
-          <SplashProvider>
-            <LanguageProvider>
-              <GoogleAnalytics />
-              <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />
-              <SiteChrome>{children}</SiteChrome>
-            </LanguageProvider>
-          </SplashProvider>
+          <SiteImagesProvider map={imageMap}>
+            <SplashProvider>
+              <LanguageProvider>
+                <GoogleAnalytics />
+                <JsonLd data={[organizationJsonLd(), localBusinessJsonLd()]} />
+                <SiteChrome>{children}</SiteChrome>
+              </LanguageProvider>
+            </SplashProvider>
+          </SiteImagesProvider>
         </ConsentProvider>
       </body>
     </html>

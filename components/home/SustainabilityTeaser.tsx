@@ -6,6 +6,7 @@ import Link from "next/link";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { useLang } from "@/components/ui/LanguageContext";
+import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
 const sustainabilityStats = [
   { value: "50%",    label: "Of Narsingdi facility powered by solar" },
@@ -15,6 +16,7 @@ const sustainabilityStats = [
 
 export default function SustainabilityTeaser() {
   const { t } = useLang();
+  const image = useSiteImage("home-sustainability", "/sustainability-solar.jpg");
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const yImg = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
@@ -23,7 +25,7 @@ export default function SustainabilityTeaser() {
   return (
     <section ref={ref} className="section-padding relative overflow-hidden" style={{ backgroundColor: "#160e04" }} aria-label="Sustainability commitment">
       <motion.div className="absolute inset-0 w-full h-[115%] -top-[7.5%]" style={{ y: yImg }}>
-        <img src="/sustainability-solar.jpg" alt="Solar panels powering the Master Simex Narsingdi facility" className="w-full h-full object-cover object-top" loading="lazy" />
+        <img src={image} alt="Solar panels powering the Master Simex Narsingdi facility" className="w-full h-full object-cover object-top" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#160e04]/95 via-[#160e04]/75 to-[#160e04]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#160e04]/60 to-transparent" />
       </motion.div>

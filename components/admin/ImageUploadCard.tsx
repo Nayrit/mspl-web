@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { uploadImageAction } from "@/app/admin/actions";
 import type { ImageSlot } from "@/lib/cms/types";
 
 export default function ImageUploadCard({ slot }: { slot: ImageSlot }) {
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const [preview, setPreview] = useState(
@@ -24,8 +26,9 @@ export default function ImageUploadCard({ slot }: { slot: ImageSlot }) {
     }
     setStatus("success");
     setMessage(result.success ?? "Updated.");
-    setPreview(`${slot.path}?v=${Date.now()}`);
+    if (result.path) setPreview(result.path);
     form.reset();
+    router.refresh();
   }
 
   return (
@@ -36,9 +39,10 @@ export default function ImageUploadCard({ slot }: { slot: ImageSlot }) {
       </div>
       <div>
         <h2 className="font-semibold text-sm">{slot.label}</h2>
-        <p className="text-xs text-[#72777d] mt-1 font-mono">{slot.path}</p>
+        <p className="text-xs text-[#72777d] mt-1">{slot.usedOn}</p>
+        <p className="text-[10px] text-[#a0a4a8] mt-1 font-mono break-all">{slot.path}</p>
       </div>
-      <form onSubmit={onSubmit} className="space-y-3">
+      <form onSubmit={onSubmit} className="space-y-3 mt-auto">
         <input type="hidden" name="slotId" value={slot.id} />
         <input
           type="file"

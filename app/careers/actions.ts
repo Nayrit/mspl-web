@@ -1,6 +1,7 @@
 "use server";
 
 import { sendCareerApplication } from "@/lib/form-submit";
+import { detectDocumentType } from "@/lib/file-magic";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
@@ -67,13 +68,42 @@ export async function submitCareerApplication(formData: FormData): Promise<FormR
     return { success: false, error: "CV must be a PDF or Word document (.pdf, .doc, .docx)." };
   }
 
+  const fileBytes = new Uint8Array(await attachment.arrayBuffer());
+  const detected = detectDocumentType(fileBytes);
+  const lowerName = attachment.name.toLowerCase();
+
+  if (!detected) {
+    return { success: false, error: "CV file content is not a valid PDF or Word document." };
+  }
+  if (detected === "pdf" && !lowerName.endsWith(".pdf")) {
+    return { success: false, error: "CV extension must match the file type (.pdf)." };
+  }
+  if (detected === "doc" && !lowerName.endsWith(".doc")) {
+    return { success: false, error: "CV extension must match the file type (.doc)." };
+  }
+  if (detected === "docx" && !lowerName.endsWith(".docx")) {
+    return { success: false, error: "CV extension must match the file type (.docx)." };
+  }
+
   const linkedin = String(formData.get("linkedin") ?? "").trim();
   if (linkedin && !/^https?:\/\/.+/i.test(linkedin)) {
     return { success: false, error: "Please enter a valid URL for your LinkedIn or portfolio." };
   }
 
   try {
-    await sendCareerApplication(formData);
+    const outbound = new FormData();
+    for (const [key, value] of formData.entries()) {
+      if (key === "attachment") continue;
+      outbound.append(key, value);
+    }
+    outbound.append(
+      "attachment",
+      new File([fileBytes], attachment.name, {
+        type: attachment.type || "application/octet-stream",
+      }),
+    );
+
+    await sendCareerApplication(outbound);
     return { success: true };
   } catch {
     return { success: false, error: "Something went wrong. Please try again or email us directly." };

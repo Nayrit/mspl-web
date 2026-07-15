@@ -7,6 +7,7 @@ import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { capabilitiesContent, machines } from "@/lib/content/capabilities";
 import { sustainabilityPage } from "@/lib/content/sustainability-page";
+import { getImagePath, getImagePathMap } from "@/lib/cms/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata(
@@ -15,13 +16,20 @@ export const metadata: Metadata = pageMetadata(
   "/capabilities",
 );
 
-export default function CapabilitiesPage() {
+export default async function CapabilitiesPage() {
   const c = capabilitiesContent;
   const s = sustainabilityPage;
+  const imageMap = await getImagePathMap();
+  const heroImage = await getImagePath("page-capabilities-hero");
+  const logisticsImage = await getImagePath("capabilities-logistics");
+  const gallery = c.gallery.map((item, i) => ({
+    ...item,
+    image: imageMap[`capabilities-gallery-${i + 1}`] || item.image,
+  }));
 
   return (
     <>
-      <PageHero eyebrow={c.hero.eyebrow} headline={c.hero.headline} image="/capabilities-factory.jpg" />
+      <PageHero eyebrow={c.hero.eyebrow} headline={c.hero.headline} image={heroImage || "/capabilities-factory.jpg"} />
 
       <section className="section-padding bg-parchment">
         <div className="container-editorial max-w-3xl">
@@ -87,7 +95,7 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* 6-Picture Facility & Production Gallery Placeholders */}
-      {c.gallery && c.gallery.length > 0 && (
+      {gallery.length > 0 && (
         <section className="section-padding bg-parchment border-t border-charcoal-100">
           <div className="container-editorial">
             <ScrollFadeIn direction="up">
@@ -100,7 +108,7 @@ export default function CapabilitiesPage() {
             </ScrollFadeIn>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {c.gallery.map((item, i) => (
+              {gallery.map((item, i) => (
                 <ScrollFadeIn key={item.slot + i} direction="up" delay={i * 0.08}>
                   <div className="aspect-square sm:aspect-[4/5] overflow-hidden relative group bg-charcoal cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
                     <img
@@ -246,7 +254,7 @@ export default function CapabilitiesPage() {
           </ScrollFadeIn>
           <ScrollFadeIn direction="left" delay={0.1}>
             <div className="aspect-video overflow-hidden">
-              <img src="/hero-bg-2.jpg" alt="Master Simex logistics and distribution" className="w-full h-full object-cover" loading="lazy" />
+              <img src={logisticsImage || "/hero-bg-2.jpg"} alt="Master Simex logistics and distribution" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </ScrollFadeIn>
         </div>
