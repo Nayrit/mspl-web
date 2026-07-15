@@ -12,13 +12,20 @@ const aboutSections = [
 
 export default function AboutSubNav() {
   const pathname = usePathname();
-  const [activeId, setActiveId] = useState<string>(() => {
-    if (typeof window === "undefined") return "mission";
-    const hash = window.location.hash.replace("#", "");
-    return ["mission", "history", "leadership"].includes(hash) ? hash : "mission";
-  });
+  const [activeId, setActiveId] = useState<string>("mission");
 
   useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash && ["mission", "history", "leadership"].includes(hash)) {
+      setActiveId(hash);
+      const el = document.getElementById(hash);
+      if (el) {
+        const offset = 120;
+        const targetTop = el.offsetTop - offset;
+        window.scrollTo({ top: targetTop, behavior: "instant" });
+      }
+    }
+
     const handleScroll = () => {
       const scrollPos = window.scrollY + 140;
       let currentSection = "mission";

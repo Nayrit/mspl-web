@@ -15,19 +15,19 @@ export const capabilitiesContent = {
   facilities: [
     {
       name: "Factory 1",
-      location: "Madhabdi, Narsingdi",
+      location: "Choitab, Pachdona, Narshingdi, Bangladesh",
       note: "Our largest site, now drawing half its power from solar.",
-      mapUrl: "https://maps.app.goo.gl/RzGojVqmjPKdDhjq7",
+      mapUrl: "https://maps.app.goo.gl/QFJkstxSg6XzwHWq9",
     },
     {
       name: "Factory 2",
-      location: "Shonpara, Narayanganj",
-      mapUrl: "https://maps.app.goo.gl/7hfhs6sajjY2ZfVXA",
+      location: "Kudabo, Pubali, Gazipur, Bangladesh",
+      mapUrl: "https://maps.app.goo.gl/Y1cgRtrrx71Wtoar9",
     },
     {
       name: "Factory 3",
-      location: "Pubail, Gazipur",
-      mapUrl: "https://maps.app.goo.gl/ibAAtpmcVxfVZPLLA",
+      location: "Kandail, Satgram, Madhabdi, Narshingdi, Bangladesh",
+      mapUrl: "https://www.google.com/maps/place/23.8405,90.6205",
     },
   ],
   gallery: [
