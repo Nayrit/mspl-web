@@ -7,9 +7,11 @@ export async function sendContactEmail(fields: {
   email: string;
   company?: string;
   phone?: string;
+  subject?: string;
   productFamily?: string;
   message: string;
 }): Promise<void> {
+  const subjectVal = fields.subject || fields.productFamily || "N/A";
   const response = await fetch(FORM_ENDPOINT, {
     method: "POST",
     headers: {
@@ -17,13 +19,13 @@ export async function sendContactEmail(fields: {
       Accept: "application/json",
     },
     body: JSON.stringify({
-      _subject: `New Website Enquiry from ${fields.name}`,
+      _subject: fields.subject ? `${fields.subject} - Enquiry from ${fields.name}` : `New Website Enquiry from ${fields.name}`,
       _captcha: "false",
       Name: fields.name,
       Email: fields.email,
       Phone: fields.phone || "N/A",
       Company: fields.company || "N/A",
-      ProductFamily: fields.productFamily || "N/A",
+      Subject: subjectVal,
       Message: fields.message,
     }),
   });

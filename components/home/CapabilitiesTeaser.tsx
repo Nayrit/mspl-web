@@ -7,7 +7,12 @@ import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
 
-const equipment = ["Heidelberg", "Komori", "Gallus", "Nilpeter"];
+const equipment = [
+  { name: "Heidelberg", logo: "/logos/heidelberg.png" },
+  { name: "Komori",     logo: "/logos/komori.png" },
+  { name: "Gallus",     logo: "/logos/gallus.png" },
+  { name: "Nilpeter",   logo: "/logos/nilpeter.png" },
+];
 const processSteps = ["Design", "Pre-press", "Printing", "Converting", "Finishing", "Binding", "Packaging"];
 
 export default function CapabilitiesTeaser() {
@@ -67,11 +72,16 @@ export default function CapabilitiesTeaser() {
             <ScrollFadeIn direction="up" delay={0.3}>
               <div className="mb-10 pt-8 border-t border-charcoal-100">
                 <p className="eyebrow text-charcoal-300 mb-4 text-[0.6rem]">World-class press manufacturers</p>
-                <div className="flex flex-wrap gap-5">
+                <div className="flex flex-wrap items-center gap-6 sm:gap-8">
                   {equipment.map((brand) => (
-                    <span key={brand} className="font-display font-bold text-xl text-charcoal-200 hover:text-primary transition-colors duration-300 cursor-default hover:scale-105 inline-block">
-                      {brand}
-                    </span>
+                    <div key={brand.name} className="flex items-center transition-transform duration-300 hover:scale-105">
+                      <img
+                        src={brand.logo}
+                        alt={brand.name}
+                        title={brand.name}
+                        className="h-7 sm:h-9 w-auto object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>

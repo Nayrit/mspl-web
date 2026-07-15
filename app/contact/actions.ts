@@ -37,7 +37,7 @@ export async function submitContactForm(data: FormData): Promise<FormResult> {
 
   const company = String(data.get("company") ?? "").trim();
   const phone = String(data.get("phone") ?? "").trim();
-  const productFamily = String(data.get("productFamily") ?? "").trim();
+  const subject = String(data.get("subject") ?? data.get("productFamily") ?? "").trim();
 
   try {
     await sendContactEmail({
@@ -45,7 +45,7 @@ export async function submitContactForm(data: FormData): Promise<FormResult> {
       email,
       company: company || undefined,
       phone: phone || undefined,
-      productFamily: productFamily || undefined,
+      subject: subject || undefined,
       message,
     });
     return { success: true };

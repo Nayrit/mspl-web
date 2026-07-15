@@ -18,10 +18,10 @@ const navLinks = [
       { label: "Stickers & Labels",           href: "/what-we-do/stickers-labels",   img: "/card-stickers-labels.jpg",   desc: "High-definition adhesive labels, built to stick" },
     ],
   },
-  { key: "capabilities"  as const, href: "/capabilities" },
-  { key: "sustainability" as const, href: "/sustainability" },
-  { key: "clients"       as const, href: "/clients" },
-  { key: "contact"       as const, href: "/contact" },
+  { key: "capabilities" as const, href: "/capabilities" },
+  { key: "clients"      as const, href: "/clients" },
+  { key: "contact"      as const, href: "/contact" },
+  { key: "careers"      as const, href: "/careers" },
 ];
 
 export default function Header() {

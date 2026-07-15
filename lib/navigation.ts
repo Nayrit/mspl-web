@@ -35,7 +35,7 @@ export const mainNav = [
   { key: "about", href: "/about" },
   { key: "whatWeDo", href: "/what-we-do", hasMega: true },
   { key: "capabilities", href: "/capabilities" },
-  { key: "sustainability", href: "/sustainability" },
   { key: "clients", href: "/clients" },
   { key: "contact", href: "/contact" },
+  { key: "careers", href: "/careers" },
 ] as const;

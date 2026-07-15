@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import CustomCursor from "@/components/ui/CustomCursor";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import CookieConsent from "@/components/ui/CookieConsent";
 import SplashScreen from "@/components/ui/SplashScreen";
@@ -21,7 +20,6 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
   return (
     <>
       <SplashScreen />
-      <CustomCursor />
       <Header />
       <main id="main-content">{children}</main>
       <Footer />

@@ -8,7 +8,7 @@ const translations = {
   EN: {
     nav: {
       about: "About", whatWeDo: "What We Do", capabilities: "Capabilities",
-      sustainability: "Sustainability", clients: "Clients", contact: "Contact",
+      sustainability: "Sustainability", clients: "Clients", contact: "Contact", careers: "Careers",
       getInTouch: "Get in touch", requestQuote: "Request a quote", downloadProfile: "Company Profile",
     },
     hero: {
@@ -58,7 +58,7 @@ const translations = {
   BN: {
     nav: {
       about: "আমাদের সম্পর্কে", whatWeDo: "আমরা কী করি", capabilities: "সক্ষমতা",
-      sustainability: "টেকসইতা", clients: "ক্লায়েন্ট", contact: "যোগাযোগ",
+      sustainability: "টেকসইতা", clients: "ক্লায়েন্ট", contact: "যোগাযোগ", careers: "ক্যারিয়ার",
       getInTouch: "যোগাযোগ করুন", requestQuote: "কোটেশন অনুরোধ", downloadProfile: "কোম্পানি প্রোফাইল",
     },
     hero: {

@@ -43,7 +43,6 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    cursor: none; /* custom cursor on desktop */
   }
 
   body {

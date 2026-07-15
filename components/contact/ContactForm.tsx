@@ -3,13 +3,14 @@
 import { useState, FormEvent } from "react";
 import { submitContactForm } from "@/app/contact/actions";
 
-const productFamilies = [
+const subjects = [
   "Computer & Business Forms",
   "Web Printing",
   "Offset & Packaging",
   "Thermal & Rolls",
   "Rigid Boxes",
   "Stickers & Labels",
+  "General Enquiry",
   "Other",
 ];
 
@@ -71,11 +72,11 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="productFamily" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Product family</label>
-        <select id="productFamily" name="productFamily" className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors">
-          <option value="">Select a product family</option>
-          {productFamilies.map((p) => (
-            <option key={p} value={p}>{p}</option>
+        <label htmlFor="subject" className="block font-sans text-xs font-medium text-charcoal-400 mb-2 uppercase tracking-wider">Subject</label>
+        <select id="subject" name="subject" className="w-full border border-charcoal-100 bg-parchment-50 px-4 py-3 font-sans text-sm text-charcoal focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors">
+          <option value="">Select a subject</option>
+          {subjects.map((s) => (
+            <option key={s} value={s}>{s}</option>
           ))}
         </select>
       </div>
