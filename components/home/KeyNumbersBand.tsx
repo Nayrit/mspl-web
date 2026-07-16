@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
+import { toImageSrc } from "@/lib/cms/image-path";
 
 const stats = [
   { value: 23,     suffix: "+", label: "Years of manufacturing",   detail: "Established 2002",            slotId: "home-numbers-years",       image: "/hero-bg.webp" },
@@ -30,11 +32,13 @@ function StatTile({
         style={{ backgroundColor: "#25282b" }}
       >
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <img
-            src={image}
+          <Image
+            src={toImageSrc(image)}
             alt=""
-            className="w-full h-full object-cover object-center opacity-25 grayscale transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-45 group-hover:grayscale-0"
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={60}
+            className="object-cover object-center opacity-25 grayscale transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-45 group-hover:grayscale-0"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#25282b] via-[#25282b]/85 to-[#25282b]/40 transition-opacity duration-500 group-hover:opacity-80" />
           <div className="absolute inset-0 bg-[#25282b]/40 transition-colors duration-500 group-hover:bg-[#25282b]/20" />

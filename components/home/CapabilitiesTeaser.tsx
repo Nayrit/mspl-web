@@ -2,11 +2,13 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
+import { toImageSrc } from "@/lib/cms/image-path";
 
 const equipment = [
   { name: "Heidelberg", slotId: "home-logo-heidelberg", logo: "/logos/heidelberg.png", className: "h-8 sm:h-10 w-auto max-w-[180px] sm:max-w-[210px] object-contain" },
@@ -24,6 +26,10 @@ function EquipmentLogo({ brand }: { brand: (typeof equipment)[number] }) {
         src={logo}
         alt={brand.name}
         title={brand.name}
+        width={180}
+        height={40}
+        loading="lazy"
+        decoding="async"
         className={`${brand.className} grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-300`}
       />
     </div>
@@ -111,13 +117,16 @@ export default function CapabilitiesTeaser() {
           <ScrollFadeIn direction="left" delay={0.15}>
             <div className="relative">
               <div className="relative overflow-hidden aspect-[4/5]">
-                <motion.img
-                  src={factoryImage}
-                  alt="Master Simex printing facility interior with Heidelberg presses"
-                  className="w-full h-[110%] object-cover"
-                  style={{ y: imgY }}
-                  loading="lazy"
-                />
+                <motion.div className="absolute inset-0 w-full h-[110%]" style={{ y: imgY }}>
+                  <Image
+                    src={toImageSrc(factoryImage)}
+                    alt="Master Simex printing facility interior with Heidelberg presses"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    quality={70}
+                    className="object-cover"
+                  />
+                </motion.div>
                 <div className="absolute bottom-6 left-6 right-6 bg-charcoal/92 backdrop-blur-sm p-5">
                   <div className="flex items-center justify-between">
                     <div>

@@ -24,7 +24,11 @@ function isCoarsePointer(): boolean {
 
 export default function SplashScreen() {
   const { completeSplash } = useSplash();
-  const logo = useSiteImage("brand-logo", "/mspl-logo-256.webp");
+  // Always prefer the original-quality mark on the splash. CMS uploads under
+  // /uploads/ still apply; the compressed header/footer asset does not.
+  const cmsLogo = useSiteImage("brand-logo", "/mspl-logo.png");
+  const logo =
+    cmsLogo.startsWith("/uploads/") ? cmsLogo.split("?")[0] : "/mspl-logo.png";
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     getReducedMotionSnapshot,
@@ -127,8 +131,8 @@ export default function SplashScreen() {
             <img
               src={logo}
               alt="Master Simex Paper Limited"
-              width={240}
-              height={80}
+              width={480}
+              height={368}
               decoding="async"
               className="w-[min(72vw,240px)] h-auto object-contain"
             />

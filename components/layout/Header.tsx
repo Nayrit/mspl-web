@@ -106,6 +106,9 @@ export default function Header() {
             <img
               src={logo}
               alt="Master Simex Paper Limited"
+              width={160}
+              height={48}
+              decoding="async"
               className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
             />
           </Link>

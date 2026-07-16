@@ -97,7 +97,7 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
             fill
             preload
             sizes="100vw"
-            quality={80}
+            quality={70}
             className="object-cover object-center"
           />
         </div>
@@ -117,7 +117,7 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
                 alt={slides[current].alt}
                 fill
                 sizes="100vw"
-                quality={75}
+                quality={60}
                 loading="lazy"
                 className="object-cover object-center"
               />

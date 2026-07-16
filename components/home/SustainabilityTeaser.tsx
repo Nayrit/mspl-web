@@ -2,11 +2,13 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
+import { toImageSrc } from "@/lib/cms/image-path";
 
 const sustainabilityStats = [
   { value: "50%",    label: "Of Narsingdi facility powered by solar" },
@@ -25,7 +27,14 @@ export default function SustainabilityTeaser() {
   return (
     <section ref={ref} className="section-padding relative overflow-hidden" style={{ backgroundColor: "#160e04" }} aria-label="Sustainability commitment">
       <motion.div className="absolute inset-0 w-full h-[115%] -top-[7.5%]" style={{ y: yImg }}>
-        <img src={image} alt="Solar panels powering the Master Simex Narsingdi facility" className="w-full h-full object-cover object-top" loading="lazy" />
+        <Image
+          src={toImageSrc(image)}
+          alt="Solar panels powering the Master Simex Narsingdi facility"
+          fill
+          sizes="100vw"
+          quality={70}
+          className="object-cover object-top"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-[#160e04]/95 via-[#160e04]/75 to-[#160e04]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#160e04]/60 to-transparent" />
       </motion.div>

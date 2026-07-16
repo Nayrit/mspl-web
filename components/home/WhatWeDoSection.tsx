@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
+import { toImageSrc } from "@/lib/cms/image-path";
 
 const services = [
   {
@@ -106,11 +107,13 @@ function ServiceCard({ service, index, exploreLabel }: { service: typeof service
         className={`relative overflow-hidden rounded-xl group block shadow-lg hover:shadow-2xl active:scale-[0.99] transition-all duration-500 bg-charcoal flex flex-col justify-end ${service.minHeight} h-full`}
       >
         <div className="absolute inset-0">
-          <img
-            src={img}
+          <Image
+            src={toImageSrc(img)}
             alt=""
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+            quality={70}
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className={`absolute inset-0 bg-gradient-to-t ${isPriority ? "from-charcoal/95 via-charcoal/70 to-charcoal/20" : "from-charcoal/95 via-charcoal/80 to-charcoal/30"} group-hover:from-charcoal transition-all duration-500`} />
         </div>
