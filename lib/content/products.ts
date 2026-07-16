@@ -32,13 +32,13 @@ export const products: ProductPage[] = [
     capability: {
       security: "Litho coding, barcode and QR-enabled tracking, with up to 6-colour UV security print and microtext.",
       customisation: "60–100 GSM premium paper, custom pin-feed hole punching, multi-part continuous rolls and folded stacks.",
-      dailyCapacity: "350,000 sheets.",
+      dailyCapacity: "60 boxes/hour continuous form printing capacity across 6 dedicated presses.",
     },
     ctaHeading: "Have a secure computer form to produce?",
-    overviewCapacity: "350,000 sheets/day",
+    overviewCapacity: "60 boxes/hour continuous form print",
     seo: {
       title: "Computer Forms: Continuous Paper & Secure OMR Forms | Master Simex",
-      description: "Precision continuous computer paper, pin-feed forms, and secure OMR/ICR/OCR examination forms with litho coding, QR and UV security. 350,000 sheets/day.",
+      description: "Precision continuous computer paper, pin-feed forms, and secure OMR/ICR/OCR examination forms with litho coding, QR and UV security. 60 boxes/hour print capacity.",
     },
   },
   {
@@ -52,15 +52,15 @@ export const products: ProductPage[] = [
       "Pharmaceutical order sheets", "Bank SWIFT papers", "Delivery challans & receipts", "Custom multi-part vouchers",
     ],
     capability: {
-      machinery: "Precision rotary and collating presses equipped with automated edge-gluing and numbering systems.",
+      machinery: "Rotary continuous form presses and dedicated Clouding/Stating machines producing 8–10 NCR boxes/hour, plus multi-color continuous form printing up to 60 boxes/hour.",
       customisation: "2–5 ply configurations using premium 50–55 GSM CB/CFB/CF carbonless paper, custom serial numbering, and perforated tear-offs.",
-      dailyCapacity: "450,000 sheets.",
+      dailyCapacity: "60 boxes/hour multi-color continuous forms; 8–10 NCR boxes/hour clouding/stating.",
     },
     ctaHeading: "Have a business form to produce?",
-    overviewCapacity: "450,000 sheets/day",
+    overviewCapacity: "60 boxes/hour (8–10 NCR boxes/hour)",
     seo: {
       title: "Business Forms: NCR Multi-ply & Secure Transactional Forms | Master Simex",
-      description: "NCR multi-ply auto-carbon business forms, medical bills, utility forms, and bank SWIFT papers with crisp carbonless transfer. 450,000 sheets/day from Master Simex.",
+      description: "NCR multi-ply auto-carbon business forms, medical bills, utility forms, and bank SWIFT papers with crisp carbonless transfer. 60 boxes/hour continuous print from Master Simex.",
     },
   },
   {
@@ -71,12 +71,12 @@ export const products: ProductPage[] = [
     image: "/card-web-printing.jpg",
     whatWeMake: ["Textbooks", "Guide books", "School magazines", "Exercise books", "Diaries", "Calendars"],
     capability: {
-      machinery: "High-speed press machines with integrated auto-binding systems, all running the latest technology for maximum efficiency.",
+      machinery: "Automatic reel-to-sheet ruling and flexo printing presses (32,000 pcs/H total), high-speed Polar cutting systems (5,000/H), automated sewing machines (20,000/H), and book folding/pin presses (1,200 pcs/H).",
       customisation: "4-colour interior printing and premium 8-colour covers, finished with specialised UV coating.",
-      dailyCapacity: "Printing: 6,000 reams. Binding: 400,000 books.",
+      dailyCapacity: "Ruling & flexo print: 32,000 pcs/hour (700 kg/hour). Book sewing: 20,000 pcs/hour.",
     },
     ctaHeading: "Planning a print run?",
-    overviewCapacity: "6,000 reams printed & 400,000 books bound daily",
+    overviewCapacity: "32,000 pcs/hour ruling & flexo print (20,000 pcs/hour sewn)",
     gallery: [
       {
         slot: "Photo Slot #1",
@@ -117,7 +117,7 @@ export const products: ProductPage[] = [
     ],
     seo: {
       title: "Web Printing: Textbooks, Exercise Books & Educational Print | Master Simex",
-      description: "High-volume web printing of textbooks, guide books, exercise books, diaries and calendars with auto-binding and UV finishing. Reliable nationwide delivery from Bangladesh.",
+      description: "High-volume web printing of textbooks, guide books, exercise books, diaries and calendars with 32,000 pcs/hour flexo ruling and 20,000 pcs/hour automated sewing.",
     },
   },
   {
@@ -132,19 +132,19 @@ export const products: ProductPage[] = [
       "Posters", "Leaflets", "Clip files", "Labels", "Packing materials", "Dispenser boxes", "Danglers",
     ],
     capability: {
-      machinery: "A production line built on equipment from world-renowned, industry-leading brands, for global standards of quality and reliability.",
+      machinery: "High-speed offset presses including Komori Lithrone G37 (15,000 sheets/H), Heidelberg 8-Color (15,000 sheets/H), Heidelberg 6-Color (15,000 sheets/H), Sorz 102 (12,000 sheets/H), and Sork Single Color (10,000 sheets/H), plus automated die-cutting and folder-gluing lines.",
       finishing: [
         "Pre-press services", "Metallised printing", "Textured printing", "Digital printing",
         "Embellished printing", "UV printing", "UV lamination", "Anti-counterfeit features",
         "Cut lamination", "Drip-off effects", "Foil stamping", "Smart die-cutting", "Folder-gluer",
       ],
-      dailyCapacity: "960,000 sheets.",
+      dailyCapacity: "67,000 sheets/hour printing capacity (1,072,000 sheets/day), plus up to 50,000 pcs/hour folder-gluing.",
     },
     ctaHeading: "Bringing a brand to life on paper?",
-    overviewCapacity: "960,000 sheets/day",
+    overviewCapacity: "67,000 sheets/hour (1.07M sheets/day)",
     seo: {
       title: "Offset Printing & Packaging: Commercial Print with Security Finishes | Master Simex",
-      description: "Custom offset printing and packaging: brochures, reports, medicine and FMCG packaging with foil, UV, drip-off, die-cutting and anti-counterfeit features. 960,000 sheets/day.",
+      description: "Custom offset printing and packaging: brochures, reports, medicine and FMCG packaging with foil, UV, drip-off, die-cutting and anti-counterfeit features. 67,000 sheets/hour capacity.",
     },
   },
   {
@@ -155,14 +155,14 @@ export const products: ProductPage[] = [
     image: "/card-thermal-rolls.jpg",
     whatWeMake: ["POS rolls", "ATM rolls", "ECG rolls", "Fax rolls", "Telex rolls"],
     capability: {
-      machinery: "High-precision slitting and rewinding systems, engineered specifically for consistent, dust-free thermal roll conversion.",
-      dailyCapacity: "35,000 rolls per day.",
+      machinery: "8 high-precision POS Roll cutting machines (5,000 pcs/day each), plus automated plotter machines (10–15 rolls/H) and shrink wrapping lines (100 packs/H).",
+      dailyCapacity: "40,000 rolls/day across 8 cutting lines (5,000 pcs/day per machine).",
     },
     ctaHeading: "Need rolls that won't let you down?",
-    overviewCapacity: "35,000 rolls/day",
+    overviewCapacity: "40,000 rolls/day across 8 lines",
     seo: {
       title: "Thermal & ATM/POS Rolls: Precision Paper Rolls | Master Simex",
-      description: "Dust-free thermal rolls for POS, ATM, ECG, fax and telex machines, precision-slit for clear printing and durability. 35,000 rolls/day from Master Simex, Bangladesh.",
+      description: "Dust-free thermal rolls for POS, ATM, ECG, fax and telex machines, precision-slit for clear printing and durability. 40,000 rolls/day from Master Simex, Bangladesh.",
     },
   },
   {
@@ -173,15 +173,15 @@ export const products: ProductPage[] = [
     image: "/card-rigid-boxes.jpg",
     whatWeMake: ["Cosmetics packaging", "Electronics packaging", "Fashion & apparel boxes", "Gift & specialty boxes"],
     capability: {
-      machinery: "Fully automated 'smart' production lines that ensure a flawless, high-end finish every time.",
+      machinery: "Automated rigid box lines, Bobst Folder Gluer (up to 50,000 pcs/H), and precision box die-cutting machines (7,000 sheets/H).",
       customisation: "From custom dimensions to bespoke textures, we turn a rigid box into a physical extension of your brand.",
-      dailyCapacity: "60,000 boxes.",
+      dailyCapacity: "8,000 boxes/hour automated rigid line (60,000+ boxes/day), supported by high-speed folder-gluing up to 50,000 pcs/hour.",
     },
     ctaHeading: "Designing a box worth keeping?",
-    overviewCapacity: "60,000 boxes/day",
+    overviewCapacity: "8,000 boxes/hour (60,000+ boxes/day)",
     seo: {
       title: "Rigid Boxes: Luxury Packaging & Premium Unboxing | Master Simex",
-      description: "Custom rigid boxes for cosmetics, electronics, fashion and gifting, with metallic, drip-off and textured finishes on fully automated smart lines. 60,000 boxes/day.",
+      description: "Custom rigid boxes for cosmetics, electronics, fashion and gifting, with metallic, drip-off and textured finishes on fully automated smart lines. 8,000 boxes/hour capacity.",
     },
   },
   {
@@ -192,14 +192,15 @@ export const products: ProductPage[] = [
     image: "/card-stickers-labels.jpg",
     whatWeMake: ["Cosmetics labels", "Garment labels", "Industrial labels", "Printed & unprinted adhesive labels"],
     capability: {
+      machinery: "8 advanced Flexo Graphics & Letterpress printing machines from Gallus, Wabtec, Sen, Taiyo, and Focus RD (up to 9 colors), plus 6 label slitting machines and shrink wrappers.",
       customisation: "Tailor-made labels for any application: custom shapes, premium materials, and high-definition 8-colour printing with UV to make your brand stick.",
-      dailyCapacity: "950,000 metres.",
+      dailyCapacity: "10,700 metres/hour combined flexo printing speed across 8 presses, plus 6 label slitting lines (1,500 M/H / 5,000 pcs/day).",
     },
     ctaHeading: "Got a surface that needs branding?",
-    overviewCapacity: "950,000 metres/day",
+    overviewCapacity: "10,700 metres/hour across 8 flexo presses",
     seo: {
       title: "Stickers & Labels: Adhesive Label Printing | Master Simex",
-      description: "Printed and unprinted adhesive labels for cosmetics, garments and industry: custom shapes, premium materials, 8-colour HD + UV. 950,000 metres/day from Master Simex.",
+      description: "Printed and unprinted adhesive labels for cosmetics, garments and industry: custom shapes, premium materials, up to 9-colour HD + UV. 10,700 metres/hour from Master Simex.",
     },
   },
 ];

@@ -80,20 +80,53 @@ export const capabilitiesContent = {
   },
   seo: {
     title: "Capabilities & Manufacturing | Master Simex Paper Limited",
-    description: "Three facilities, 250,000+ sq ft, 25,000+ MT/year and presses from Heidelberg, Komori, Gallus and Nilpeter, all in-house. ISO 9001:2015 certified. Inside Master Simex.",
+    description: "Three facilities, 250,000+ sq ft, 25,000+ MT/year and 35+ advanced production lines across Offset, Khata, Continuous Form, POS Roll and Sticker units — all in-house. ISO 9001:2015 certified.",
   },
 };
 
 export const machines: Machine[] = [
-  { name: "Heidelberg CD 102 8 LX", specs: "8-colour with UV • 720 × 1020 mm • HD • 14,000 sheets/hour" },
-  { name: "Heidelberg CD 74 6 LX", specs: "6-colour with UV • 585 × 750 mm • HD • 14,000 sheets/hour" },
-  { name: "Komori Lithrone G37", specs: "5-colour • 640 × 940 mm • HD • 12,000 sheets/hour" },
-  { name: "Gallus EM340", specs: "11-colour flexographic • 10,800 metres/hour" },
-  { name: "Nilpeter", specs: "9-colour flexographic • 10,000 metres/hour" },
-  { name: "Ronald Web Offset", specs: "20″ × 30″, 4-colour • 1,800–2,400 reams/day" },
-  { name: "SORZ 102 Heidelberg", specs: "2-colour • 10,000 sheets/hour" },
-  { name: "Iijima BF 1000", specs: "Automatic die-cutting • 7,000 sheets/hour" },
-  { name: "Dultong Rigid DH 4045DD", specs: "Rigid-box line • 8,000 boxes/hour" },
-  { name: "Yoshino Auto Perfect Binding", specs: "60,000 books/day" },
-  { name: "Kodak CTP", specs: "Plate & die-making system" },
+  // 1. Offset Unit
+  { name: "Komori Lithrone G37", specs: "[Offset Unit] 4-color • 15,000 sheets/H" },
+  { name: "Heidelberg - 8 Color", specs: "[Offset Unit] 8-color • 15,000 sheets/H" },
+  { name: "Heidelberg - 6 Color", specs: "[Offset Unit] 6-color • 15,000 sheets/H" },
+  { name: "Sorz 102 2c Heidelberg", specs: "[Offset Unit] 2-color • 12,000 sheets/H" },
+  { name: "Sork Single Color Offset", specs: "[Offset Unit] Single color • 10,000 sheets/H" },
+  { name: "Manual Lamination MC-01", specs: "[Offset Unit] 1,000–2,000 sheets/H (as per GSM & size)" },
+  { name: "Hand Die Cutting Machine", specs: "[Offset Unit] 1,000 sheets/H" },
+  { name: "Iijima Automatic Die Cutter", specs: "[Offset Unit] 6,000 sheets/H" },
+  { name: "China Box Die Cutting Machine-03", specs: "[Offset Unit] 7,000 sheets/H" },
+  { name: "Bobst Folder Gluer MC-01", specs: "[Offset Unit] 7,000–50,000 pcs/H (depends on size)" },
+
+  // 2. Khata Unit
+  { name: "Automatic Ruling / Flexo Printing MC", specs: "[Khata Unit] Reel to sheet • 16,000 pcs/H, 350 kg/H" },
+  { name: "Automatic Flexo Printing MC", specs: "[Khata Unit] Reel to sheet • 16,000 pcs/H, 350 kg/H" },
+  { name: "Polar Cutting Machines (01–04)", specs: "[Khata Unit] 4 units • 5,000 pcs/H" },
+  { name: "Sewing Machines (Unnamed)", specs: "[Khata Unit] High-speed book sewing • 20,000 pcs/H" },
+  { name: "Book Folding Press / Pin Machine", specs: "[Khata Unit] 1,200 pcs/H" },
+
+  // 3. Continuous Paper Unit
+  { name: "4-Color Continuous Form Printing MC", specs: "[Continuous Paper Unit] Computer forms • 10 box/H" },
+  { name: "3-Color Continuous Form Printing MC (x4)", specs: "[Continuous Paper Unit] 4 units • 10 box/H each" },
+  { name: "6-Color Continuous Form Printing MC", specs: "[Continuous Paper Unit] Computer forms • 10 box/H" },
+  { name: "Clouding / Stating Machine", specs: "[Continuous Paper Unit] 8–10 NCR box/H (depends on speed/size)" },
+  { name: "Plate Machine", specs: "[Continuous Paper Unit] 7–8 plates/H" },
+  { name: "Automatic Slitting & Rewinding MC", specs: "[Continuous Paper Unit] 1 roll/H" },
+  { name: "Slitting & Rewinding MC", specs: "[Continuous Paper Unit] 1 roll/H" },
+
+  // 4. POS Roll Unit
+  { name: "POS Roll Cutting Machines (x8)", specs: "[POS Roll Unit] 8 units • 5,000 pcs/day each (40,000 rolls/day total)" },
+  { name: "POS Roll Shrink Wrapper Machine", specs: "[POS Roll Unit] 100 packs/H" },
+  { name: "Plotter Machine", specs: "[POS Roll Unit] 10–15 rolls/H (depends on speed/size)" },
+
+  // 5. Sticker Unit
+  { name: "Gallus 6-Color Flexo Printing MC", specs: "[Sticker Unit] Flexo graphics • 1,200 M/H" },
+  { name: "Gallus 7-Color Flexo Printing MC", specs: "[Sticker Unit] Flexo graphics • 1,500 M/H" },
+  { name: "Sen 6-Color Flexo Printing MC", specs: "[Sticker Unit] Flexo graphics • 1,000 M/H" },
+  { name: "Wabtec 8-Color Flexo Printing MC", specs: "[Sticker Unit] Flexo graphics • 3,000 M/H" },
+  { name: "Focus RD 1-Color Flexo Printing MC", specs: "[Sticker Unit] Flexo graphics • 1,500 M/H" },
+  { name: "Taiyo 6-Color Flexo Printing MC", specs: "[Sticker Unit] Flexo graphics • 1,000 M/H" },
+  { name: "9-Color Flexo Graphics Printing MC", specs: "[Sticker Unit] Multi-color flexo • 1,000 M/H" },
+  { name: "Flat Beat (Letter Press) 1", specs: "[Sticker Unit] Letterpress • 500 M/H" },
+  { name: "Label Slitting Machines (x6)", specs: "[Sticker Unit] 6 units • 1,500 M/H / 5,000 pcs/day" },
+  { name: "Sticker Shrink Wrapper Machine", specs: "[Sticker Unit] 100 packs/H" },
 ];
