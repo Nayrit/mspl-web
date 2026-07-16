@@ -9,9 +9,11 @@ import { SplashProvider } from "@/components/ui/SplashProvider";
 import { SiteImagesProvider } from "@/components/ui/SiteImagesContext";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import { getImagePathMap } from "@/lib/cms/images";
-import { siteConfig } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/seo";
+
+/** Serve from CDN / Data Cache; CMS uploads call revalidateTag("image-catalog"). */
+export const revalidate = false;
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -72,10 +74,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-        <link rel="preload" href="/hero-bg.webp" as="image" type="image/webp" fetchPriority="high" />
         <link rel="icon" type="image/png" href="/mspl-logo.png" />
         <link rel="shortcut icon" href="/mspl-logo.png" />
         <link rel="apple-touch-icon" href="/mspl-logo.png" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
       </head>
       <body className="font-sans antialiased" style={{ backgroundColor: "#faf8f5", color: "#25282b" }}>
         <ConsentProvider>

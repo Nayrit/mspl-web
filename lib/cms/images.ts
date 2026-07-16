@@ -1,12 +1,17 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { unstable_noStore as noStore } from "next/cache";
+import { cache } from "react";
+import { unstable_cache, revalidateTag } from "next/cache";
 import { IMAGE_CATALOG } from "@/lib/cms/image-catalog";
 import type { ImageSlot } from "@/lib/cms/types";
+
+export { toImageSrc } from "@/lib/cms/image-path";
 
 const DATA_PATH = path.join(process.cwd(), "data", "images.json");
 const PUBLIC_DIR = path.join(process.cwd(), "public");
 const UPLOADS_DIR = path.join(PUBLIC_DIR, "uploads");
+
+const IMAGE_CACHE_TAG = "image-catalog";
 
 interface ImageOverrides {
   overrides?: Record<string, { path: string; updatedAt: number }>;
@@ -14,29 +19,73 @@ interface ImageOverrides {
   slots?: Array<{ id: string; path: string; updatedAt?: number }>;
 }
 
-async function readOverrides(): Promise<Record<string, { path: string; updatedAt: number }>> {
-  noStore();
-  try {
-    const raw = await fs.readFile(DATA_PATH, "utf8");
-    const data = JSON.parse(raw) as ImageOverrides;
-    if (data.overrides && typeof data.overrides === "object") {
-      return data.overrides;
-    }
-    // Migrate legacy slot array → overrides
-    if (Array.isArray(data.slots)) {
-      const migrated: Record<string, { path: string; updatedAt: number }> = {};
-      for (const slot of data.slots) {
-        if (slot.id && slot.path && slot.updatedAt) {
-          migrated[slot.id] = { path: slot.path, updatedAt: slot.updatedAt };
-        }
+function parseOverrides(raw: string): Record<string, { path: string; updatedAt: number }> {
+  const data = JSON.parse(raw) as ImageOverrides;
+  if (data.overrides && typeof data.overrides === "object") {
+    return data.overrides;
+  }
+  if (Array.isArray(data.slots)) {
+    const migrated: Record<string, { path: string; updatedAt: number }> = {};
+    for (const slot of data.slots) {
+      if (slot.id && slot.path && slot.updatedAt) {
+        migrated[slot.id] = { path: slot.path, updatedAt: slot.updatedAt };
       }
-      return migrated;
     }
-  } catch {
-    // missing / unreadable file → defaults only
+    return migrated;
   }
   return {};
 }
+
+/**
+ * Disk read is wrapped in the Data Cache so public pages stay static on Vercel
+ * (CDN edge, no serverless cold start). Invalidated only on CMS upload.
+ */
+const readOverridesCached = unstable_cache(
+  async (): Promise<Record<string, { path: string; updatedAt: number }>> => {
+    try {
+      const raw = await fs.readFile(DATA_PATH, "utf8");
+      return parseOverrides(raw);
+    } catch {
+      return {};
+    }
+  },
+  ["mspl-image-overrides-v1"],
+  {
+    tags: [IMAGE_CACHE_TAG],
+    // Keep until explicit revalidateTag after an admin upload.
+    revalidate: false,
+  },
+);
+
+/**
+ * Full path map cached at the Data Cache + React request cache.
+ * Defaults come from the in-memory catalog (no I/O); overrides are cached above.
+ */
+const getImagePathMapCached = unstable_cache(
+  async (): Promise<Record<string, string>> => {
+    const overrides = await readOverridesCached();
+    const map: Record<string, string> = {};
+    for (const entry of IMAGE_CATALOG) {
+      const override = overrides[entry.id];
+      const slot: ImageSlot = {
+        id: entry.id,
+        label: entry.label,
+        section: entry.section,
+        usedOn: entry.usedOn,
+        defaultPath: entry.defaultPath,
+        path: override?.path ?? entry.defaultPath,
+        updatedAt: override?.updatedAt ?? 0,
+      };
+      map[entry.id] = versionedImagePath(slot);
+    }
+    return map;
+  },
+  ["mspl-image-path-map-v1"],
+  {
+    tags: [IMAGE_CACHE_TAG],
+    revalidate: false,
+  },
+);
 
 async function writeOverrides(
   overrides: Record<string, { path: string; updatedAt: number }>,
@@ -48,8 +97,13 @@ async function writeOverrides(
   await fs.rename(tempPath, DATA_PATH);
 }
 
+/** Deduplicate within a single request (layout + page both call this). */
+export const getImagePathMap = cache(async (): Promise<Record<string, string>> => {
+  return getImagePathMapCached();
+});
+
 export async function getImageSlots(): Promise<ImageSlot[]> {
-  const overrides = await readOverrides();
+  const overrides = await readOverridesCached();
   return IMAGE_CATALOG.map((entry) => {
     const override = overrides[entry.id];
     return {
@@ -69,19 +123,9 @@ export async function getImageSlot(id: string): Promise<ImageSlot | undefined> {
   return slots.find((s) => s.id === id);
 }
 
-export async function getImagePathMap(): Promise<Record<string, string>> {
-  const slots = await getImageSlots();
-  const map: Record<string, string> = {};
-  for (const slot of slots) {
-    map[slot.id] = versionedImagePath(slot);
-  }
-  return map;
-}
-
 export async function getImagePath(id: string): Promise<string> {
-  const slot = await getImageSlot(id);
-  if (!slot) return "";
-  return versionedImagePath(slot);
+  const map = await getImagePathMap();
+  return map[id] ?? "";
 }
 
 export function versionedImagePath(slot: ImageSlot): string {
@@ -116,9 +160,12 @@ export async function saveUploadedImage(
   await fs.writeFile(diskPath, buffer);
 
   const webPath = `/uploads/${filename}`;
-  const overrides = await readOverrides();
+  const overrides = { ...(await readOverridesCached()) };
   overrides[slotId] = { path: webPath, updatedAt: Date.now() };
   await writeOverrides(overrides);
+
+  // Next.js 16: second arg is a cacheLife profile for stale-while-revalidate.
+  revalidateTag(IMAGE_CACHE_TAG, "max");
 
   return {
     ...slot,

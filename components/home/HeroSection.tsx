@@ -1,32 +1,41 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImages } from "@/components/ui/SiteImagesContext";
+import { toImageSrc } from "@/lib/cms/image-path";
 
 const slideMeta = [
-  { slotId: "home-hero-1", fallback: "/hero-bg.webp",              alt: "Master Simex: elevating design" },
-  { slotId: "home-hero-2", fallback: "/hero-bg-2.webp",            alt: "Master Simex: elevating ideas" },
-  { slotId: "home-hero-3", fallback: "/card-rigid-boxes.webp",     alt: "Master Simex: elevating shapes" },
-  { slotId: "home-hero-4", fallback: "/hero-bg-4.webp",            alt: "Master Simex: elevating inspiration" },
-  { slotId: "home-hero-5", fallback: "/sustainability-solar.webp", alt: "Master Simex: elevating sustainability" },
-  { slotId: "home-hero-6", fallback: "/capabilities-factory.webp", alt: "Master Simex: elevating creativity" },
+  { slotId: "home-hero-1", fallback: "/hero-bg.webp",              alt: "Master Simex factory and paper converting operations" },
+  { slotId: "home-hero-2", fallback: "/hero-bg-2.webp",            alt: "Master Simex printing and packaging production" },
+  { slotId: "home-hero-3", fallback: "/card-rigid-boxes.webp",     alt: "Master Simex rigid box packaging" },
+  { slotId: "home-hero-4", fallback: "/hero-bg-4.webp",            alt: "Master Simex premium print finishes" },
+  { slotId: "home-hero-5", fallback: "/sustainability-solar.webp", alt: "Master Simex rooftop solar at manufacturing facility" },
+  { slotId: "home-hero-6", fallback: "/capabilities-factory.webp", alt: "Master Simex in-house manufacturing floor" },
 ];
 const SLIDE_MS = 3800;
 
 interface HeroSectionProps {
+  /** Server-resolved LCP hero path (may include ?v=). */
   priorityHeroSrc?: string;
 }
 
 export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
   const { t } = useLang();
   const images = useSiteImages();
-  const slides = slideMeta.map((s, i) => ({
-    src: i === 0 && priorityHeroSrc ? priorityHeroSrc : images[s.slotId] || s.fallback,
-    alt: s.alt,
-  }));
+  const slides = useMemo(
+    () =>
+      slideMeta.map((s, i) => ({
+        src: toImageSrc(
+          i === 0 && priorityHeroSrc ? priorityHeroSrc : images[s.slotId] || s.fallback,
+        ),
+        alt: s.alt,
+      })),
+    [images, priorityHeroSrc],
+  );
   const sectionRef = useRef<HTMLElement>(null);
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -43,8 +52,8 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
   const scrollLineScale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
   const contentRotateX = useTransform(springY, v => v * -0.15);
 
-  const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), []);
-  const prev = useCallback(() => setCurrent(c => (c - 1 + slides.length) % slides.length), []);
+  const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), [slides.length]);
+  const prev = useCallback(() => setCurrent(c => (c - 1 + slides.length) % slides.length), [slides.length]);
 
   useEffect(() => {
     timerRef.current = setTimeout(next, SLIDE_MS);
@@ -63,6 +72,8 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
   const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.06, delayChildren: 0 } } } as const;
   const item    = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } } } as const;
 
+  const lcpSlide = slides[0];
+
   return (
     <section
       ref={sectionRef}
@@ -70,24 +81,50 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
       style={{ backgroundColor: "#25282b" }}
       onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
       onMouseMove={handleMouseMove}
+      aria-roledescription="carousel"
       aria-label="Hero"
     >
       <motion.div className="absolute inset-0 w-full h-[130%] -top-[15%]" style={{ y: bgY }}>
-        <AnimatePresence initial={false}>
-          <motion.img
-            key={slides[current].src}
-            src={slides[current].src}
-            alt={slides[current].alt}
-            fetchPriority={current === 0 ? "high" : "auto"}
-            loading={current === 0 ? "eager" : "lazy"}
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.02 }}
-            transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
+        {/* Permanent LCP layer — never unmounts; Next.js 16 preload inserts <link> in <head> */}
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{ opacity: current === 0 ? 1 : 0, transition: "opacity 1.2s ease" }}
+          aria-hidden={current !== 0}
+        >
+          <Image
+            src={lcpSlide.src}
+            alt={lcpSlide.alt}
+            fill
+            preload
+            sizes="100vw"
+            quality={80}
+            className="object-cover object-center"
           />
+        </div>
+
+        <AnimatePresence initial={false}>
+          {current !== 0 && (
+            <motion.div
+              key={slides[current].src}
+              className="absolute inset-0 w-full h-full"
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <Image
+                src={slides[current].src}
+                alt={slides[current].alt}
+                fill
+                sizes="100vw"
+                quality={75}
+                loading="lazy"
+                className="object-cover object-center"
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
+
         <motion.div className="absolute inset-0" style={{ backgroundColor: "#25282b", opacity: dimness }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#25282b] via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#25282b]/60 via-transparent to-transparent" />
@@ -122,24 +159,24 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
             </span>
           </motion.h1>
 
-          <motion.p variants={item} className="text-body-xl font-sans font-light max-w-2xl mb-6 sm:mb-9 line-clamp-3 sm:line-clamp-none" style={{ color: "rgba(250,248,245,0.65)" }}>
+          <motion.p variants={item} className="text-body-xl font-sans font-light max-w-2xl mb-6 sm:mb-9 line-clamp-3 sm:line-clamp-none" style={{ color: "rgba(250,248,245,0.72)" }}>
             {t.hero.sub}
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-10">
             <Link href="/what-we-do" id="hero-cta-primary"
-              className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 group transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+              className="inline-flex items-center gap-2 font-sans font-semibold text-sm tracking-wide px-8 py-4 min-h-[44px] group transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
               style={{ backgroundColor: "#d61016", color: "#faf8f5" }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#ac0b11")}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#d61016")}
             >
               {t.hero.cta1}
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
             <Link href="/contact" id="hero-cta-secondary"
-              className="inline-flex items-center gap-2 font-sans font-medium text-sm tracking-wide px-8 py-4 transition-all duration-300"
+              className="inline-flex items-center gap-2 font-sans font-medium text-sm tracking-wide px-8 py-4 min-h-[44px] transition-all duration-300"
               style={{ border: "1px solid rgba(250,248,245,0.3)", color: "#faf8f5" }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#d61016"; (e.currentTarget as HTMLElement).style.color = "#d61016"; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(250,248,245,0.3)"; (e.currentTarget as HTMLElement).style.color = "#faf8f5"; }}
@@ -152,16 +189,17 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
           className="flex items-center gap-6 pb-6"
         >
-          <div className="flex items-center gap-1" role="tablist">
+          <div className="flex items-center gap-1" role="tablist" aria-label="Hero slides">
             {slides.map((_, i) => (
               <button
                 key={i}
+                type="button"
                 role="tab"
                 aria-selected={i === current}
-                aria-label={`Slide ${i + 1}`}
+                aria-label={`Show slide ${i + 1} of ${slides.length}`}
                 onClick={() => setCurrent(i)}
                 className="relative flex items-center justify-center min-h-[44px] min-w-[44px] px-1"
               >
@@ -183,7 +221,7 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
             ))}
           </div>
 
-          <span className="font-sans text-[0.6rem] tracking-[0.22em]" style={{ color: "rgba(250,248,245,0.3)" }}>
+          <span className="font-sans text-[0.6rem] tracking-[0.22em]" style={{ color: "rgba(250,248,245,0.45)" }} aria-live="polite">
             {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
           </span>
 
@@ -191,14 +229,15 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
             {[prev, next].map((fn, idx) => (
               <button
                 key={idx}
+                type="button"
                 onClick={fn}
                 aria-label={idx === 0 ? "Previous slide" : "Next slide"}
                 className="w-11 h-11 min-h-[44px] min-w-[44px] flex items-center justify-center transition-all duration-300 active:border-primary active:text-primary"
-                style={{ border: "1px solid rgba(250,248,245,0.15)", color: "rgba(250,248,245,0.5)" }}
+                style={{ border: "1px solid rgba(250,248,245,0.15)", color: "rgba(250,248,245,0.65)" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "#d61016"; (e.currentTarget as HTMLElement).style.color = "#d61016"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(250,248,245,0.15)"; (e.currentTarget as HTMLElement).style.color = "rgba(250,248,245,0.5)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(250,248,245,0.15)"; (e.currentTarget as HTMLElement).style.color = "rgba(250,248,245,0.65)"; }}
               >
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>
                   <path strokeLinecap="round" strokeLinejoin="round" d={idx === 0 ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
                 </svg>
               </button>
@@ -207,7 +246,7 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
         </motion.div>
       </motion.div>
 
-      <div className="absolute top-1/2 right-12 -translate-y-1/2 hidden 2xl:block select-none pointer-events-none">
+      <div className="absolute top-1/2 right-12 -translate-y-1/2 hidden 2xl:block select-none pointer-events-none" aria-hidden>
         <AnimatePresence mode="wait">
           <motion.span
             key={current}
@@ -226,13 +265,15 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
       <motion.div
         className="absolute bottom-0 left-0 right-0 h-px z-20 origin-left"
         style={{ backgroundColor: "#d61016", scaleX: scrollLineScale }}
+        aria-hidden
       />
 
       <motion.div
         className="absolute bottom-8 right-10 hidden xl:flex flex-col items-center gap-2 z-10"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 0.8 }}
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }}
+        aria-hidden
       >
-        <span className="font-sans text-[0.55rem] tracking-[0.25em] uppercase" style={{ color: "rgba(250,248,245,0.25)" }}>Scroll</span>
+        <span className="font-sans text-[0.55rem] tracking-[0.25em] uppercase" style={{ color: "rgba(250,248,245,0.35)" }}>Scroll</span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}

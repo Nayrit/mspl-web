@@ -214,9 +214,9 @@ export default function Header() {
                                     </div>
                                     <div className="flex items-start justify-between gap-2">
                                       <div>
-                                        <h4 className="font-display font-bold text-xs xl:text-sm text-charcoal group-hover:text-primary transition-colors duration-200">
+                                        <p className="font-display font-bold text-xs xl:text-sm text-charcoal group-hover:text-primary transition-colors duration-200">
                                           {mega.label}
-                                        </h4>
+                                        </p>
                                         <p className="font-sans text-[11px] text-charcoal-400 mt-0.5 line-clamp-1">
                                           {mega.desc}
                                         </p>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
@@ -24,7 +25,7 @@ export default function PageHero({ eyebrow, headline, subhead, image, dark = fal
       {image && (
         <>
           <div className="absolute inset-0">
-            <img src={image} alt="" role="presentation" className="w-full h-full object-cover" />
+            <Image src={image} alt="" role="presentation" fill priority sizes="100vw" quality={85} className="object-cover" />
           </div>
           <div className="absolute inset-0" style={{ backgroundColor: "rgba(37,40,43,0.82)" }} />
           <div className="absolute inset-0 bg-gradient-to-r from-[#25282b]/90 via-[#25282b]/70 to-transparent" />

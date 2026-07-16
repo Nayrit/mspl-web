@@ -16,9 +16,9 @@ export default function CookieConsent() {
     >
       <div className="container-editorial">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-charcoal text-parchment-50 p-5 md:p-6 shadow-2xl border-t-2 border-primary">
-          <p className="font-sans text-sm text-parchment-100/75 max-w-2xl">
+          <p className="font-sans text-sm text-parchment-100/90 max-w-2xl">
             We use cookies to understand how our site is used and to improve it. Analytics cookies load only if you accept.{" "}
-            <Link href="/privacy-policy" className="text-primary underline-offset-2 hover:underline font-medium">
+            <Link href="/privacy-policy" className="text-[#f5a8ab] underline underline-offset-2 hover:text-parchment-50 font-medium">
               Read our privacy policy
             </Link>
           </p>

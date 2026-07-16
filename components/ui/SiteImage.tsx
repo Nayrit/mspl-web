@@ -1,6 +1,7 @@
 "use client";
 
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
+import { toImageSrc } from "@/lib/cms/image-path";
 
 type ImgProps = Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src">;
 
@@ -10,6 +11,6 @@ export default function SiteImage({
   fallback,
   ...props
 }: ImgProps & { slotId: string; fallback: string }) {
-  const src = useSiteImage(slotId, fallback);
+  const src = toImageSrc(useSiteImage(slotId, fallback));
   return <img src={src} {...props} />;
 }

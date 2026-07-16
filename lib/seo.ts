@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { siteConfig } from "./site";
+import { getSiteUrl } from "./site-url";
 
 export function pageMetadata(title: string, description: string, path = ""): Metadata {
-  const url = `${siteConfig.url}${path}`;
+  const base = getSiteUrl();
+  const url = `${base}${path}`;
   return {
     title,
     description,
@@ -22,16 +24,18 @@ export function pageMetadata(title: string, description: string, path = ""): Met
       description,
       images: ["/mspl-logo.png"],
     },
+    robots: { index: true, follow: true },
   };
 }
 
 export function organizationJsonLd() {
+  const base = getSiteUrl();
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.name,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/mspl-logo.png`,
+    url: base,
+    logo: `${base}/mspl-logo.png`,
     email: siteConfig.email,
     telephone: siteConfig.phones[0],
     foundingDate: "2002",
@@ -47,12 +51,13 @@ export function organizationJsonLd() {
 }
 
 export function localBusinessJsonLd() {
+  const base = getSiteUrl();
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: siteConfig.name,
-    image: `${siteConfig.url}/mspl-logo.png`,
-    url: siteConfig.url,
+    image: `${base}/mspl-logo.png`,
+    url: base,
     telephone: siteConfig.phones[0],
     email: siteConfig.email,
     address: {

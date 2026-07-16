@@ -176,14 +176,16 @@ export default function Footer() {
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 href="/privacy-policy"
-                className="font-sans text-xs text-white/60 hover:text-gold transition-colors min-h-[44px] inline-flex items-center py-2"
+                aria-label="Read our Privacy Policy"
+                className="font-sans text-xs text-white/75 hover:text-gold transition-colors min-h-[44px] inline-flex items-center py-2"
               >
                 Privacy Policy
               </Link>
               <span className="text-white/30">·</span>
               <Link
                 href="/terms"
-                className="font-sans text-xs text-white/60 hover:text-gold transition-colors min-h-[44px] inline-flex items-center py-2"
+                aria-label="Read our Terms of Use"
+                className="font-sans text-xs text-white/75 hover:text-gold transition-colors min-h-[44px] inline-flex items-center py-2"
               >
                 Terms of Use
               </Link>

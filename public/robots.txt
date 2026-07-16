@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /admin/
 
 Sitemap: https://www.mastersimex.com/sitemap.xml
+# LLM orientation: https://www.mastersimex.com/llms.txt

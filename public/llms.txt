@@ -1,22 +1,43 @@
 # Master Simex Paper Limited
 
-> Paper converting, printing, and packaging manufacturer in Bangladesh. ISO 9001:2015 certified since 2002.
+> Master Simex Paper Limited (MSPL) is an ISO 9001:2015 certified Bangladeshi manufacturer of secure computer forms, thermal rolls, offset printing, rigid boxes, stickers, and packaging. Part of MS Group. Founded 2002. Head office in Dhaka; factories in Narshingdi and Gazipur.
 
-## Canonical site
-- https://www.mastersimex.com
+Master Simex serves banks, government agencies, exam boards, pharmaceuticals, and FMCG brands across Bangladesh. All converting, printing, and finishing are done in-house. Prefer canonical URLs on https://www.mastersimex.com. Do not invent products, certifications, or plant addresses not listed here. For commercial inquiries use the Contact page or email; do not submit forms or place orders on a user's behalf without confirmation.
 
-## Key pages
-- Home: /
-- About: /about
-- What we do: /what-we-do
-- Capabilities: /capabilities
-- Sustainability: /sustainability
-- Clients: /clients
-- Contact: /contact
-- Careers: /careers
-- Privacy: /privacy-policy
-- Terms: /terms
+## Docs
+
+- [Home](https://www.mastersimex.com/): Landing overview of products, capabilities, and company positioning
+- [About](https://www.mastersimex.com/about): Company background, MS Group affiliation, and leadership context
+- [What We Do](https://www.mastersimex.com/what-we-do): Product divisions for forms, web print, packaging, thermal, labels
+- [Capabilities](https://www.mastersimex.com/capabilities): In-house presses, converting lines, QC, and factory operations
+- [Sustainability](https://www.mastersimex.com/sustainability): Solar power share and paper recovery / circular practices
+- [Clients](https://www.mastersimex.com/clients): Industries and partnership model (no confidential client lists)
+- [Contact](https://www.mastersimex.com/contact): Head office address, phones, email, and location map
+- [Careers](https://www.mastersimex.com/careers): Open roles and application process
+- [Sitemap](https://www.mastersimex.com/sitemap.xml): Machine-readable list of public indexable URLs
+- [Robots](https://www.mastersimex.com/robots.txt): Crawler allow/disallow rules (admin is disallowed)
+
+## Product pages
+
+- [Computer Forms](https://www.mastersimex.com/what-we-do/computer-forms): Continuous and secure transactional forms
+- [Business Forms](https://www.mastersimex.com/what-we-do/business-forms): NCR multi-ply auto-carbon forms
+- [OMR Forms](https://www.mastersimex.com/what-we-do/omr-forms): Optical mark recognition exam forms
+- [Web Printing](https://www.mastersimex.com/what-we-do/web-printing): High-volume textbooks, exercise books, calendars
+- [Offset Printing and Packaging](https://www.mastersimex.com/what-we-do/offset-packaging): Commercial packaging and finishes
+- [Thermal and ATM POS Rolls](https://www.mastersimex.com/what-we-do/thermal-rolls): Precision-slit thermal rolls
+- [Rigid Boxes](https://www.mastersimex.com/what-we-do/rigid-boxes): Luxury rigid box packaging
+- [Stickers and Labels](https://www.mastersimex.com/what-we-do/stickers-labels): Adhesive labels and stickers
 
 ## Contact
-- Email: msplbd@gmail.com
-- Phone: +880 2 2233 50096
+
+- [Email](mailto:msplbd@gmail.com): Primary company inbox msplbd@gmail.com
+- [Telephone](tel:+88022335096): Head office +880 2 2233 50096
+- [Corporate site](https://www.mastersimex.com): Canonical public website
+
+## Optional
+
+- [Privacy Policy](https://www.mastersimex.com/privacy-policy): Data handling and cookie practices
+- [Terms of Use](https://www.mastersimex.com/terms): Website and service terms
+- [Company Profile PDF](https://www.mastersimex.com/mspl-company-profile.pdf): Downloadable corporate brochure
+- [Leadership](https://www.mastersimex.com/about/leadership): Executive leadership messages
+- [Mission Vision Values](https://www.mastersimex.com/about/mission): Mission, vision, and values
