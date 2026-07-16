@@ -119,9 +119,9 @@ export default function ClientTestimonialsSection() {
                 {/* Attribution & Metric Highlight */}
                 <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <h4 className="font-display text-sm font-bold text-parchment-50">
+                    <p className="font-display text-sm font-bold text-parchment-50">
                       {item.author}
-                    </h4>
+                    </p>
                     <p className="font-sans text-xs text-parchment-100/60 mt-0.5">
                       {item.organization}
                     </p>

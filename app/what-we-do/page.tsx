@@ -25,7 +25,7 @@ export default async function WhatWeDoOverviewPage() {
         eyebrow="What we do"
         headline="Seven specialisms. One roof."
         subhead="An extensive portfolio, meticulously designed to meet the most specialised demands, blending cutting-edge technology with uncompromising quality."
-        image={heroImage || "/hero-bg-3.jpg"}
+        image={heroImage || "/hero-bg-3.webp"}
       />
 
       <section className="section-padding bg-parchment">

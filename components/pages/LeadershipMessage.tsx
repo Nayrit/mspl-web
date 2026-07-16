@@ -8,7 +8,7 @@ interface LeadershipMessageProps {
   image?: string;
 }
 
-export default function LeadershipMessage({ role, paragraphs, name, title, image = "/hero-bg-3.jpg" }: LeadershipMessageProps) {
+export default function LeadershipMessage({ role, paragraphs, name, title, image = "/hero-bg-3.webp" }: LeadershipMessageProps) {
   return (
     <section className="section-padding bg-parchment border-t border-charcoal-100">
       <div className="container-editorial">

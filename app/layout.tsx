@@ -9,6 +9,8 @@ import { SplashProvider } from "@/components/ui/SplashProvider";
 import { SiteImagesProvider } from "@/components/ui/SiteImagesContext";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import { getImagePathMap } from "@/lib/cms/images";
+import { siteConfig } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 import { organizationJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
 const playfair = Playfair_Display({
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
   description: "Master Simex Paper Limited is a part of MS Group and a leading Bangladeshi manufacturer of secure forms, thermal rolls, offset print, packaging, rigid boxes and labels. ISO 9001:2015 certified. Made in-house since 2002.",
   keywords: ["paper converting Bangladesh","printing packaging Dhaka","OMR forms Bangladesh","rigid box manufacturer","thermal paper rolls","security printing Bangladesh","Master Simex","MSPL"],
   authors: [{ name: "Master Simex Paper Limited" }],
-  metadataBase: new URL("https://www.mastersimex.com"),
+  metadataBase: new URL(getSiteUrl()),
   openGraph: {
     type: "website", locale: "en_US", url: "https://www.mastersimex.com",
     title: "Master Simex Paper Limited | Paper Converting, Printing & Packaging",
@@ -70,6 +72,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
+        <link rel="preload" href="/hero-bg.webp" as="image" type="image/webp" fetchPriority="high" />
         <link rel="icon" type="image/png" href="/mspl-logo.png" />
         <link rel="shortcut icon" href="/mspl-logo.png" />
         <link rel="apple-touch-icon" href="/mspl-logo.png" />

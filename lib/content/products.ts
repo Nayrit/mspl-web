@@ -24,7 +24,7 @@ export const products: ProductPage[] = [
     eyebrow: "Computer Forms",
     headline: "Documents you can trust to be exactly right.",
     intro: "We produce high-performance continuous papers, pin-feed computer forms, and secure OMR, ICR and OCR forms with litho coding, barcode and QR-enabled tracking. Engineered to run flawlessly through matrix and continuous printers without jamming or dust, ensuring accurate data capture and reliable record-keeping for banks, government bodies, and institutions.",
-    image: "/card-computer-forms.jpg",
+    image: "/card-computer-forms.webp",
     whatWeMake: [
       "Computer continuous paper", "OMR / ICR / OCR forms", "Pin-feed continuous forms", "Admit cards",
       "Registration cards", "Tabulation sheets", "Bank statement forms", "Examination answer sheets",
@@ -46,7 +46,7 @@ export const products: ProductPage[] = [
     eyebrow: "Business Forms",
     headline: "Multi-ply forms built for critical transactions.",
     intro: "We engineer NCR multi-ply auto-carbon business forms for banks, utilities, healthcare facilities, and institutions where every copy must be legible, tamper-evident, and traceable. From medical centre bills and electricity invoices to pharmaceutical order sheets and bank SWIFT papers, our business forms deliver crisp transfer across up to 5 plies without smudging.",
-    image: "/card-computer-forms.jpg",
+    image: "/card-computer-forms.webp",
     whatWeMake: [
       "NCR multi-ply auto-carbon forms", "Medical centre bills & invoices", "Electricity & utility bill forms",
       "Pharmaceutical order sheets", "Bank SWIFT papers", "Delivery challans & receipts", "Custom multi-part vouchers",
@@ -68,7 +68,7 @@ export const products: ProductPage[] = [
     eyebrow: "Web Printing",
     headline: "Built to be read, and to last.",
     intro: "We deliver high-quality web-printed textbooks, guide books, school magazines, exercise books, diaries and calendars that combine durability with precision printing. Engineered for clarity and long-term use, our products support effective learning, record-keeping and organisation.",
-    image: "/card-web-printing.jpg",
+    image: "/card-web-printing.webp",
     whatWeMake: ["Textbooks", "Guide books", "School magazines", "Exercise books", "Diaries", "Calendars"],
     capability: {
       machinery: "Automatic reel-to-sheet ruling and flexo printing presses (32,000 pcs/H total), high-speed Polar cutting systems (5,000/H), automated sewing machines (20,000/H), and book folding/pin presses (1,200 pcs/H).",
@@ -82,37 +82,37 @@ export const products: ProductPage[] = [
         slot: "Photo Slot #1",
         title: "High-Speed Rotary Web Press Run",
         caption: "Placeholder: Rotary web presses running high-volume textbook and guide book sheets at maximum speed.",
-        image: "/card-web-printing.jpg",
+        image: "/card-web-printing.webp",
       },
       {
         slot: "Photo Slot #2",
         title: "Integrated Auto-Binding Line",
         caption: "Placeholder: Automated binding stations folding, collating, and binding up to 400,000 books every single day.",
-        image: "/capabilities-factory.jpg",
+        image: "/capabilities-factory.webp",
       },
       {
         slot: "Photo Slot #3",
         title: "8-Colour Cover Printing & UV Unit",
         caption: "Placeholder: Precision cover printing presses outputting vibrant 8-colour covers with specialised UV coating.",
-        image: "/hero-bg-4.jpg",
+        image: "/hero-bg-4.webp",
       },
       {
         slot: "Photo Slot #4",
         title: "Educational Paper Roll Storage Bay",
         caption: "Placeholder: Temperature-controlled paper roll inventory staged and prepared for national educational orders.",
-        image: "/hero-bg-3.jpg",
+        image: "/hero-bg-3.webp",
       },
       {
         slot: "Photo Slot #5",
         title: "Automated Three-Knife Trimming Station",
         caption: "Placeholder: Post-binding quality inspection and high-precision three-knife trimming for clean, crisp edges.",
-        image: "/hero-bg-2.jpg",
+        image: "/hero-bg-2.webp",
       },
       {
         slot: "Photo Slot #6",
         title: "Palletised Textbook Despatch & Staging",
         caption: "Placeholder: Finished exercise and guide books shrink-wrapped, palletised, and staged for nationwide transit.",
-        image: "/card-offset-packaging.jpg",
+        image: "/card-offset-packaging.webp",
       },
     ],
     seo: {
@@ -125,7 +125,7 @@ export const products: ProductPage[] = [
     eyebrow: "Offset Printing & Packaging",
     headline: "Print that protects, presents and performs.",
     intro: "We offer a comprehensive range of custom offset printing and packaging solutions that combine striking visuals, functional durability and built-in security. Each product can be enhanced with premium finishes for a tactile, visual impact that elevates your brand.",
-    image: "/card-offset-packaging.jpg",
+    image: "/card-offset-packaging.webp",
     whatWeMake: [
       "Brochures", "Books", "Annual reports", "Diaries", "Medicine packaging", "FMCG packaging",
       "Coil packaging", "Sweet boxes", "Cigarette packaging", "Flip-charts", "Photo cards",
@@ -152,7 +152,7 @@ export const products: ProductPage[] = [
     eyebrow: "Thermal & ATM/POS Rolls",
     headline: "Reliability in every roll.",
     intro: "Our precision rolls are engineered for performance and value, keeping your operations smooth and cost-efficient. Whether for POS, ATM, ECG, fax or telex machines, each roll is manufactured to deliver clear printing, consistent quality and long-lasting durability.",
-    image: "/card-thermal-rolls.jpg",
+    image: "/card-thermal-rolls.webp",
     whatWeMake: ["POS rolls", "ATM rolls", "ECG rolls", "Fax rolls", "Telex rolls"],
     capability: {
       machinery: "8 high-precision POS Roll cutting machines (5,000 pcs/day each), plus automated plotter machines (10–15 rolls/H) and shrink wrapping lines (100 packs/H).",
@@ -170,7 +170,7 @@ export const products: ProductPage[] = [
     eyebrow: "Rigid Boxes",
     headline: "The first thing they'll touch. Make it count.",
     intro: "Our rigid boxes are designed to embody strength, security and sophistication, the preferred choice for luxury packaging. Ideal for cosmetics, electronics, fashion, gifting and specialty products, they pair protective durability with a premium unboxing experience.",
-    image: "/card-rigid-boxes.jpg",
+    image: "/card-rigid-boxes.webp",
     whatWeMake: ["Cosmetics packaging", "Electronics packaging", "Fashion & apparel boxes", "Gift & specialty boxes"],
     capability: {
       machinery: "Automated rigid box lines, Bobst Folder Gluer (up to 50,000 pcs/H), and precision box die-cutting machines (7,000 sheets/H).",
@@ -189,7 +189,7 @@ export const products: ProductPage[] = [
     eyebrow: "Stickers & Labels",
     headline: "Made to stick, built to stand out.",
     intro: "Our printed and unprinted adhesive labels adapt to diverse business needs, from cosmetics and garments to industrial applications. Crafted for durability and precision, they ensure clear branding, accurate information and reliable adhesion across surfaces.",
-    image: "/card-stickers-labels.jpg",
+    image: "/card-stickers-labels.webp",
     whatWeMake: ["Cosmetics labels", "Garment labels", "Industrial labels", "Printed & unprinted adhesive labels"],
     capability: {
       machinery: "8 advanced Flexo Graphics & Letterpress printing machines from Gallus, Wabtec, Sen, Taiyo, and Focus RD (up to 9 colors), plus 6 label slitting machines and shrink wrappers.",
@@ -211,7 +211,7 @@ export const productSubPages: Record<string, Partial<ProductPage> & { parentSlug
     eyebrow: "OMR Forms",
     headline: "Examination-grade accuracy, every sheet.",
     intro: "Optical Mark Recognition forms for high-security examination and data-capture work: litho coded, traceable and built to the tolerances national institutions demand.",
-    image: "/card-computer-forms.jpg",
+    image: "/card-computer-forms.webp",
     whatWeMake: ["OMR / ICR / OCR forms", "Admit cards", "Registration cards", "Tabulation sheets", "Examination answer sheets"],
     ctaHeading: "Planning an examination print run?",
     seo: {
@@ -224,7 +224,7 @@ export const productSubPages: Record<string, Partial<ProductPage> & { parentSlug
     eyebrow: "Exam Copy",
     headline: "Examination materials at national scale.",
     intro: "From admit cards to tabulation sheets and examination copies, we deliver the volume, consistency and security that national examination bodies require.",
-    image: "/card-web-printing.jpg",
+    image: "/card-web-printing.webp",
     whatWeMake: ["Examination copies", "Admit cards", "Tabulation sheets", "Answer booklets"],
     ctaHeading: "Need examination materials produced?",
     seo: {
@@ -237,7 +237,7 @@ export const productSubPages: Record<string, Partial<ProductPage> & { parentSlug
     eyebrow: "Exercise Books",
     headline: "Built for classrooms across the country.",
     intro: "Exercise books printed and bound at volume with durable covers, consistent ruling and the reliability schools and distributors depend on every academic year.",
-    image: "/card-web-printing.jpg",
+    image: "/card-web-printing.webp",
     whatWeMake: ["Exercise books", "School magazines", "Guide books", "Workbooks"],
     ctaHeading: "Planning an exercise book run?",
     seo: {

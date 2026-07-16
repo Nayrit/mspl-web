@@ -32,7 +32,7 @@ function EquipmentLogo({ brand }: { brand: (typeof equipment)[number] }) {
 
 export default function CapabilitiesTeaser() {
   const { t } = useLang();
-  const factoryImage = useSiteImage("home-capabilities-factory", "/capabilities-factory.jpg");
+  const factoryImage = useSiteImage("home-capabilities-factory", "/capabilities-factory.webp");
   const ref = useRef<HTMLElement>(null);
   const [activeStep, setActiveStep] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });

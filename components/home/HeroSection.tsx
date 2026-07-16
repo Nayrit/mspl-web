@@ -7,20 +7,24 @@ import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImages } from "@/components/ui/SiteImagesContext";
 
 const slideMeta = [
-  { slotId: "home-hero-1", fallback: "/hero-bg.jpg",              alt: "Master Simex: elevating design" },
-  { slotId: "home-hero-2", fallback: "/hero-bg-2.jpg",            alt: "Master Simex: elevating ideas" },
-  { slotId: "home-hero-3", fallback: "/card-rigid-boxes.jpg",     alt: "Master Simex: elevating shapes" },
-  { slotId: "home-hero-4", fallback: "/hero-bg-4.jpg",            alt: "Master Simex: elevating inspiration" },
-  { slotId: "home-hero-5", fallback: "/sustainability-solar.jpg", alt: "Master Simex: elevating sustainability" },
-  { slotId: "home-hero-6", fallback: "/capabilities-factory.jpg", alt: "Master Simex: elevating creativity" },
+  { slotId: "home-hero-1", fallback: "/hero-bg.webp",              alt: "Master Simex: elevating design" },
+  { slotId: "home-hero-2", fallback: "/hero-bg-2.webp",            alt: "Master Simex: elevating ideas" },
+  { slotId: "home-hero-3", fallback: "/card-rigid-boxes.webp",     alt: "Master Simex: elevating shapes" },
+  { slotId: "home-hero-4", fallback: "/hero-bg-4.webp",            alt: "Master Simex: elevating inspiration" },
+  { slotId: "home-hero-5", fallback: "/sustainability-solar.webp", alt: "Master Simex: elevating sustainability" },
+  { slotId: "home-hero-6", fallback: "/capabilities-factory.webp", alt: "Master Simex: elevating creativity" },
 ];
 const SLIDE_MS = 3800;
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  priorityHeroSrc?: string;
+}
+
+export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
   const { t } = useLang();
   const images = useSiteImages();
-  const slides = slideMeta.map((s) => ({
-    src: images[s.slotId] || s.fallback,
+  const slides = slideMeta.map((s, i) => ({
+    src: i === 0 && priorityHeroSrc ? priorityHeroSrc : images[s.slotId] || s.fallback,
     alt: s.alt,
   }));
   const sectionRef = useRef<HTMLElement>(null);
@@ -56,8 +60,8 @@ export default function HeroSection() {
     mouseY.set(y * 12);
   };
 
-  const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.4 } } } as const;
-  const item    = { hidden: { opacity: 0, y: 36 }, visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: "easeOut" as const } } } as const;
+  const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.06, delayChildren: 0 } } } as const;
+  const item    = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } } } as const;
 
   return (
     <section
@@ -75,6 +79,8 @@ export default function HeroSection() {
             src={slides[current].src}
             alt={slides[current].alt}
             fetchPriority={current === 0 ? "high" : "auto"}
+            loading={current === 0 ? "eager" : "lazy"}
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover object-center"
             initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}

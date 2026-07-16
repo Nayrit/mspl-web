@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 import { products, productSubPages } from "@/lib/content/products";
 
 const staticRoutes = [
@@ -19,6 +19,7 @@ const staticRoutes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const siteUrl = getSiteUrl();
   const productRoutes = [
     ...products.map((p) => `/what-we-do/${p.slug}`),
     ...Object.keys(productSubPages).map((slug) => `/what-we-do/${slug}`),
@@ -27,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const all = [...staticRoutes, ...productRoutes];
 
   return all.map((path) => ({
-    url: `${siteConfig.url}${path}`,
+    url: `${siteUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: path === "" ? "weekly" : "monthly",
     priority: path === "" ? 1 : path.startsWith("/what-we-do") ? 0.8 : 0.7,

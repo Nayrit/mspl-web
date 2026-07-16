@@ -7,7 +7,7 @@ import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
 export default function ManifestoSection() {
   const { t } = useLang();
-  const texture = useSiteImage("brand-texture", "/paper-texture.jpg");
+  const texture = useSiteImage("brand-texture", "/paper-texture.webp");
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   const words = t.manifesto.body.split(" ");
@@ -18,7 +18,7 @@ export default function ManifestoSection() {
 
   return (
     <section ref={ref} className="relative section-padding overflow-hidden" style={{ backgroundColor: "#faf8f5" }} aria-label="Our manifesto">
-      <div className="absolute inset-0 opacity-[0.035] pointer-events-none" style={{ backgroundImage: `url('${texture}')`, backgroundSize: "cover" }} />
+      <div className="absolute inset-0 opacity-[0.035] pointer-events-none mspl-paper-texture" style={{ backgroundImage: `url('${texture}')` }} aria-hidden />
 
       <div className="container-editorial relative">
         <motion.span

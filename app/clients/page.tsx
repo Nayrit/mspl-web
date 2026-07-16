@@ -22,7 +22,7 @@ export default async function ClientsPage() {
         eyebrow="Clients who inspire our excellence"
         headline="Trusted where accuracy matters most."
         subhead="For more than twenty years, we've been chosen by the organisations that can't afford to get it wrong, and by the brands that want to get it exactly right."
-        image={heroImage || "/hero-bg.jpg"}
+        image={heroImage || "/hero-bg.webp"}
       />
 
       {/* Specialized Industry Sectors Grid */}

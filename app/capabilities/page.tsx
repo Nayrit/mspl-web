@@ -29,7 +29,7 @@ export default async function CapabilitiesPage() {
 
   return (
     <>
-      <PageHero eyebrow={c.hero.eyebrow} headline={c.hero.headline} image={heroImage || "/capabilities-factory.jpg"} />
+      <PageHero eyebrow={c.hero.eyebrow} headline={c.hero.headline} image={heroImage || "/capabilities-factory.webp"} />
 
       <section className="section-padding bg-parchment">
         <div className="container-editorial max-w-3xl">
@@ -208,9 +208,9 @@ export default async function CapabilitiesPage() {
                   <div className="bg-parchment-50 p-8 lg:p-10 group hover:bg-parchment transition-all duration-300 h-full flex flex-col justify-between border-t-4 border-transparent hover:border-primary">
                     <div>
                       <p className="font-display text-lg font-bold text-primary mb-4">0{i + 1}</p>
-                      <h4 className="font-display text-xl font-bold text-charcoal mb-3 group-hover:text-primary transition-colors">
+                      <p className="font-display text-xl font-bold text-charcoal mb-3 group-hover:text-primary transition-colors">
                         {pillar.title}
-                      </h4>
+                      </p>
                       <p className="font-sans text-sm text-charcoal-400 leading-relaxed font-light">
                         {pillar.description}
                       </p>
@@ -254,7 +254,7 @@ export default async function CapabilitiesPage() {
           </ScrollFadeIn>
           <ScrollFadeIn direction="left" delay={0.1}>
             <div className="aspect-video overflow-hidden">
-              <img src={logisticsImage || "/hero-bg-2.jpg"} alt="Master Simex logistics and distribution" className="w-full h-full object-cover" loading="lazy" />
+              <img src={logisticsImage || "/hero-bg-2.webp"} alt="Master Simex logistics and distribution" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </ScrollFadeIn>
         </div>

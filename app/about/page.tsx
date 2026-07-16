@@ -31,7 +31,7 @@ export default async function AboutPage() {
       <PageHero
         eyebrow="About Master Simex"
         headline="Two decades of precision, innovation and integrity."
-        image={heroImage || "/hero-bg-2.jpg"}
+        image={heroImage || "/hero-bg-2.webp"}
       />
       <AboutSubNav />
 
@@ -133,7 +133,7 @@ export default async function AboutPage() {
             paragraphs={msg.body}
             name={msg.name}
             title={msg.title}
-            image={leadershipImages[i] || "/hero-bg.jpg"}
+            image={leadershipImages[i] || "/hero-bg.webp"}
           />
         ))}
       </div>

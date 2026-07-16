@@ -8,11 +8,14 @@ import SustainabilityTeaser from "@/components/home/SustainabilityTeaser";
 import ClientsTrustBand from "@/components/home/ClientsTrustBand";
 import ClientTestimonialsSection from "@/components/clients/ClientTestimonialsSection";
 import ClosingCTABand from "@/components/home/ClosingCTABand";
+import { getImagePath } from "@/lib/cms/images";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const priorityHeroSrc = (await getImagePath("home-hero-1")) || "/hero-bg.webp";
+
   return (
     <>
-      <HeroSection />
+      <HeroSection priorityHeroSrc={priorityHeroSrc} />
       {/* Red ticker band immediately under the hero */}
       <MarqueeTicker />
       <ManifestoSection />

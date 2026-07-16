@@ -24,7 +24,7 @@ function isCoarsePointer(): boolean {
 
 export default function SplashScreen() {
   const { completeSplash } = useSplash();
-  const logo = useSiteImage("brand-logo", "/mspl-logo.png");
+  const logo = useSiteImage("brand-logo", "/mspl-logo-256.webp");
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     getReducedMotionSnapshot,
@@ -53,9 +53,8 @@ export default function SplashScreen() {
     document.body.style.overflow = "hidden";
 
     const coarse = isCoarsePointer();
-    // Phones: shorter splash so people can interact sooner
-    const exitAt = coarse ? 1400 : 2400;
-    const doneAt = coarse ? 2000 : 3400;
+    const exitAt = coarse ? 900 : 1500;
+    const doneAt = coarse ? 1400 : 2100;
 
     const exitTimer = window.setTimeout(() => setPhase("exit"), exitAt);
     const doneTimer = window.setTimeout(() => {
@@ -128,6 +127,9 @@ export default function SplashScreen() {
             <img
               src={logo}
               alt="Master Simex Paper Limited"
+              width={240}
+              height={80}
+              decoding="async"
               className="w-[min(72vw,240px)] h-auto object-contain"
             />
           </motion.div>

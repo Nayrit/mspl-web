@@ -16,7 +16,7 @@ const sustainabilityStats = [
 
 export default function SustainabilityTeaser() {
   const { t } = useLang();
-  const image = useSiteImage("home-sustainability", "/sustainability-solar.jpg");
+  const image = useSiteImage("home-sustainability", "/sustainability-solar.webp");
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const yImg = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);

@@ -6,12 +6,12 @@ import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
 
 const stats = [
-  { value: 23,     suffix: "+", label: "Years of manufacturing",   detail: "Established 2002",            slotId: "home-numbers-years",       image: "/hero-bg.jpg" },
-  { value: 3,      suffix: "",  label: "Production facilities",    detail: "Across Bangladesh",           slotId: "home-numbers-facilities",  image: "/capabilities-factory.jpg" },
-  { value: 250000, suffix: "+", label: "Sq ft of production space", detail: "Under a single roof",        slotId: "home-numbers-space",       image: "/card-offset-packaging.jpg" },
-  { value: 25000,  suffix: "+", label: "MT annual throughput",     detail: "Paper converted per year",    slotId: "home-numbers-throughput",  image: "/card-web-printing.jpg" },
-  { value: 600,    suffix: "",  label: "People",                   detail: "Skilled workforce",           slotId: "home-numbers-people",      image: "/hero-bg-2.jpg" },
-  { value: 0,      suffix: "",  label: "ISO 9001:2015 certified",  detail: "Quality management standard", slotId: "home-numbers-iso",         image: "/sustainability-solar.jpg", isText: true, textValue: "ISO" },
+  { value: 23,     suffix: "+", label: "Years of manufacturing",   detail: "Established 2002",            slotId: "home-numbers-years",       image: "/hero-bg.webp" },
+  { value: 3,      suffix: "",  label: "Production facilities",    detail: "Across Bangladesh",           slotId: "home-numbers-facilities",  image: "/capabilities-factory.webp" },
+  { value: 250000, suffix: "+", label: "Sq ft of production space", detail: "Under a single roof",        slotId: "home-numbers-space",       image: "/card-offset-packaging.webp" },
+  { value: 25000,  suffix: "+", label: "MT annual throughput",     detail: "Paper converted per year",    slotId: "home-numbers-throughput",  image: "/card-web-printing.webp" },
+  { value: 600,    suffix: "",  label: "People",                   detail: "Skilled workforce",           slotId: "home-numbers-people",      image: "/hero-bg-2.webp" },
+  { value: 0,      suffix: "",  label: "ISO 9001:2015 certified",  detail: "Quality management standard", slotId: "home-numbers-iso",         image: "/sustainability-solar.webp", isText: true, textValue: "ISO" },
 ];
 
 function StatTile({

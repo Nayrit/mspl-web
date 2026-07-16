@@ -1,0 +1,22 @@
+# Master Simex Paper Limited
+
+> Paper converting, printing, and packaging manufacturer in Bangladesh. ISO 9001:2015 certified since 2002.
+
+## Canonical site
+- https://www.mastersimex.com
+
+## Key pages
+- Home: /
+- About: /about
+- What we do: /what-we-do
+- Capabilities: /capabilities
+- Sustainability: /sustainability
+- Clients: /clients
+- Contact: /contact
+- Careers: /careers
+- Privacy: /privacy-policy
+- Terms: /terms
+
+## Contact
+- Email: msplbd@gmail.com
+- Phone: +880 2 2233 50096

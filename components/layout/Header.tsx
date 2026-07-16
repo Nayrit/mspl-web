@@ -11,13 +11,13 @@ const navLinks = [
   { key: "about" as const,          href: "/about" },
   { key: "whatWeDo" as const,       href: "/what-we-do", hasMega: true,
     megaItems: [
-      { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging",  slotId: "nav-mega-offset",         img: "/card-offset-packaging.jpg",  desc: "Commercial packaging with premium finishes", highlighted: true },
-      { label: "Computer Forms",              href: "/what-we-do/computer-forms",    slotId: "nav-mega-computer-forms", img: "/card-computer-forms.jpg",    desc: "Precision continuous paper & OMR sheets" },
-      { label: "Business Forms",              href: "/what-we-do/business-forms",    slotId: "nav-mega-business-forms", img: "/card-computer-forms.jpg",    desc: "NCR multi-ply auto-carbon forms" },
-      { label: "Web Printing",                href: "/what-we-do/web-printing",       slotId: "nav-mega-web",            img: "/card-web-printing.jpg",      desc: "Textbooks, exercise books & calendars at volume" },
-      { label: "Rigid Boxes",                 href: "/what-we-do/rigid-boxes",        slotId: "nav-mega-rigid",          img: "/card-rigid-boxes.jpg",       desc: "Luxury packaging on automated smart lines" },
-      { label: "Thermal & ATM/POS Rolls",     href: "/what-we-do/thermal-rolls",     slotId: "nav-mega-thermal",        img: "/card-thermal-rolls.jpg",     desc: "Precision-slit, dust-free transactional rolls" },
-      { label: "Stickers & Labels",           href: "/what-we-do/stickers-labels",   slotId: "nav-mega-labels",         img: "/card-stickers-labels.jpg",   desc: "High-definition adhesive labels, built to stick" },
+      { label: "Offset Printing & Packaging", href: "/what-we-do/offset-packaging",  slotId: "nav-mega-offset",         img: "/card-offset-packaging.webp",  desc: "Commercial packaging with premium finishes", highlighted: true },
+      { label: "Computer Forms",              href: "/what-we-do/computer-forms",    slotId: "nav-mega-computer-forms", img: "/card-computer-forms.webp",    desc: "Precision continuous paper & OMR sheets" },
+      { label: "Business Forms",              href: "/what-we-do/business-forms",    slotId: "nav-mega-business-forms", img: "/card-computer-forms.webp",    desc: "NCR multi-ply auto-carbon forms" },
+      { label: "Web Printing",                href: "/what-we-do/web-printing",       slotId: "nav-mega-web",            img: "/card-web-printing.webp",      desc: "Textbooks, exercise books & calendars at volume" },
+      { label: "Rigid Boxes",                 href: "/what-we-do/rigid-boxes",        slotId: "nav-mega-rigid",          img: "/card-rigid-boxes.webp",       desc: "Luxury packaging on automated smart lines" },
+      { label: "Thermal & ATM/POS Rolls",     href: "/what-we-do/thermal-rolls",     slotId: "nav-mega-thermal",        img: "/card-thermal-rolls.webp",     desc: "Precision-slit, dust-free transactional rolls" },
+      { label: "Stickers & Labels",           href: "/what-we-do/stickers-labels",   slotId: "nav-mega-labels",         img: "/card-stickers-labels.webp",   desc: "High-definition adhesive labels, built to stick" },
     ],
   },
   { key: "capabilities" as const, href: "/capabilities" },
@@ -28,7 +28,7 @@ const navLinks = [
 
 export default function Header() {
   const { t } = useLang();
-  const logo = useSiteImage("brand-logo", "/mspl-logo.png");
+  const logo = useSiteImage("brand-logo", "/mspl-logo-256.webp");
   const images = useSiteImages();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);

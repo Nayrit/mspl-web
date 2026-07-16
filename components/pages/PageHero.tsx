@@ -14,7 +14,7 @@ interface PageHeroProps {
 }
 
 export default function PageHero({ eyebrow, headline, subhead, image, dark = false, compact = false }: PageHeroProps) {
-  const texture = useSiteImage("brand-texture", "/paper-texture.jpg");
+  const texture = useSiteImage("brand-texture", "/paper-texture.webp");
 
   return (
     <section

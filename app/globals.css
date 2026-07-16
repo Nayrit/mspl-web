@@ -282,4 +282,9 @@
     border-color: #d61016;
     box-shadow: 0 0 0 1px #d61016;
   }
+
+  .mspl-paper-texture {
+    background-size: 420px 420px;
+    background-repeat: repeat;
+  }
 }
