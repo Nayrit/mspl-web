@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/pages/PageHero";
 import CTABand from "@/components/pages/CTABand";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
-import SectionEyebrow from "@/components/ui/SectionEyebrow";
+import WhatWeDoOverviewGrid from "@/components/what-we-do/WhatWeDoOverviewGrid";
 import { products, applyCmsImagesToProduct } from "@/lib/content/products";
+import { sortProductsForGrid } from "@/lib/content/what-we-do-grid";
 import { getImagePath, getImagePathMap } from "@/lib/cms/images";
 import { pageMetadata } from "@/lib/seo";
 
@@ -17,13 +17,9 @@ export const metadata: Metadata = pageMetadata(
 export default async function WhatWeDoOverviewPage() {
   const heroImage = await getImagePath("page-whatwedo-hero");
   const imageMap = await getImagePathMap();
-  const catalog = products.map((p) => applyCmsImagesToProduct(p, imageMap));
-  const featuredSlug = "offset-packaging";
-  const featuredIndex = catalog.findIndex((p) => p.slug === featuredSlug);
-  const orderedCatalog =
-    featuredIndex <= 0
-      ? catalog
-      : [catalog[featuredIndex], ...catalog.slice(0, featuredIndex), ...catalog.slice(featuredIndex + 1)];
+  const catalog = sortProductsForGrid(
+    products.map((p) => applyCmsImagesToProduct(p, imageMap)),
+  );
 
   return (
     <>
@@ -46,39 +42,14 @@ export default async function WhatWeDoOverviewPage() {
 
       <section className="section-padding bg-parchment-50 pt-0">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-charcoal-100">
-            {orderedCatalog.map((product, i) => {
-              const isFeatured = product.slug === featuredSlug;
-              return (
-              <ScrollFadeIn key={product.slug} direction="up" delay={i * 0.06}>
-                <Link
-                  href={`/what-we-do/${product.slug}`}
-                  className={`group block bg-parchment-50 overflow-hidden h-full hover:bg-parchment-200 transition-colors duration-300 ${
-                    isFeatured ? "border-2 border-[rgba(214,16,22,0.65)] shadow-2xl" : ""
-                  }`}
-                >
-                  <div className="aspect-[16/10] overflow-hidden">
-                    <img src={product.image} alt={product.eyebrow} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                  </div>
-                  <div className="p-7">
-                    <SectionEyebrow withLine={false} className="mb-2">{product.eyebrow}</SectionEyebrow>
-                    <h2
-                      className={`font-display font-bold text-charcoal mb-3 group-hover:text-primary transition-colors ${
-                        isFeatured ? "text-2xl" : "text-xl"
-                      }`}
-                    >
-                      {product.headline}
-                    </h2>
-                    <p className="font-sans text-sm text-charcoal-400 mb-4 line-clamp-2">{product.intro}</p>
-                    {product.overviewCapacity && (
-                      <p className="font-sans text-xs font-semibold text-primary tracking-wide uppercase">{product.overviewCapacity}</p>
-                    )}
-                  </div>
-                </Link>
-              </ScrollFadeIn>
-              );
-            })}
-          </div>
+          <WhatWeDoOverviewGrid
+            products={catalog.map((product) => ({
+              slug: product.slug,
+              eyebrow: product.eyebrow,
+              intro: product.intro,
+              image: product.image,
+            }))}
+          />
         </div>
       </section>
 
