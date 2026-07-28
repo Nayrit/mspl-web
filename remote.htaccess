@@ -1,0 +1,6 @@
+DirectoryIndex disabled
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ http://127.0.0.1:26398/$1 [P,L]
+RewriteCond %{HTTPS} on
+RewriteRule ^(.*)$ http://127.0.0.1:26398/$1 [P,L]
