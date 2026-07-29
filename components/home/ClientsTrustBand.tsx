@@ -110,7 +110,7 @@ export default function ClientsTrustBand({ showHeader = true }: ClientsTrustBand
         <ScrollFadeIn direction="up" delay={0.2}>
           <div className="mt-12 flex items-center gap-4">
             <span className="block h-px flex-1 bg-charcoal-100" />
-            <span className="eyebrow text-charcoal-300 text-center">{t.clients.trustLine}</span>
+            <span className="eyebrow text-charcoal-500 text-center">{t.clients.trustLine}</span>
             <span className="block h-px flex-1 bg-charcoal-100" />
           </div>
         </ScrollFadeIn>

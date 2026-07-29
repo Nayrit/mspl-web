@@ -30,14 +30,14 @@ export default function ContactPage() {
                 <h2 className="font-display text-2xl font-bold text-charcoal mb-8">Contact details</h2>
                 <div className="space-y-8">
                   <div>
-                    <p className="eyebrow text-charcoal-300 mb-2">Head Office</p>
+                    <p className="eyebrow text-charcoal-500 mb-2">Head Office</p>
                     <address className="not-italic font-sans text-sm text-charcoal-400 leading-relaxed">
                       {siteConfig.address.street}<br />
                       {siteConfig.address.city} {siteConfig.address.postalCode}
                     </address>
                   </div>
                   <div>
-                    <p className="eyebrow text-charcoal-300 mb-2">Telephone</p>
+                    <p className="eyebrow text-charcoal-500 mb-2">Telephone</p>
                     {siteConfig.phones.map((phone) => (
                       <a key={phone} href={`tel:${phone.replace(/\s/g, "")}`} className="block font-sans text-sm text-charcoal-400 hover:text-primary transition-colors">
                         {phone}
@@ -45,7 +45,7 @@ export default function ContactPage() {
                     ))}
                   </div>
                   <div>
-                    <p className="eyebrow text-charcoal-300 mb-2">Email</p>
+                    <p className="eyebrow text-charcoal-500 mb-2">Email</p>
                     <a href={`mailto:${siteConfig.email}`} className="font-sans text-sm text-charcoal-400 hover:text-primary transition-colors">
                       {siteConfig.email}
                     </a>

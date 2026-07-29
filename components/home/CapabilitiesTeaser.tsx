@@ -65,7 +65,7 @@ export default function CapabilitiesTeaser() {
 
             <ScrollFadeIn direction="up" delay={0.25}>
               <div className="mb-10">
-                <p className="eyebrow text-charcoal-300 mb-4">Full production chain</p>
+                <p className="eyebrow text-charcoal-500 mb-4">Full production chain</p>
                 <div className="flex flex-wrap gap-1 items-center">
                   {processSteps.map((step, i) => (
                     <div key={step} className="flex items-center gap-1">
@@ -95,7 +95,7 @@ export default function CapabilitiesTeaser() {
 
             <ScrollFadeIn direction="up" delay={0.3}>
               <div className="mb-10 pt-8 border-t border-charcoal-100">
-                <p className="eyebrow text-charcoal-300 mb-5">World-class press manufacturers</p>
+                <p className="eyebrow text-charcoal-500 mb-5">World-class press manufacturers</p>
                 <div className="grid grid-cols-2 gap-y-8 gap-x-10 sm:gap-x-14 items-center max-w-lg sm:max-w-xl">
                   {equipment.map((brand) => (
                     <EquipmentLogo key={brand.name} brand={brand} />

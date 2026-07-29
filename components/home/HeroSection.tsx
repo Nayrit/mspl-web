@@ -139,13 +139,13 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
             <span
               className="inline-flex items-center eyebrow px-4 py-2.5"
               style={{
-                color: "#faf8f5",
-                fontWeight: 600,
-                backgroundColor: "rgba(18,20,22,0.62)",
-                backdropFilter: "blur(8px)",
-                WebkitBackdropFilter: "blur(8px)",
-                borderLeft: "3px solid #d61016",
-                textShadow: "0 1px 3px rgba(0,0,0,0.85)",
+                color: "#ff4a50",
+                fontWeight: 700,
+                backgroundColor: "rgba(8,9,10,0.85)",
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
+                borderLeft: "3px solid #ff4a50",
+                textShadow: "0 1px 3px rgba(0,0,0,0.9)",
               }}
             >
               {t.hero.eyebrow}
