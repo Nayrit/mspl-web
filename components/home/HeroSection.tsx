@@ -136,7 +136,18 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
       >
         <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-5xl">
           <motion.div variants={item} className="mb-3 sm:mb-5">
-            <span className="inline-flex items-center gap-3 eyebrow" style={{ color: "#d61016" }}>
+            <span
+              className="inline-flex items-center eyebrow px-4 py-2.5"
+              style={{
+                color: "#faf8f5",
+                fontWeight: 600,
+                backgroundColor: "rgba(18,20,22,0.62)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+                borderLeft: "3px solid #d61016",
+                textShadow: "0 1px 3px rgba(0,0,0,0.85)",
+              }}
+            >
               {t.hero.eyebrow}
             </span>
           </motion.div>

@@ -253,6 +253,7 @@
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
   }
   .container-editorial {
     width: 100%;

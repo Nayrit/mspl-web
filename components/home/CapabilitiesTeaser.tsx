@@ -30,7 +30,7 @@ function EquipmentLogo({ brand }: { brand: (typeof equipment)[number] }) {
         height={40}
         loading="lazy"
         decoding="async"
-        className={`${brand.className} grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-300`}
+        className={`${brand.className} transition-all duration-300`}
       />
     </div>
   );
