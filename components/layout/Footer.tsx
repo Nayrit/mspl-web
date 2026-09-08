@@ -32,8 +32,8 @@ export default function Footer() {
               industry since 2002.
             </p>
             <a
-              href="/mspl-company-profile.pdf"
-              download
+              href={siteConfig.profilePdf}
+              download="MSPL Company Profile.pdf"
               className="inline-flex items-center gap-2 border border-parchment-100/30 text-parchment-100/90 hover:border-primary hover:text-primary px-5 py-3 min-h-[44px] font-sans text-xs font-medium tracking-wider uppercase transition-all duration-300"
               id="download-profile"
             >
