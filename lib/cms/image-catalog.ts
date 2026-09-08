@@ -89,7 +89,7 @@ export const IMAGE_CATALOG: CatalogEntry[] = [
     section: "Homepage: What We Do",
     label: "Business Forms card",
     usedOn: "Homepage What We Do grid",
-    defaultPath: "/card-computer-forms.webp",
+    defaultPath: "/card-business-forms.webp",
   },
   {
     id: "home-whatwedo-web",
@@ -341,7 +341,7 @@ export const IMAGE_CATALOG: CatalogEntry[] = [
     section: "What We Do: Navigation Cards",
     label: "Mega menu: Business Forms",
     usedOn: "Header mega menu thumbnail",
-    defaultPath: "/card-computer-forms.webp",
+    defaultPath: "/card-business-forms.webp",
   },
   {
     id: "nav-mega-web",
@@ -384,7 +384,7 @@ export const IMAGE_CATALOG: CatalogEntry[] = [
     section: "What We Do: Product Pages",
     label: "Business Forms product image",
     usedOn: "/what-we-do/business-forms",
-    defaultPath: "/card-computer-forms.webp",
+    defaultPath: "/card-business-forms.webp",
   },
   {
     id: "product-web-printing",

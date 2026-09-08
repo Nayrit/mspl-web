@@ -2,8 +2,8 @@
 
 /* ─── Design Tokens ──────────────────────────────────────────────────────── */
 @theme {
-  --font-display: var(--font-playfair), Georgia, serif;
-  --font-sans:    var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-source-serif), "Source Serif 4", Georgia, serif;
+  --font-sans:    var(--font-source-sans), "Source Sans 3", system-ui, sans-serif;
 
   --color-primary:       #d61016;
   --color-primary-light: #e33b40;
@@ -55,7 +55,7 @@
   }
 
   body {
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-source-sans), "Source Sans 3", system-ui, sans-serif;
     background-color: #faf8f5;
     color: #25282b;
     line-height: 1.6;
@@ -84,7 +84,7 @@
   ::selection { background-color: #d61016; color: #faf8f5; }
 
   h1,h2,h3,h4,h5,h6 {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-source-serif), "Source Serif 4", Georgia, serif;
     font-weight: 700;
     line-height: 1.08;
     letter-spacing: -0.02em;
@@ -248,7 +248,7 @@
     line-height: 1.75;
   }
   .eyebrow {
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-source-sans), "Source Sans 3", system-ui, sans-serif;
     font-size: 1rem !important;
     font-weight: 500;
     letter-spacing: 0.18em;
@@ -273,7 +273,7 @@
     border: 1px solid #e4e5e6;
     background-color: #fefefe;
     padding: 0.75rem 1rem;
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-source-sans), "Source Sans 3", system-ui, sans-serif;
     font-size: 1rem;
     color: #25282b;
     transition: border-color 0.2s, box-shadow 0.2s;

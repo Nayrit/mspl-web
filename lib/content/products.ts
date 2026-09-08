@@ -46,7 +46,7 @@ export const products: ProductPage[] = [
     eyebrow: "Business Forms",
     headline: "Multi-ply forms built for critical transactions.",
     intro: "We engineer NCR multi-ply auto-carbon business forms for banks, utilities, healthcare facilities, and institutions where every copy must be legible, tamper-evident, and traceable. From medical centre bills and electricity invoices to pharmaceutical order sheets and bank SWIFT papers, our business forms deliver crisp transfer across up to 5 plies without smudging.",
-    image: "/card-computer-forms.webp",
+    image: "/card-business-forms.webp",
     whatWeMake: [
       "NCR multi-ply auto-carbon forms", "Medical centre bills & invoices", "Electricity & utility bill forms",
       "Pharmaceutical order sheets", "Bank SWIFT papers", "Delivery challans & receipts", "Custom multi-part vouchers",

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/layout/JsonLd";
 import SiteChrome from "@/components/layout/SiteChrome";
@@ -15,16 +15,16 @@ import { organizationJsonLd, localBusinessJsonLd } from "@/lib/seo";
 /** Serve from CDN / Data Cache; CMS uploads call revalidateTag("image-catalog"). */
 export const revalidate = false;
 
-const playfair = Playfair_Display({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-source-serif",
   weight: ["400", "600", "700"],
   display: "swap",
   preload: true,
 });
-const inter = Inter({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-source-sans",
   weight: ["400", "500", "600"],
   display: "swap",
   preload: true,
@@ -74,7 +74,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const imageMap = await getImagePathMap();
 
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`${sourceSerif.variable} ${sourceSans.variable}`}>
       <head>
         <link rel="icon" type="image/png" href="/mspl-logo.png" />
         <link rel="shortcut icon" href="/mspl-logo.png" />

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import PageHero from "@/components/pages/PageHero";
 import ClientsTrustBand from "@/components/home/ClientsTrustBand";
 import IndustrySectorsShowcase from "@/components/clients/IndustrySectorsShowcase";
-import ClientTestimonialsSection from "@/components/clients/ClientTestimonialsSection";
 import CTABand from "@/components/pages/CTABand";
 import { pageMetadata } from "@/lib/seo";
 import { getImagePath } from "@/lib/cms/images";
@@ -30,9 +29,6 @@ export default async function ClientsPage() {
 
       {/* Client Logos Marquee Band */}
       <ClientsTrustBand showHeader={true} />
-
-      {/* Executive Testimonials & Trust Showcase */}
-      <ClientTestimonialsSection />
 
       <CTABand heading="Join them." ctaLabel="Get in touch" ctaHref="/contact" />
     </>

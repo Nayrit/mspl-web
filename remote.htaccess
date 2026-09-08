@@ -1,6 +1,12 @@
-DirectoryIndex disabled
 RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ http://127.0.0.1:26398/$1 [P,L]
-RewriteCond %{HTTPS} on
+
+# Force HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Serve real files from the docroot (uploads -> public/uploads symlink)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+DirectoryIndex disabled
 RewriteRule ^(.*)$ http://127.0.0.1:26398/$1 [P,L]

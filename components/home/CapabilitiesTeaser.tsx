@@ -2,13 +2,12 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
+import CmsImage from "@/components/ui/CmsImage";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import Link from "next/link";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
-import { toImageSrc } from "@/lib/cms/image-path";
 
 const equipment = [
   { name: "Heidelberg", slotId: "home-logo-heidelberg", logo: "/logos/heidelberg.png", className: "h-8 sm:h-10 w-auto max-w-[180px] sm:max-w-[210px] object-contain" },
@@ -118,8 +117,8 @@ export default function CapabilitiesTeaser() {
             <div className="relative">
               <div className="relative overflow-hidden aspect-[4/5]">
                 <motion.div className="absolute inset-0 w-full h-[110%]" style={{ y: imgY }}>
-                  <Image
-                    src={toImageSrc(factoryImage)}
+                  <CmsImage
+                    src={factoryImage}
                     alt="Master Simex printing facility interior with Heidelberg presses"
                     fill
                     sizes="(max-width: 1024px) 100vw, 45vw"

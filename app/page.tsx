@@ -6,7 +6,6 @@ import WhatWeDoSection from "@/components/home/WhatWeDoSection";
 import CapabilitiesTeaser from "@/components/home/CapabilitiesTeaser";
 import SustainabilityTeaser from "@/components/home/SustainabilityTeaser";
 import ClientsTrustBand from "@/components/home/ClientsTrustBand";
-import ClientTestimonialsSection from "@/components/clients/ClientTestimonialsSection";
 import ClosingCTABand from "@/components/home/ClosingCTABand";
 import { getImagePath } from "@/lib/cms/images";
 
@@ -24,7 +23,6 @@ export default async function HomePage() {
       <CapabilitiesTeaser />
       <SustainabilityTeaser />
       <ClientsTrustBand />
-      <ClientTestimonialsSection />
       <ClosingCTABand />
     </>
   );

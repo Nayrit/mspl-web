@@ -29,7 +29,7 @@ See `.env.example` for placeholders. Never commit `.env.local`.
 - **Careers** — jobs stored in `data/careers.json`
 - **Images** — catalog in `lib/cms/image-catalog.ts`; overrides in `data/images.json`; uploaded files in `public/uploads/`
 
-Admin routes under `/admin/*` are protected by middleware + server-action auth checks.
+Admin routes under `/admin/*` are protected by middleware + server-action auth checks. After replace, hard-refresh the admin page if a thumbnail looks stale; the public site picks up overrides via `revalidateTag("image-catalog")`.
 
 ## Important: deployment & storage
 
@@ -39,6 +39,8 @@ The CMS **writes to the local filesystem**. That works on:
 - Docker with a mounted volume for `data/` and `public/uploads/`
 
 It does **not** work reliably on ephemeral serverless (e.g. default Vercel) — edits and uploads can disappear on redeploy.
+
+**CMS uploads on Apache + `next start`:** production Next only auto-serves `public/` files that existed when the Node process started. This app serves `/uploads/*` via `app/uploads/[...path]/route.ts` (and `remote.htaccess` can also map `/uploads/` to `public/uploads/` before the proxy). After deploying those, admin image replaces work without restarting PM2.
 
 Before go-live:
 

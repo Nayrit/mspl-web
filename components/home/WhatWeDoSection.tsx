@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import CmsImage from "@/components/ui/CmsImage";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
-import { toImageSrc } from "@/lib/cms/image-path";
 
 const services = [
   {
@@ -40,7 +39,7 @@ const services = [
     short: "Multi-ply & Transactional",
     description: "NCR multi-ply auto-carbon forms, medical bills, utility forms and bank SWIFT papers with crisp transfer.",
     href: "/what-we-do/business-forms",
-    img: "/card-computer-forms.webp",
+    img: "/card-business-forms.webp",
     tags: ["NCR multi-ply", "Auto-carbon", "Transactional"],
     colSpan: "col-span-1 sm:col-span-1 lg:col-span-2",
     minHeight: "min-h-[440px]",
@@ -107,8 +106,8 @@ function ServiceCard({ service, index, exploreLabel }: { service: typeof service
         className={`relative overflow-hidden rounded-xl group block shadow-lg hover:shadow-2xl active:scale-[0.99] transition-all duration-500 bg-charcoal flex flex-col justify-end ${service.minHeight} h-full`}
       >
         <div className="absolute inset-0">
-          <Image
-            src={toImageSrc(img)}
+          <CmsImage
+            src={img}
             alt=""
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"

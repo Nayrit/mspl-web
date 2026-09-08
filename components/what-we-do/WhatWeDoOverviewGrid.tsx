@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import CmsImage from "@/components/ui/CmsImage";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import {
   WHAT_WE_DO_GRID_LAYOUT,
   type WhatWeDoGridSlug,
 } from "@/lib/content/what-we-do-grid";
-import { toImageSrc } from "@/lib/cms/image-path";
 
 export interface WhatWeDoOverviewProduct {
   slug: string;
@@ -36,8 +35,8 @@ function DivisionCard({
         className={`relative overflow-hidden rounded-xl group block shadow-lg hover:shadow-2xl active:scale-[0.99] transition-all duration-500 bg-charcoal flex flex-col justify-end ${layout.minHeight} h-full`}
       >
         <div className="absolute inset-0">
-          <Image
-            src={toImageSrc(product.image)}
+          <CmsImage
+            src={product.image}
             alt=""
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"

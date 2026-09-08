@@ -2,13 +2,12 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
+import CmsImage from "@/components/ui/CmsImage";
 import Link from "next/link";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import SectionEyebrow from "@/components/ui/SectionEyebrow";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
-import { toImageSrc } from "@/lib/cms/image-path";
 
 const sustainabilityStats = [
   { value: "50%",    label: "Of Narsingdi facility powered by solar" },
@@ -27,8 +26,8 @@ export default function SustainabilityTeaser() {
   return (
     <section ref={ref} className="section-padding relative overflow-hidden" style={{ backgroundColor: "#160e04" }} aria-label="Sustainability commitment">
       <motion.div className="absolute inset-0 w-full h-[115%] -top-[7.5%]" style={{ y: yImg }}>
-        <Image
-          src={toImageSrc(image)}
+        <CmsImage
+          src={image}
           alt="Solar panels powering the Master Simex Narsingdi facility"
           fill
           sizes="100vw"

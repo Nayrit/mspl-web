@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
+import CmsImage from "@/components/ui/CmsImage";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import ScrollFadeIn from "@/components/ui/ScrollFadeIn";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImage } from "@/components/ui/SiteImagesContext";
-import { toImageSrc } from "@/lib/cms/image-path";
 
 const stats = [
   { value: 23,     suffix: "+", label: "Years of manufacturing",   detail: "Established 2002",            slotId: "home-numbers-years",       image: "/hero-bg.webp" },
@@ -32,8 +31,8 @@ function StatTile({
         style={{ backgroundColor: "#25282b" }}
       >
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <Image
-            src={toImageSrc(image)}
+          <CmsImage
+            src={image}
             alt=""
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

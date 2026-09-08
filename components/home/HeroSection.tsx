@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
+import CmsImage from "@/components/ui/CmsImage";
 import { useLang } from "@/components/ui/LanguageContext";
 import { useSiteImages } from "@/components/ui/SiteImagesContext";
 import { toImageSrc } from "@/lib/cms/image-path";
@@ -91,7 +91,7 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
           style={{ opacity: current === 0 ? 1 : 0, transition: "opacity 1.2s ease" }}
           aria-hidden={current !== 0}
         >
-          <Image
+          <CmsImage
             src={lcpSlide.src}
             alt={lcpSlide.alt}
             fill
@@ -112,7 +112,7 @@ export default function HeroSection({ priorityHeroSrc }: HeroSectionProps) {
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <Image
+              <CmsImage
                 src={slides[current].src}
                 alt={slides[current].alt}
                 fill

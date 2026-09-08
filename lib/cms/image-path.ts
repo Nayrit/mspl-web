@@ -4,3 +4,8 @@ export function toImageSrc(webPath: string): string {
   const q = webPath.indexOf("?");
   return q === -1 ? webPath : webPath.slice(0, q);
 }
+
+/** CMS uploads under /uploads/ are written after process start; skip optimizer. */
+export function isCmsUploadPath(webPath: string): boolean {
+  return toImageSrc(webPath).startsWith("/uploads/");
+}

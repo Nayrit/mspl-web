@@ -10,7 +10,7 @@ export const footerWhatWeDoLinks = [
 
 export const whatWeDoLinks = [
   { label: "Computer Forms", href: "/what-we-do/computer-forms", img: "/card-computer-forms.webp", desc: "Precision continuous paper & litho-coded secure forms" },
-  { label: "Business Forms", href: "/what-we-do/business-forms", img: "/card-computer-forms.webp", desc: "NCR multi-ply auto-carbon forms for critical transactions" },
+  { label: "Business Forms", href: "/what-we-do/business-forms", img: "/card-business-forms.webp", desc: "NCR multi-ply auto-carbon forms for critical transactions" },
   { label: "OMR Forms", href: "/what-we-do/omr-forms", img: "/card-computer-forms.webp", desc: "Optical Mark Recognition examination forms" },
   { label: "Exam Copy", href: "/what-we-do/exam-copy", img: "/card-web-printing.webp", desc: "Examination materials at national scale" },
   { label: "Exercise Books", href: "/what-we-do/exercise-books", img: "/card-web-printing.webp", desc: "Exercise books printed and bound at volume" },
